@@ -506,6 +506,74 @@
       </div>
     </section>
 
+
+
+    <section id="tutors" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
+      <h2 style="margin:0 0 8px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">导师团队</span><span style="display:{{ eb }}">Our tutors</span></h2>
+      <p style="margin:0 0 34px;max-width:42em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">全部持有有效的 NSW Working With Children Check。需要完整履历或匹配建议，欢迎直接咨询。</span><span style="display:{{ eb }}">All tutors hold a current NSW Working With Children Check. Ask us for a full CV or a matching recommendation.</span></p>
+      <div class="ao-tutor-tools">
+        <div class="ao-filters" role="group" aria-label="Tutor subjects">
+          <button onClick="{{ filterAll }}" aria-pressed="{{ allSelected }}">{{ allLabel }}</button>
+          <button onClick="{{ filterEnglish }}" aria-pressed="{{ englishSelected }}">{{ englishLabel }}</button>
+          <button onClick="{{ filterMaths }}" aria-pressed="{{ mathsSelected }}">{{ mathsLabel }}</button>
+        </div>
+        <a href="mailto:operations@academyone.com.au?subject=Tutor%20matching">{{ matchLabel }}</a>
+      </div>
+      <div>
+        <div id="ao-tutor-rail" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+          <sc-for list="{{ tutors }}" as="t" hint-placeholder-count="12">
+            <button class="ao-tutor" onClick="{{ t.open }}">
+              <span class="ao-tutor-name">{{ t.name }}</span>
+              <span class="ao-tutor-role">{{ t.role }}</span>
+              <span class="ao-tutor-qual">{{ t.qual }}</span>
+              <span class="ao-tutor-hook">{{ t.hook }}</span>
+              <span class="ao-tutor-level">{{ t.subjectShort }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <button class="ao-more-tutors" onClick="{{ toggleTutorList }}" aria-expanded="{{ tutorsExpanded }}">{{ moreTutorsLabel }}</button>
+      <p style="margin:6px 0 0;font-size:13px;color:#6B615C">{{ railHint }}</p>
+      <div style="margin-top:20px;padding:28px 30px;background:#F3EBE1;border-radius:12px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+        <p style="margin:0;max-width:38em;font-size:16px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">不确定该找哪位导师？告诉我们年级、科目和目前成绩，我们推荐最合适的两位。</span><span style="display:{{ eb }}">Not sure who's the right fit? Tell us the year, subject and current marks and we'll recommend two.</span></p>
+        <a href="mailto:operations@academyone.com.au?subject=Tutor%20enquiry" style="padding:14px 24px;font-size:15px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">咨询导师匹配</span><span style="display:{{ ei }}">Enquire about a tutor</span></a>
+      </div>
+    </section>
+
+    <section id="contact" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
+      <div class="ao-contact-panel" style="background:#221E1F;color:#FBF8F3;border-radius:16px;padding:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px">
+        <div>
+          <h2 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,36px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">咨询课程与试课</span><span style="display:{{ eb }}">Discuss courses and a trial lesson</span></h2>
+          <p style="margin:0 0 26px;max-width:30em;font-size:16px;line-height:1.7;color:#D6CCC3"><span style="display:{{ zb }}">填写外部报名表，我们会在一个工作日内联系你。试课安排与费用请向课务确认。</span><span style="display:{{ eb }}">Complete the external registration form and we'll be in touch within one business day. Contact operations to confirm trial arrangements and fees.</span></p>
+          <a href="https://academyoneprivatetuition.teachworks.com/form/academy-one-private-tutoring-student-registration-form" target="_blank" rel="noopener" style="display:inline-block;padding:15px 26px;font-size:16px;font-weight:600;color:#221E1F;background:#D99B36;border-radius:8px;text-decoration:none" style-hover="background:#FBF8F3;color:#221E1F;text-decoration:none"><span style="display:{{ zi }}">填写报名表</span><span style="display:{{ ei }}">Register</span></a>
+          <div style="display:grid;gap:22px;margin-top:34px">
+            <div>
+              <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">微信</span><span style="display:{{ ei }}">WeChat</span></p>
+              <p class="ao-contact-row" style="margin:0;font-size:20px;font-weight:600"><img class="ao-contact-icon" src="/assets/icons/wechat.svg" alt="" width="22" height="22">academyonechatswood</p>
+            </div>
+            <div>
+              <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Lydia Xu · <span style="display:{{ zi }}">课务</span><span style="display:{{ ei }}">Operations</span></p>
+              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61486017931" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/phone.svg" alt="" width="22" height="22">0486 017 931</a><a class="ao-contact-row" href="mailto:operations@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/mail.svg" alt="" width="22" height="22">operations@academyone.com.au</a></p>
+            </div>
+            <div>
+              <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Ethan Lin · <span style="display:{{ zi }}">行政</span><span style="display:{{ ei }}">Admin</span></p>
+              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61416360068" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/phone.svg" alt="" width="22" height="22">0416 360 068</a><a class="ao-contact-row" href="mailto:admin@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/mail.svg" alt="" width="22" height="22">admin@academyone.com.au</a></p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="margin:0 0 4px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">校区地址</span><span style="display:{{ ei }}">Our centre</span></p>
+          <p style="margin:0 0 6px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;line-height:1.4;font-weight:700">Suite 403, 815 Pacific Highway<br>Chatswood NSW 2067</p>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.7;color:#D6CCC3"><span style="display:{{ zb }}">从 PANORAMA 大楼（815 Pacific Highway, Chatswood）的玻璃门进入，乘电梯到 4 层，Suite 403。</span><span style="display:{{ eb }}">Enter the PANORAMA building (815 Pacific Highway, Chatswood) through the glass doors, take the lift to Level 4, and proceed to Suite 403.</span></p>
+          <a href="https://maps.google.com/?q=Suite+403,+815+Pacific+Highway,+Chatswood+NSW+2067" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#D99B36"><span style="display:{{ zi }}">在 Google 地图打开 →</span><span style="display:{{ ei }}">Open in Google Maps →</span></a>
+
+          <iframe class="ao-centre-map" title="Academy One Chatswood campus map" src="https://maps.google.com/maps?q=815%20Pacific%20Highway%2C%20Chatswood%20NSW%202067&amp;z=16&amp;output=embed" width="600" height="320" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
+      </div>
+    </section>
+
+
     <section id="pricing" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
       <h2 style="margin:0 0 8px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">学费与课时包</span><span style="display:{{ eb }}">Pricing &amp; lesson packages</span></h2>
       <p style="margin:0 0 34px;max-width:44em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">2026 年正式价目，每周最少 1.5 小时。整期预订享较低时薪；少于五节按单独时薪计算。</span><span style="display:{{ eb }}">Official 2026 rates, minimum 1.5 hours per week. Term block bookings earn the lower rate; fewer than five lessons is charged individually.</span></p>
@@ -604,72 +672,6 @@
       </div>
       <p style="margin:16px 0 0;font-size:13px;line-height:1.7;color:#6B615C"><span style="display:{{ zb }}">Dr Yvonne Smith 的课程仅接受整期预订。请假与退费见 <a href="/credit" onClick="{{ goCredit }}">课时政策</a>。</span><span style="display:{{ eb }}">Dr Yvonne Smith's lessons are available on term block bookings only. Absences and refunds: see the <a href="/credit" onClick="{{ goCredit }}">credit policy</a>.</span></p>
     </section>
-
-    <section id="tutors" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
-      <h2 style="margin:0 0 8px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">导师团队</span><span style="display:{{ eb }}">Our tutors</span></h2>
-      <p style="margin:0 0 34px;max-width:42em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">全部持有有效的 NSW Working With Children Check。需要完整履历或匹配建议，欢迎直接咨询。</span><span style="display:{{ eb }}">All tutors hold a current NSW Working With Children Check. Ask us for a full CV or a matching recommendation.</span></p>
-      <div class="ao-tutor-tools">
-        <div class="ao-filters" role="group" aria-label="Tutor subjects">
-          <button onClick="{{ filterAll }}" aria-pressed="{{ allSelected }}">{{ allLabel }}</button>
-          <button onClick="{{ filterEnglish }}" aria-pressed="{{ englishSelected }}">{{ englishLabel }}</button>
-          <button onClick="{{ filterMaths }}" aria-pressed="{{ mathsSelected }}">{{ mathsLabel }}</button>
-        </div>
-        <a href="mailto:operations@academyone.com.au?subject=Tutor%20matching">{{ matchLabel }}</a>
-      </div>
-      <div>
-        <div id="ao-tutor-rail" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
-          <sc-for list="{{ tutors }}" as="t" hint-placeholder-count="12">
-            <button class="ao-tutor" onClick="{{ t.open }}">
-              <span class="ao-tutor-name">{{ t.name }}</span>
-              <span class="ao-tutor-role">{{ t.role }}</span>
-              <span class="ao-tutor-qual">{{ t.qual }}</span>
-              <span class="ao-tutor-hook">{{ t.hook }}</span>
-              <span class="ao-tutor-level">{{ t.subjectShort }}</span>
-            </button>
-          </sc-for>
-        </div>
-      </div>
-      <button class="ao-more-tutors" onClick="{{ toggleTutorList }}" aria-expanded="{{ tutorsExpanded }}">{{ moreTutorsLabel }}</button>
-      <p style="margin:6px 0 0;font-size:13px;color:#6B615C">{{ railHint }}</p>
-      <div style="margin-top:20px;padding:28px 30px;background:#F3EBE1;border-radius:12px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
-        <p style="margin:0;max-width:38em;font-size:16px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">不确定该找哪位导师？告诉我们年级、科目和目前成绩，我们推荐最合适的两位。</span><span style="display:{{ eb }}">Not sure who's the right fit? Tell us the year, subject and current marks and we'll recommend two.</span></p>
-        <a href="mailto:operations@academyone.com.au?subject=Tutor%20enquiry" style="padding:14px 24px;font-size:15px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">咨询导师匹配</span><span style="display:{{ ei }}">Enquire about a tutor</span></a>
-      </div>
-    </section>
-
-    <section id="contact" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
-      <div class="ao-contact-panel" style="background:#221E1F;color:#FBF8F3;border-radius:16px;padding:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px">
-        <div>
-          <h2 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,36px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">咨询课程与试课</span><span style="display:{{ eb }}">Discuss courses and a trial lesson</span></h2>
-          <p style="margin:0 0 26px;max-width:30em;font-size:16px;line-height:1.7;color:#D6CCC3"><span style="display:{{ zb }}">填写外部报名表，我们会在一个工作日内联系你。试课安排与费用请向课务确认。</span><span style="display:{{ eb }}">Complete the external registration form and we'll be in touch within one business day. Contact operations to confirm trial arrangements and fees.</span></p>
-          <a href="https://academyoneprivatetuition.teachworks.com/form/academy-one-private-tutoring-student-registration-form" target="_blank" rel="noopener" style="display:inline-block;padding:15px 26px;font-size:16px;font-weight:600;color:#221E1F;background:#D99B36;border-radius:8px;text-decoration:none" style-hover="background:#FBF8F3;color:#221E1F;text-decoration:none"><span style="display:{{ zi }}">填写报名表</span><span style="display:{{ ei }}">Register</span></a>
-          <div style="display:grid;gap:22px;margin-top:34px">
-            <div>
-              <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">微信</span><span style="display:{{ ei }}">WeChat</span></p>
-              <p class="ao-contact-row" style="margin:0;font-size:20px;font-weight:600"><img class="ao-contact-icon" src="/assets/icons/wechat.svg" alt="" width="22" height="22">academyonechatswood</p>
-            </div>
-            <div>
-              <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Lydia Xu · <span style="display:{{ zi }}">课务</span><span style="display:{{ ei }}">Operations</span></p>
-              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61486017931" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/phone.svg" alt="" width="22" height="22">0486 017 931</a><a class="ao-contact-row" href="mailto:operations@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/mail.svg" alt="" width="22" height="22">operations@academyone.com.au</a></p>
-            </div>
-            <div>
-              <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Ethan Lin · <span style="display:{{ zi }}">行政</span><span style="display:{{ ei }}">Admin</span></p>
-              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61416360068" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/phone.svg" alt="" width="22" height="22">0416 360 068</a><a class="ao-contact-row" href="mailto:admin@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/mail.svg" alt="" width="22" height="22">admin@academyone.com.au</a></p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p style="margin:0 0 4px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">校区地址</span><span style="display:{{ ei }}">Our centre</span></p>
-          <p style="margin:0 0 6px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;line-height:1.4;font-weight:700">Suite 403, 815 Pacific Highway<br>Chatswood NSW 2067</p>
-          <p style="margin:0 0 18px;font-size:15px;line-height:1.7;color:#D6CCC3"><span style="display:{{ zb }}">从 PANORAMA 大楼（815 Pacific Highway, Chatswood）的玻璃门进入，乘电梯到 4 层，Suite 403。</span><span style="display:{{ eb }}">Enter the PANORAMA building (815 Pacific Highway, Chatswood) through the glass doors, take the lift to Level 4, and proceed to Suite 403.</span></p>
-          <a href="https://maps.google.com/?q=Suite+403,+815+Pacific+Highway,+Chatswood+NSW+2067" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#D99B36"><span style="display:{{ zi }}">在 Google 地图打开 →</span><span style="display:{{ ei }}">Open in Google Maps →</span></a>
-
-          <iframe class="ao-centre-map" title="Academy One Chatswood campus map" src="https://maps.google.com/maps?q=815%20Pacific%20Highway%2C%20Chatswood%20NSW%202067&amp;z=16&amp;output=embed" width="600" height="320" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-        </div>
-      </div>
-    </section>
-
 
   </main>
   </sc-if>
