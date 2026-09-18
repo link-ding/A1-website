@@ -820,8 +820,9 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;zh&quot;,&quot;en&quot;],&quot;default&quot;:&quot;zh&quot;,&quot;tsType&quot;:&quot;'zh' | 'en'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showRates&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
-  state = { showAllTutors: false, subject: 'all', lang: null, page: 'home', active: null, statsProgress: 0 };
+  state = { showAllTutors: false, subject: 'all', lang: this.initialLanguage(), page: 'home', active: null, statsProgress: 0 };
   componentDidMount() {
+    document.documentElement.lang = this.lang === 'zh' ? 'zh-CN' : 'en';
     this.onKey = (e) => { if (e.key === 'Escape') this.setState({ active: null }); };
     this.onRoute = () => {
       const legacy = window.location.hash.slice(1);
@@ -872,7 +873,23 @@ class Component extends DCLogic {
     window.removeEventListener('popstate', this.onRoute);
   }
 
-  get lang() { return this.state.lang || this.props.defaultLang || 'zh'; }
+  initialLanguage() {
+    try {
+      const saved = window.localStorage.getItem('academy-one-language');
+      if (saved === 'zh' || saved === 'en') return saved;
+    } catch (_) { /* Language detection still works when storage is unavailable. */ }
+    const preferred = navigator.languages?.[0] || navigator.language || 'en';
+    return /^zh(?:-|$)/i.test(preferred) ? 'zh' : 'en';
+  }
+
+  get lang() { return this.state.lang; }
+
+  toggleLanguage() {
+    const lang = this.lang === 'zh' ? 'en' : 'zh';
+    try { window.localStorage.setItem('academy-one-language', lang); } catch (_) {}
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    this.setState({ lang });
+  }
 
   go(page) {
     return (e) => {
@@ -1068,7 +1085,7 @@ class Component extends DCLogic {
       cap,
       langLabel: zh ? 'EN' : '中文',
       languageSwitchLabel: zh ? 'Switch to English' : '切换为中文',
-      toggleLang: () => this.setState({ lang: this.lang === 'zh' ? 'en' : 'zh' }),
+      toggleLang: () => this.toggleLanguage(),
       isHome: this.state.page === 'home',
       isTimetable: this.state.page === 'timetable',
       isCredit: this.state.page === 'credit',
