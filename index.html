@@ -312,6 +312,11 @@
   @media (prefers-reduced-motion: reduce) { .ao-tutor { transition: none; } }
   .ao-header-actions .ao-language-switch { padding: 10px 12px; font-weight: 400 !important; color: #6B615C; text-underline-offset: 5px; }
   .ao-language-switch:hover { text-decoration: underline; }
+  .ao-header nav a { position: relative; }
+  .ao-header nav a::after { content: ''; position: absolute; left: 11px; right: 11px; bottom: 2px; height: 2px; background: #9C2A2B; transform: scaleX(0); transform-origin: center; transition: transform .22s ease; }
+  .ao-header nav a[aria-current="location"]::after { transform: scaleX(1); }
+  .ao-header nav a[aria-current="location"] { color: #9C2A2B !important; }
+  @media (prefers-reduced-motion: reduce) { .ao-header nav a::after { transition: none; } }
 </style>
 </helmet>
 
@@ -829,6 +834,7 @@ class Component extends DCLogic {
         const target = document.getElementById(id);
         if (target) target.scrollIntoView();
         else window.scrollTo(0, 0);
+        this.setupPageMotion();
       }));
     };
     window.addEventListener('keydown', this.onKey);
@@ -854,6 +860,9 @@ class Component extends DCLogic {
     if (stats) this.statsObserver.observe(stats);
   }
   componentWillUnmount() {
+    this.revealObserver?.disconnect();
+    this.navObserver?.disconnect();
+    this.motionAnimations?.forEach(animation => animation.cancel());
     this.statsObserver.disconnect();
     cancelAnimationFrame(this.statsFrame);
     window.removeEventListener('keydown', this.onKey);
@@ -871,6 +880,67 @@ class Component extends DCLogic {
       if (window.location.pathname !== path) window.history.pushState(null, '', path);
       this.onRoute();
     };
+  }
+
+  animateElements(elements, stagger = 0) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.motionAnimations ||= new Set();
+    elements.forEach((element, index) => {
+      const animation = element.animate([
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'translateY(0)' }
+      ], { duration: 420, delay: index * stagger, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+      this.motionAnimations.add(animation);
+      animation.onfinish = () => this.motionAnimations.delete(animation);
+    });
+  }
+
+  markNavigation(path) {
+    document.querySelectorAll('.ao-header nav a').forEach(link => {
+      if (link.getAttribute('href') === path) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  setupPageMotion() {
+    this.revealObserver?.disconnect();
+    this.navObserver?.disconnect();
+    this.revealedElements ||= new WeakSet();
+    this.markNavigation(window.location.pathname);
+    this.revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        this.revealObserver.unobserve(entry.target);
+        if (this.revealedElements.has(entry.target)) return;
+        this.revealedElements.add(entry.target);
+        if (entry.target.id === 'ao-tutor-rail') this.animateElements([...entry.target.querySelectorAll('.ao-tutor')], 60);
+        else this.animateElements([entry.target]);
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('main > section > h2, .ao-subjects, .ao-feedback-grid, .ao-pricing-layout, #ao-tutor-rail, .ao-contact-panel').forEach(element => this.revealObserver.observe(element));
+    if (this.state.page !== 'home') return;
+    this.navObserver = new IntersectionObserver(() => {
+      const sections = [...document.querySelectorAll('.ao-hero, .ao-results-summary, main > section[id]')];
+      const bottom = window.innerHeight * .45;
+      let current = null;
+      let overlap = 0;
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(rect.bottom, bottom) - Math.max(rect.top, 140));
+        if (visible > overlap) { current = section; overlap = visible; }
+      });
+      if (current) this.markNavigation(current.id === 'offer' ? '/courses' : '/' + current.id);
+    }, { rootMargin: '-140px 0px -55% 0px', threshold: 0 });
+    document.querySelectorAll('.ao-hero, .ao-results-summary, main > section[id]').forEach(section => this.navObserver.observe(section));
+  }
+
+  filterTutors(subject) {
+    if (this.state.subject === subject) return;
+    this.motionAnimations?.forEach(animation => animation.cancel());
+    this.motionAnimations?.clear();
+    this.setState({ subject, showAllTutors: false }, () => {
+      this.animateElements([...document.querySelectorAll('#ao-tutor-rail .ao-tutor')], 45);
+    });
   }
 
   renderVals() {
@@ -1009,9 +1079,9 @@ class Component extends DCLogic {
       toggleTutorList: () => this.setState({ showAllTutors: !this.state.showAllTutors }),
       tutorsExpanded: this.state.showAllTutors,
       moreTutorsLabel: this.state.showAllTutors ? (zh ? '收起导师列表' : 'Show fewer tutors') : (zh ? '查看此分类全部 ' + filtered.length + ' 位导师' : 'View all ' + filtered.length + ' tutors in this category'),
-      filterAll: () => this.setState({ subject: 'all', showAllTutors: false }),
-      filterEnglish: () => this.setState({ subject: 'english', showAllTutors: false }),
-      filterMaths: () => this.setState({ subject: 'maths', showAllTutors: false }),
+      filterAll: () => this.filterTutors('all'),
+      filterEnglish: () => this.filterTutors('english'),
+      filterMaths: () => this.filterTutors('maths'),
       allSelected: this.state.subject === 'all',
       englishSelected: this.state.subject === 'english',
       mathsSelected: this.state.subject === 'maths',
