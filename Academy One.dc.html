@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -319,19 +319,19 @@
 
   <header class="ao-header" style="position:sticky;top:0;z-index:50;background:rgba(251,248,243,0.94);backdrop-filter:blur(10px);borderBottom:1px solid #E3DAD0">
     <div class="ao-header-inner" style="max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:28px">
-      <a class="ao-brand" href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none">
-        <img src="assets/academy-one-crest.png" alt="" style="height:42px;width:auto;display:block">
+      <a class="ao-brand" href="/" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none">
+        <img src="/assets/academy-one-crest.png" alt="" style="height:42px;width:auto;display:block">
         <span style="display:flex;flex-direction:column;gap:2px">
           <span style="font-family:'Libre Baskerville',Georgia,serif;font-size:19px;line-height:1;font-weight:700;color:#3B2F2C;letter-spacing:-0.01em">Academy One</span>
           <span style="font-size:10px;line-height:1;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#C1443F">Private Tuition</span>
         </span>
       </a>
       <nav aria-label="Main navigation" style="display:flex;flex-wrap:wrap;gap:4px;margin-left:auto;align-items:center">
-        <a href="#offer" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程</span><span style="display:{{ ei }}">Courses</span></a>
-        <a href="#pricing" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">学费</span><span style="display:{{ ei }}">Pricing</span></a>
-        <a href="#tutors" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">师资</span><span style="display:{{ ei }}">Tutors</span></a>
-        <a href="#timetable" onClick="{{ goTimetable }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程表</span><span style="display:{{ ei }}">Timetable</span></a>
-        <a href="#careers" onClick="{{ goCareers }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">招聘</span><span style="display:{{ ei }}">Careers</span></a>
+        <a href="/courses" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程</span><span style="display:{{ ei }}">Courses</span></a>
+        <a href="/pricing" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">学费</span><span style="display:{{ ei }}">Pricing</span></a>
+        <a href="/tutors" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">师资</span><span style="display:{{ ei }}">Tutors</span></a>
+        <a href="/timetable" onClick="{{ goTimetable }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程表</span><span style="display:{{ ei }}">Timetable</span></a>
+        <a href="/careers" onClick="{{ goCareers }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">招聘</span><span style="display:{{ ei }}">Careers</span></a>
       </nav>
       <div class="ao-header-actions">
         <button class="ao-language-switch" aria-label="{{ languageSwitchLabel }}" onClick="{{ toggleLang }}" style="margin-left:6px;padding:7px 12px;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:0.04em;color:#221E1F;background:transparent;border:0;border-radius:0;cursor:pointer" style-hover="color:#9C2A2B">{{ langLabel }}</button>
@@ -344,7 +344,7 @@
   <main>
 
     <section class="ao-hero">
-      <img class="ao-hero-photo" src="assets/academy-one-classroom.jpg" alt="" fetchpriority="high" width="1672" height="941">
+      <img class="ao-hero-photo" src="/assets/academy-one-classroom.jpg" alt="" fetchpriority="high" width="1672" height="941">
       <div class="ao-hero-content">
       <p style="margin:0 0 20px;font-size:13px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">悉尼 Chatswood · 小班与一对一</span><span style="display:{{ ei }}">Chatswood, Sydney · Small group &amp; 1-on-1</span></p>
       <h1 style="margin:0;max-width:19em;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(34px,5vw,60px);line-height:1.1;font-weight:700;letter-spacing:-0.01em;text-wrap:pretty">
@@ -355,7 +355,7 @@
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
         <a href="https://academyoneprivatetuition.teachworks.com/form/academy-one-private-tutoring-student-registration-form" target="_blank" rel="noopener" style="padding:15px 26px;font-size:16px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">填写报名表</span><span style="display:{{ ei }}">Register</span></a>
-        <a href="#contact" style="padding:15px 26px;font-size:16px;font-weight:600;color:#221E1F;background:transparent;border:1px solid #CFC2B4;border-radius:8px;text-decoration:none" style-hover="border-color:#221E1F;color:#221E1F;text-decoration:none"><span style="display:{{ zi }}">微信 / 电话咨询</span><span style="display:{{ ei }}">WeChat or call us</span></a>
+        <a href="/contact" onClick="{{ goHome }}" style="padding:15px 26px;font-size:16px;font-weight:600;color:#221E1F;background:transparent;border:1px solid #CFC2B4;border-radius:8px;text-decoration:none" style-hover="border-color:#221E1F;color:#221E1F;text-decoration:none"><span style="display:{{ zi }}">微信 / 电话咨询</span><span style="display:{{ ei }}">WeChat or call us</span></a>
       </div>
       </div>
     </section>
@@ -386,22 +386,22 @@
       <p style="margin:0 0 34px;font-size:16px;color:#5C534E"><span style="display:{{ zb }}">英文与数学为主线，物理、化学与 IB 课程可另行安排。</span><span style="display:{{ eb }}">English and Mathematics are our core; Physics, Chemistry and IB are available on request.</span></p>
       <div class="ao-subjects" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,248px),1fr));gap:20px">
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #D99B36">
-          <img class="ao-icon" src="assets/icons/book.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">英文 English</span><span style="display:{{ ei }}">English</span></h3>
+          <img class="ao-icon" src="/assets/icons/book.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">英文 English</span><span style="display:{{ ei }}">English</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">对齐 NESA 大纲，从 7–10 年级延伸至 HSC 与 Extension，另含 EALD 与精英中学考试准备。</span><span style="display:{{ eb }}">NESA-aligned, from Years 7–10 through to HSC and Extension, plus EALD and selective test prep.</span></p>
           <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Advanced · Ext 1 · Ext 2 · EALD</p>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #9C2A2B">
-          <img class="ao-icon" src="assets/icons/calculator.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">数学 Mathematics</span><span style="display:{{ ei }}">Mathematics</span></h3>
+          <img class="ao-icon" src="/assets/icons/calculator.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">数学 Mathematics</span><span style="display:{{ ei }}">Mathematics</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">7–10 年级到 HSC Extension 1 / 2，由 NESA 注册教师与大学数学讲师授课。AP / SAT 可另行安排。</span><span style="display:{{ eb }}">Years 7–10 through HSC Extension 1 and 2, taught by a NESA-accredited teacher and a university maths lecturer. AP / SAT on request.</span></p>
           <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Adv · Ext 1 · Ext 2 · AP / SAT</p>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #221E1F">
-          <img class="ao-icon" src="assets/icons/atom.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">物理 Physics</span><span style="display:{{ ei }}">Physics</span></h3>
+          <img class="ao-icon" src="/assets/icons/atom.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">物理 Physics</span><span style="display:{{ ei }}">Physics</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">由物理校排第一的导师授课，概念推导与题型分类并重。HSC 与 IB 均可。</span><span style="display:{{ eb }}">Taught by a tutor who ranked 1st in Physics — concept derivation and question-type mapping. HSC and IB.</span></p>
           <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">HSC · IB · <span style="display:{{ zi }}">一对一</span><span style="display:{{ ei }}">one-on-one</span></p>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #7C1F20">
-          <img class="ao-icon" src="assets/icons/flask.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">化学 Chemistry</span><span style="display:{{ ei }}">Chemistry</span></h3>
+          <img class="ao-icon" src="/assets/icons/flask.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">化学 Chemistry</span><span style="display:{{ ei }}">Chemistry</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">方程式、计算与实验分析三条主线，讲义与测验按大纲定制。HSC 与 IB 均可。</span><span style="display:{{ eb }}">Equations, calculations and experimental analysis, with syllabus-built notes and quizzes. HSC and IB.</span></p>
           <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">HSC · IB · <span style="display:{{ zi }}">一对一</span><span style="display:{{ ei }}">one-on-one</span></p>
         </article>
@@ -410,15 +410,15 @@
       <div class="ao-formats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;margin-top:20px">
         <div style="background:#F3EBE1;border-radius:12px;padding:32px">
           <p style="margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">形式一</span><span style="display:{{ ei }}">Option one</span></p>
-          <img class="ao-icon" src="assets/icons/user.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">一对一课程</span><span style="display:{{ ei }}">One-on-one tuition</span></h3>
+          <img class="ao-icon" src="/assets/icons/user.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">一对一课程</span><span style="display:{{ ei }}">One-on-one tuition</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每周最少 1.5 小时，按学生的学校进度与弱项定制。整期预订享较低时薪。可线上或到校区上课。</span><span style="display:{{ eb }}">Minimum 1.5 hours a week, built around the student's school program and weak spots. Term block bookings earn the lower rate. In centre or online.</span></p>
-          <a href="#pricing" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看 2026 价目 →</span><span style="display:{{ ei }}">See 2026 rates →</span></a>
+          <a href="/pricing" onClick="{{ goHome }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看 2026 价目 →</span><span style="display:{{ ei }}">See 2026 rates →</span></a>
         </div>
         <div style="background:#F3EBE1;border-radius:12px;padding:32px">
           <p style="margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">形式二</span><span style="display:{{ ei }}">Option two</span></p>
-          <img class="ao-icon" src="assets/icons/users.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">小班课</span><span style="display:{{ ei }}">Group classes</span></h3>
+          <img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">小班课</span><span style="display:{{ ei }}">Group classes</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每节 1.5 小时：英文 $65、数学 $85。英文 Year 6–10（Foundations / Enrichment 分流），数学 Year 6–12。</span><span style="display:{{ eb }}">1.5 hours per class: $65 English, $85 Mathematics. English for Years 6–10 (Foundations / Enrichment streams), Mathematics for Years 6–12.</span></p>
-          <a href="#timetable" onClick="{{ goTimetable }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看本期课程表 →</span><span style="display:{{ ei }}">See this term's timetable →</span></a>
+          <a href="/timetable" onClick="{{ goTimetable }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看本期课程表 →</span><span style="display:{{ ei }}">See this term's timetable →</span></a>
         </div>
       </div>
 
@@ -455,7 +455,7 @@
           <figcaption><a href="https://www.google.com/maps/contrib/110868990458452748659/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Tung Ling Yu · Google 评价摘要</span><span style="display:{{ ei }}">Tung Ling Yu · Google review summary</span></a></figcaption>
         </figure>
         <div class="ao-review-link-card">
-          <img class="ao-google-maps-logo" src="assets/google-maps-logo.png" alt="Google Maps" width="150" height="35">
+          <img class="ao-google-maps-logo" src="/assets/google-maps-logo.png" alt="Google Maps" width="150" height="35">
           <p style="margin:0"><strong style="font-family:Georgia,serif;font-size:42px;font-weight:400">5.0</strong> <span style="color:#B78028" aria-label="5 out of 5 stars">★★★★★</span></p>
           <p style="margin:0"><span style="display:{{ zb }}">54 条 Google 评价</span><span style="display:{{ eb }}">54 Google reviews</span></p>
           <small style="color:#6B615C"><span style="display:{{ zi }}">查询于 2026 年 9 月 18 日</span><span style="display:{{ ei }}">Checked 18 September 2026</span></small>
@@ -468,33 +468,33 @@
       <h2 style="margin:0 0 34px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">为什么选择 Academy One</span><span style="display:{{ eb }}">Why choose Academy One</span></h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:#E3DAD0;border:1px solid #E3DAD0;border-radius:12px;overflow:hidden">
         <div style="background:#FFFCF7;padding:30px 28px">
-          <img class="ao-icon" src="assets/icons/user.svg" alt="" width="48" height="48">
+          <img class="ao-icon" src="/assets/icons/user.svg" alt="" width="48" height="48">
           <h3 style="margin:0 0 10px;font-size:18px;font-weight:700"><span style="display:{{ zb }}">导师本人上课</span><span style="display:{{ eb }}">Taught by the tutor you meet</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">没有临时代课。试课见到的老师，就是每周上课的那位。</span><span style="display:{{ eb }}">No rotating casuals. The tutor you meet is the one in the room every week.</span></p>
         </div>
         <div style="background:#FFFCF7;padding:30px 28px">
-          <img class="ao-icon" src="assets/icons/chart-bar.svg" alt="" width="48" height="48">
+          <img class="ao-icon" src="/assets/icons/chart-bar.svg" alt="" width="48" height="48">
           <h3 style="margin:0 0 10px;font-size:18px;font-weight:700"><span style="display:{{ zb }}">持续评估与透明沟通</span><span style="display:{{ eb }}">Ongoing assessment, transparent communication</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">评估任务对齐学校要求与考试题型，反馈直接用于调整教学。</span><span style="display:{{ eb }}">Assessment mirrors school and exam requirements; feedback drives what we teach next.</span></p>
         </div>
         <div style="background:#FFFCF7;padding:30px 28px">
-          <img class="ao-icon" src="assets/icons/file-text.svg" alt="" width="48" height="48">
+          <img class="ao-icon" src="/assets/icons/file-text.svg" alt="" width="48" height="48">
           <h3 style="margin:0 0 10px;font-size:18px;font-weight:700"><span style="display:{{ zb }}">自编讲义，对齐 NESA 大纲</span><span style="display:{{ eb }}">Our own notes, aligned to the NESA syllabus</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">按考点分类的讲义与 HSC 解析，由导师团队自行编写。</span><span style="display:{{ eb }}">Topic-mapped notes and HSC solutions, written by our own tutors.</span></p>
         </div>
         <div style="background:#FFFCF7;padding:30px 28px">
-          <img class="ao-icon" src="assets/icons/messages.svg" alt="" width="48" height="48">
+          <img class="ao-icon" src="/assets/icons/messages.svg" alt="" width="48" height="48">
           <h3 style="margin:0 0 10px;font-size:18px;font-weight:700"><span style="display:{{ zb }}">中英双语沟通</span><span style="display:{{ eb }}">Bilingual communication</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">课程英文教学，与家长沟通可全程中文，微信随时回复。</span><span style="display:{{ eb }}">Lessons in English; we talk to parents in Mandarin or English, and answer on WeChat.</span></p>
         </div>
         <div style="background:#FFFCF7;padding:30px 28px">
-          <img class="ao-icon" src="assets/icons/credit-card.svg" alt="" width="48" height="48">
+          <img class="ao-icon" src="/assets/icons/credit-card.svg" alt="" width="48" height="48">
           <h3 style="margin:0 0 10px;font-size:18px;font-weight:700"><span style="display:{{ zb }}">课时灵活、政策透明</span><span style="display:{{ eb }}">Flexible, transparent credits</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">请假、补课与退课规则全部写清楚。</span><span style="display:{{ eb }}">Make-ups, absences and refunds are written down.</span></p>
-          <a href="#credit" onClick="{{ goCredit }}" style="display:inline-block;margin-top:12px;font-size:14px;font-weight:600"><span style="display:{{ zi }}">课时政策 →</span><span style="display:{{ ei }}">Credit policy →</span></a>
+          <a href="/credit" onClick="{{ goCredit }}" style="display:inline-block;margin-top:12px;font-size:14px;font-weight:600"><span style="display:{{ zi }}">课时政策 →</span><span style="display:{{ ei }}">Credit policy →</span></a>
         </div>
         <div style="background:#FFFCF7;padding:30px 28px">
-          <img class="ao-icon" src="assets/icons/map-pin.svg" alt="" width="48" height="48">
+          <img class="ao-icon" src="/assets/icons/map-pin.svg" alt="" width="48" height="48">
           <h3 style="margin:0 0 10px;font-size:18px;font-weight:700"><span style="display:{{ zb }}">Chatswood 车站 5 分钟</span><span style="display:{{ eb }}">Five minutes from Chatswood station</span></h3>
           <p style="margin:0;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">815 Pacific Highway，孩子可以自己坐车来。</span><span style="display:{{ eb }}">815 Pacific Highway — students can get themselves there and back.</span></p>
         </div>
@@ -585,19 +585,19 @@
       </div>
       </sc-if>
       <div class="ao-group-pricing">
-        <div class="ao-group-price"><img class="ao-icon" src="assets/icons/users.svg" alt="" width="48" height="48">
+        <div class="ao-group-price"><img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48">
           <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">小班课 · 英文</span><span style="display:{{ ei }}">Group class · English</span></p>
           <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">$65<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
           <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#D6CCC3"><span style="display:{{ zb }}">Year 6–10，Foundations 与 Enrichment 分流。Year 11–12 暂不开小班。</span><span style="display:{{ eb }}">Years 6–10, in Foundations and Enrichment streams. Not available for Years 11–12.</span></p>
         </div>
-        <div class="ao-group-price"><img class="ao-icon" src="assets/icons/users.svg" alt="" width="48" height="48">
+        <div class="ao-group-price"><img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48">
           <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">小班课 · 数学</span><span style="display:{{ ei }}">Group class · Mathematics</span></p>
           <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">$85<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
           <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#D6CCC3"><span style="display:{{ zb }}">Year 6–12 均可报名，按年级与课程等级分班。</span><span style="display:{{ eb }}">Years 6–12, grouped by year and course level.</span></p>
         </div>
       </div>
       </div>
-      <p style="margin:16px 0 0;font-size:13px;line-height:1.7;color:#6B615C"><span style="display:{{ zb }}">Dr Yvonne Smith 的课程仅接受整期预订。请假与退费见 <a href="#credit" onClick="{{ goCredit }}">课时政策</a>。</span><span style="display:{{ eb }}">Dr Yvonne Smith's lessons are available on term block bookings only. Absences and refunds: see the <a href="#credit" onClick="{{ goCredit }}">credit policy</a>.</span></p>
+      <p style="margin:16px 0 0;font-size:13px;line-height:1.7;color:#6B615C"><span style="display:{{ zb }}">Dr Yvonne Smith 的课程仅接受整期预订。请假与退费见 <a href="/credit" onClick="{{ goCredit }}">课时政策</a>。</span><span style="display:{{ eb }}">Dr Yvonne Smith's lessons are available on term block bookings only. Absences and refunds: see the <a href="/credit" onClick="{{ goCredit }}">credit policy</a>.</span></p>
     </section>
 
     <section id="tutors" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
@@ -641,15 +641,15 @@
           <div style="display:grid;gap:22px;margin-top:34px">
             <div>
               <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">微信</span><span style="display:{{ ei }}">WeChat</span></p>
-              <p class="ao-contact-row" style="margin:0;font-size:20px;font-weight:600"><img class="ao-contact-icon" src="assets/icons/wechat.svg" alt="" width="22" height="22">academyonechatswood</p>
+              <p class="ao-contact-row" style="margin:0;font-size:20px;font-weight:600"><img class="ao-contact-icon" src="/assets/icons/wechat.svg" alt="" width="22" height="22">academyonechatswood</p>
             </div>
             <div>
               <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Lydia Xu · <span style="display:{{ zi }}">课务</span><span style="display:{{ ei }}">Operations</span></p>
-              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61486017931" style="color:#FBF8F3"><img class="ao-contact-icon" src="assets/icons/phone.svg" alt="" width="22" height="22">0486 017 931</a><a class="ao-contact-row" href="mailto:operations@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="assets/icons/mail.svg" alt="" width="22" height="22">operations@academyone.com.au</a></p>
+              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61486017931" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/phone.svg" alt="" width="22" height="22">0486 017 931</a><a class="ao-contact-row" href="mailto:operations@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/mail.svg" alt="" width="22" height="22">operations@academyone.com.au</a></p>
             </div>
             <div>
               <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Ethan Lin · <span style="display:{{ zi }}">行政</span><span style="display:{{ ei }}">Admin</span></p>
-              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61416360068" style="color:#FBF8F3"><img class="ao-contact-icon" src="assets/icons/phone.svg" alt="" width="22" height="22">0416 360 068</a><a class="ao-contact-row" href="mailto:admin@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="assets/icons/mail.svg" alt="" width="22" height="22">admin@academyone.com.au</a></p>
+              <p style="margin:0;font-size:17px;line-height:1.6;font-weight:600"><a class="ao-contact-row" href="tel:+61416360068" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/phone.svg" alt="" width="22" height="22">0416 360 068</a><a class="ao-contact-row" href="mailto:admin@academyone.com.au" style="color:#FBF8F3"><img class="ao-contact-icon" src="/assets/icons/mail.svg" alt="" width="22" height="22">admin@academyone.com.au</a></p>
             </div>
           </div>
         </div>
@@ -776,22 +776,22 @@
   <footer style="margin-top:84px;border-top:1px solid #E3DAD0;background:#F3EBE1">
     <div style="max-width:1180px;margin:0 auto;padding:44px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px">
       <div>
-        <img src="assets/academy-one-logo.png" alt="Academy One Private Tuition" style="height:110px;width:auto;display:block;margin-bottom:18px">
+        <img src="/assets/academy-one-logo.png" alt="Academy One Private Tuition" style="height:110px;width:auto;display:block;margin-bottom:18px">
         <p style="margin:0;font-size:14px;line-height:1.7;color:#5C534E">Suite 403, 815 Pacific Highway<br>Chatswood NSW 2067</p>
       </div>
       <div>
         <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">课程</span><span style="display:{{ ei }}">Courses</span></p>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
-          <a href="#offer" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">数学 / 英文 / 物理 / 化学</span><span style="display:{{ ei }}">Maths / English / Physics / Chemistry</span></a>
-          <a href="#timetable" onClick="{{ goTimetable }}" style="color:#4A423E"><span style="display:{{ zi }}">小班课程表</span><span style="display:{{ ei }}">Small group timetable</span></a>
-          <a href="#pricing" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">学费与课时包</span><span style="display:{{ ei }}">Pricing</span></a>
+          <a href="/courses" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">数学 / 英文 / 物理 / 化学</span><span style="display:{{ ei }}">Maths / English / Physics / Chemistry</span></a>
+          <a href="/timetable" onClick="{{ goTimetable }}" style="color:#4A423E"><span style="display:{{ zi }}">小班课程表</span><span style="display:{{ ei }}">Small group timetable</span></a>
+          <a href="/pricing" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">学费与课时包</span><span style="display:{{ ei }}">Pricing</span></a>
         </div>
       </div>
       <div>
         <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">中心</span><span style="display:{{ ei }}">Centre</span></p>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
-          <a href="#credit" onClick="{{ goCredit }}" style="color:#4A423E"><span style="display:{{ zi }}">课时政策</span><span style="display:{{ ei }}">Credit policy</span></a>
-          <a href="#careers" onClick="{{ goCareers }}" style="color:#4A423E"><span style="display:{{ zi }}">加入我们</span><span style="display:{{ ei }}">Careers</span></a>
+          <a href="/credit" onClick="{{ goCredit }}" style="color:#4A423E"><span style="display:{{ zi }}">课时政策</span><span style="display:{{ ei }}">Credit policy</span></a>
+          <a href="/careers" onClick="{{ goCareers }}" style="color:#4A423E"><span style="display:{{ zi }}">加入我们</span><span style="display:{{ ei }}">Careers</span></a>
           <a href="https://www.google.com/search?q=Academy+One+Private+Tuition+Chatswood" target="_blank" rel="noopener" style="color:#4A423E">Google Reviews</a>
         </div>
       </div>
@@ -817,7 +817,13 @@ class Component extends DCLogic {
   componentDidMount() {
     this.onKey = (e) => { if (e.key === 'Escape') this.setState({ active: null }); };
     this.onRoute = () => {
-      const id = window.location.hash.slice(1);
+      const legacy = window.location.hash.slice(1);
+      if (legacy || /\.html$/.test(window.location.pathname)) {
+        const path = legacy === 'offer' ? 'courses' : legacy;
+        window.history.replaceState(null, '', '/' + path);
+      }
+      const route = window.location.pathname.replace(/^\/|\/$/g, '');
+      const id = route === 'courses' ? 'offer' : route;
       const page = ['timetable', 'credit', 'careers'].includes(id) ? id : 'home';
       this.setState({ page, active: null }, () => requestAnimationFrame(() => {
         const target = document.getElementById(id);
@@ -827,6 +833,7 @@ class Component extends DCLogic {
     };
     window.addEventListener('keydown', this.onKey);
     window.addEventListener('hashchange', this.onRoute);
+    window.addEventListener('popstate', this.onRoute);
     this.onRoute();
     this.statsObserver = new IntersectionObserver((entries) => {
       if (!entries.some(entry => entry.isIntersecting)) return;
@@ -843,23 +850,26 @@ class Component extends DCLogic {
       };
       this.statsFrame = requestAnimationFrame(tick);
     }, { threshold: 0.25 });
-    this.statsObserver.observe(document.querySelector('.ao-stats'));
+    const stats = document.querySelector('.ao-stats');
+    if (stats) this.statsObserver.observe(stats);
   }
   componentWillUnmount() {
     this.statsObserver.disconnect();
     cancelAnimationFrame(this.statsFrame);
     window.removeEventListener('keydown', this.onKey);
     window.removeEventListener('hashchange', this.onRoute);
+    window.removeEventListener('popstate', this.onRoute);
   }
 
   get lang() { return this.state.lang || this.props.defaultLang || 'zh'; }
 
   go(page) {
     return (e) => {
+      if (e && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) return;
       if (e) e.preventDefault();
-      const hash = e?.currentTarget?.getAttribute('href') || ('#' + (page === 'home' ? '' : page));
-      if (window.location.hash === hash || (hash === '#' && !window.location.hash)) this.onRoute();
-      else window.location.hash = hash;
+      const path = e?.currentTarget?.getAttribute('href') || ('/' + (page === 'home' ? '' : page));
+      if (window.location.pathname !== path) window.history.pushState(null, '', path);
+      this.onRoute();
     };
   }
 
