@@ -1,0 +1,552 @@
+{
+  "version": 2,
+  "tutors": [
+    {
+      "id": "kevin",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Kevin",
+        "role": "Founder / Senior Tutor",
+        "tag": "English · Business",
+        "qual": "B.Comm (Dist) · LLB in progress · UNSW",
+        "subjectShort": "English 7–12 · Economics · Legal",
+        "subject": "English 7–10 · EAL/D · Advanced · Standard · Ext 1 & 2 · Business · Economics · Legal Studies",
+        "hook": "Founder. Came from fund management to teaching, on a “work smart, not hard” philosophy.",
+        "bio": "Director and founder of Academy One. B.Comm (Distinction) from UNSW; worked in portfolio and fund management before returning to teach as a Sessional Academic at UNSW's School of Banking and Finance, while studying law. Tutoring privately since 2017, and designed English and economics materials for North Shore Coaching College.",
+        "result": "Students have a median ATAR of 98. In 2025 a Knox student achieved 99.85, with most others taking Band 6 in English Advanced and E4 in Extension. Students come from North Sydney Boys, Sydney Grammar, Knox Grammar, Abbotsleigh and The Scots College."
+      },
+      "zh": {
+        "name": "Kevin",
+        "role": "创办人 / 资深导师",
+        "tag": "英文 · 商科",
+        "qual": "B.Comm (Dist) · LLB 在读 · UNSW",
+        "subjectShort": "英文 7–12 · 经济 · 商科 · 法律",
+        "subject": "English 7–10 · EAL/D · Advanced · Standard · Ext 1 & 2 · Business · Economics · Legal Studies",
+        "hook": "创办人。金融从业背景转做教学，主张“聪明地学，而不是拼时间”。",
+        "bio": "Academy One 创办人与总监。UNSW 商学（Distinction）毕业，曾从事组合与基金管理，现为 UNSW 银行与金融学院兼任教师，同时在读法学。2017 年起持续一对一授课，曾为 North Shore Coaching College 编写英文与经济学教材。",
+        "result": "学生 ATAR 中位数 98；2025 届一位 Knox 学生 ATAR 99.85，多数学生英文 Advanced 取得 Band 6、Extension 取得 E4。学生来自 North Sydney Boys、Sydney Grammar、Knox Grammar、Abbotsleigh、The Scots College 等学校。"
+      }
+    },
+    {
+      "id": "dr-yvonne",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Dr Yvonne",
+        "role": "Principal Tutor",
+        "tag": "English",
+        "qual": "MA (Hons), Dip Ed, PhD · USYD",
+        "subjectShort": "English 7–12 · Adv · Ext 1 & 2",
+        "subject": "English 7–10 · Stage 6 Advanced & Standard · Ext 1 & 2",
+        "hook": "PhD, former Head of English and HSC marker — she knows what the marking criteria reward.",
+        "bio": "MA (Hons), Dip Ed, PhD (University of Sydney), awarded a university prize for her doctoral thesis in literature. Qualified secondary English teacher, former Head Teacher of English, HSC marker and published author in literary studies. Former principal of Northholm Grammar, most recently at Newington College.",
+        "result": "Students regularly achieve Band 6 in the HSC, with some ranking in the state's top 10 in English Extension 1 and 2."
+      },
+      "zh": {
+        "name": "Dr Yvonne",
+        "role": "首席导师",
+        "tag": "英文",
+        "qual": "MA (Hons), Dip Ed, PhD · USYD",
+        "subjectShort": "英文 7–12 · Adv · Ext 1 & 2",
+        "subject": "English 7–10 · Stage 6 Advanced & Standard · Ext 1 & 2",
+        "hook": "PhD、前英文科主任与 HSC 阅卷官，最懂评分标准要什么。",
+        "bio": "MA (Hons)、Dip Ed、PhD（悉尼大学），博士论文获校级文学奖项。资深中学英文教师、前英文科主任、HSC 阅卷官，文学研究领域出版作者。曾任 Northholm Grammar 校长，退休前任教于 Newington College。",
+        "result": "学生常年取得 HSC Band 6，部分学生进入英文 Extension 1 与 Extension 2 全州前十。"
+      }
+    },
+    {
+      "id": "alexander",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Alexander",
+        "role": "English Curriculum Lead (online only)",
+        "tag": "English",
+        "qual": "ATAR 98.00 · LLB / Communications · UTS",
+        "subjectShort": "English 5–10 · Adv · Ext 1 & 2 (online)",
+        "subject": "English 5–10 · HSC Advanced & Standard · Ext 1 & 2",
+        "hook": "Band 6 in all five subjects. Leads curriculum development and tutor training (online only).",
+        "bio": "Killarney Heights High School graduate, ATAR 98.00 with Band 6 in all five subjects. Third year of Law and Communications (Journalism) at UTS on a Distinction average, and holder of an Australian Federal Government ambassador scholarship. Six years of teaching; leads English curriculum development and mentors tutors.",
+        "result": "Students have achieved top results in HSC English and selective school exams, lifting and holding English Advanced rankings and scoring highly in Extension."
+      },
+      "zh": {
+        "name": "Alexander",
+        "role": "英文课程主管（仅线上）",
+        "tag": "英文",
+        "qual": "ATAR 98.00 · LLB / 传播（新闻） · UTS",
+        "subjectShort": "英文 5–10 · Adv · Ext 1 & 2（线上）",
+        "subject": "English 5–10 · HSC Advanced & Standard · Ext 1 & 2",
+        "hook": "五科全 Band 6。负责英文课程开发与新导师培训（仅线上授课）。",
+        "bio": "Killarney Heights High School 毕业，ATAR 98.00，五门科目全部 Band 6。UTS 法学与传播（新闻）三年级，Distinction 均分，澳洲联邦政府大使奖学金获得者。六年教学经验，负责英文课程开发与新导师培训。",
+        "result": "学生在 HSC 英文与精英中学考试中取得优异成绩；多位学生英文 Advanced 排名提升并保持，Extension 取得高分。"
+      }
+    },
+    {
+      "id": "christina",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Christina",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "ATAR 99.50 · B.Comm / LLB · USYD",
+        "subjectShort": "English 7–12 · Adv · Ext 1 & 2 · Debating",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 & 2",
+        "hook": "ATAR 99.50, also coaches junior debating; every lesson ends with a clear next step.",
+        "bio": "Barker College graduate, ATAR 99.50, studying Commerce and Law at the University of Sydney. Two years of private English tutoring, including debating for junior students. Personalised lessons with clear next steps after every session.",
+        "result": "Students improve essay structure and written expression, which shows in school assessments; debating students gain clarity and persuasiveness."
+      },
+      "zh": {
+        "name": "Christina",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "ATAR 99.50 · B.Comm / LLB · USYD",
+        "subjectShort": "英文 7–12 · Adv · Ext 1 & 2 · 辩论",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 & 2",
+        "hook": "ATAR 99.50，兼教初中辩论，课后一定给明确的下一步。",
+        "bio": "Barker College 毕业，ATAR 99.50，悉尼大学商学与法学在读。两年英文一对一教学经验，并指导初中辩论。课程完全个人化，每次课后明确下一步。",
+        "result": "学生议论文结构与书面表达明显进步，校内评估随之提升；辩论学生在表达清晰度与说服力上进步明显。"
+      }
+    },
+    {
+      "id": "gloria",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Gloria",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "ATAR 98.30 · B.Comm (Finance), LLB · UNSW",
+        "subjectShort": "English 7–12 · Selective · EALD",
+        "subject": "English 7–10 · HSC Advanced & Standard · Selective test prep · EALD",
+        "hook": "James Ruse graduate who makes English analysis click for quantitative thinkers.",
+        "bio": "James Ruse graduate, ATAR 98.30, ranked 3rd in English Advanced and 11th in Maths Advanced. B.Comm (Finance) / LLB at UNSW. Six years of private tutoring and four years of group teaching, plus study-skills and application guidance.",
+        "result": "Clear analytical frameworks make English approachable for quantitatively oriented students, with stronger writing and exam confidence."
+      },
+      "zh": {
+        "name": "Gloria",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "ATAR 98.30 · B.Comm (Finance), LLB · UNSW",
+        "subjectShort": "英文 7–12 · 精英中学 · EALD",
+        "subject": "English 7–10 · HSC Advanced & Standard · Selective 考试 · EALD",
+        "hook": "James Ruse 毕业，用理科思维讲清英文分析框架。",
+        "bio": "James Ruse 毕业，ATAR 98.30，英文 Advanced 校排第 3、数学 Advanced 第 11。UNSW 商学（金融）与法学在读。六年一对一、四年小班教学经验，另提供学习方法与升学申请指导。",
+        "result": "用清晰的分析框架让理科思维的学生也能拿下英文；写作质量与考场信心同步提升。"
+      }
+    },
+    {
+      "id": "audrey",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Audrey",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "ATAR 99.00 · PPE (Dalyell) · USYD",
+        "subjectShort": "English 7–12 · Adv · Ext 1",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1",
+        "hook": "ATAR 99 and ranked 1st in three subjects; teaches for independence, step by step.",
+        "bio": "Cheltenham Girls graduate, ATAR 99.00, ranked 1st in Legal Studies, Ancient History and English Extension 1. PPE at the University of Sydney in the Dalyell Scholars stream. Three years of tutoring, including students with shorter attention spans. Teaches on the Gradual Release model.",
+        "result": "Lessons are tailored to pace and goals, building conceptual understanding for confident independent work."
+      },
+      "zh": {
+        "name": "Audrey",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "ATAR 99.00 · PPE (Dalyell) · USYD",
+        "subjectShort": "英文 7–12 · Adv · Ext 1",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1",
+        "hook": "ATAR 99，三科校排第一，擅长循序渐进地带学生独立。",
+        "bio": "Cheltenham Girls 毕业，ATAR 99.00，法律研究、古代史、英文 Extension 1 均校排第一。悉尼大学 PPE（Dalyell 荣誉学者）在读。三年教学经验，也有带注意力较弱或需额外支持学生的经验。采用 Gradual Release 教学法。",
+        "result": "课程按学生的节奏与目标定制，先建立概念理解，再走向独立解题。"
+      }
+    },
+    {
+      "id": "raina",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Raina",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "ATAR 97.00 · B.Comm (Finance) · USYD",
+        "subjectShort": "English 7–12 · Ext 1 · EALD · Edutest",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 · EALD · Edutest for selective transfers",
+        "hook": "Four years of ESL and selective-exam coaching, rebuilding reading and writing from the base.",
+        "bio": "North Sydney Girls graduate, ATAR 97.00, studying B.Comm (Finance) and Advanced Studies (Marketing) at the University of Sydney. Four years of English tutoring, including ESL students and selective school entry, with detailed feedback so students learn to edit their own work.",
+        "result": "A Year 10 student lifted English from a C to an A in one term; a Year 6 student received a Knox Grammar offer after an eight-week program."
+      },
+      "zh": {
+        "name": "Raina",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "ATAR 97.00 · B.Comm (Finance) · USYD",
+        "subjectShort": "英文 7–12 · Ext 1 · EALD · Edutest",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 · EALD · Edutest（转学精英中学）",
+        "hook": "四年 ESL 与精英中学考试经验，从基础重建阅读与写作。",
+        "bio": "North Sydney Girls 毕业，ATAR 97.00，悉尼大学商学（金融）与高级研究（市场营销）在读。四年英文教学经验，含 ESL 学生与精英中学入学考试准备。逐条讲解批注，帮助学生学会自我修改。",
+        "result": "一位 10 年级学生一学期内英文由 C 提升到 A；一位 6 年级学生经八周训练后获 Knox Grammar 录取。"
+      }
+    },
+    {
+      "id": "joshua",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Joshua",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "Ext 1 49/50 · Ext 2 48/50 · UNSW",
+        "subjectShort": "English 7–12 · Adv · Ext 1 & 2",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 · Ext 2",
+        "hook": "49/50 in Ext 1 and 48/50 in Ext 2; specialises in essay structure and unseen questions.",
+        "bio": "Fort Street Selective graduate: 93/100 English Advanced, 49/50 Extension 1, 48/50 Extension 2. B.Comm / B.Arts (Linguistics) at UNSW. Teaches essay construction and how to adapt to questions in exam conditions, in a room where students are free to ask anything.",
+        "result": "One student improved from a 40% average to a 90% average over three terms while becoming an independent writer."
+      },
+      "zh": {
+        "name": "Joshua",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "Ext 1 49/50 · Ext 2 48/50 · UNSW",
+        "subjectShort": "英文 7–12 · Adv · Ext 1 & 2",
+        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 · Ext 2",
+        "hook": "Ext 1 49/50、Ext 2 48/50，专攻议论文结构与临场应变。",
+        "bio": "Fort Street 精英中学毕业，英文 Advanced 93/100、Extension 1 49/50、Extension 2 48/50。UNSW 商学与文学（语言学）在读。专注一对一教学，把方法论与议论文结构讲清楚，同时营造敢提问的课堂氛围。",
+        "result": "一位学生三个学期内英文均分由 40% 提升到 90%，并保持独立写作能力。"
+      }
+    },
+    {
+      "id": "lily",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Lily",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "ATAR 99.20 · LLB / BSc · USYD",
+        "subjectShort": "English 7–12 · EALD · Ext 1",
+        "subject": "English 7–12 · EALD · Advanced · Ext 1",
+        "hook": "Socratic questioning — say the idea clearly first, then write it clearly.",
+        "bio": "Loreto Kirribilli graduate, ATAR 99.20, studying Law and Science at the University of Sydney. Teaches by the Socratic method, drawing students into academic conversation through open-ended questions.",
+        "result": "Verbalising complex ideas sharpens both critical thinking and written expression."
+      },
+      "zh": {
+        "name": "Lily",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "ATAR 99.20 · LLB / BSc · USYD",
+        "subjectShort": "英文 7–12 · EALD · Ext 1",
+        "subject": "English 7–12 · EALD · Advanced · Ext 1",
+        "hook": "苏格拉底式提问，先把想法说清楚，再写清楚。",
+        "bio": "Loreto Kirribilli 毕业，ATAR 99.20，悉尼大学法学与理学在读。偏好苏格拉底式教学，用开放式提问带学生进入学术对话。",
+        "result": "让学生学会把复杂想法说清楚，从而提升批判性思维与书面表达。"
+      }
+    },
+    {
+      "id": "fiona",
+      "group": "english",
+      "hidden": false,
+      "en": {
+        "name": "Fiona",
+        "role": "English Tutor",
+        "tag": "English",
+        "qual": "ATAR 97.20 · B.Comm / B.Eng · UNSW",
+        "subjectShort": "English 7–10 · Adv · Ext 1",
+        "subject": "English 7–10 · EALD · Standard · Advanced · Ext 1",
+        "hook": "Fully personalised lessons with clear next steps after every session.",
+        "bio": "North Sydney Girls graduate, ATAR 97.20, studying Commerce and Engineering at UNSW. Builds personalised lessons with ongoing feedback and clear next steps after every session.",
+        "result": "Students improve essay structure, analysis and written expression, which shows up in school assessments and exams."
+      },
+      "zh": {
+        "name": "Fiona",
+        "role": "英文导师",
+        "tag": "英文",
+        "qual": "ATAR 97.20 · B.Comm / B.Eng · UNSW",
+        "subjectShort": "英文 7–10 · Adv · Ext 1",
+        "subject": "English 7–10 · EALD · Standard · Advanced · Ext 1",
+        "hook": "课程完全个人化，每次课后都给明确的下一步。",
+        "bio": "North Sydney Girls 毕业，ATAR 97.20，UNSW 商学与工程在读。课程完全个人化，持续跟进反馈，每次课后都给出明确的下一步。",
+        "result": "学生议论文结构、文本分析与书面表达明显进步，校内评估与考试成绩随之提升。"
+      }
+    },
+    {
+      "id": "chantry",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Chantry",
+        "role": "Mathematics Tutor",
+        "tag": "Mathematics",
+        "qual": "NESA-accredited maths teacher",
+        "subjectShort": "Maths Standard · Adv · Ext 1 & 2",
+        "subject": "HSC Mathematics: Standard · Advanced · Ext 1 · Ext 2",
+        "hook": "NESA-accredited classroom maths teacher, in tune with school assessment cycles.",
+        "bio": "NESA-accredited high school mathematics teacher with Child Protection and Anaphylaxis certification and 5+ years of Extension 1 and 2 teaching. Mathematics teacher (Years 7–12) at Mary MacKillop Catholic College, Wakeley since 2022, previously at Southern Cross Catholic College, Burwood.",
+        "result": "Median mathematics score of 91 (Band 6) for his Advanced students in 2025, with steady gains in algebraic technique, functions and calculus."
+      },
+      "zh": {
+        "name": "Chantry",
+        "role": "数学导师",
+        "tag": "数学",
+        "qual": "NESA 注册中学数学教师",
+        "subjectShort": "数学 Standard · Adv · Ext 1 & 2",
+        "subject": "HSC Mathematics: Standard · Advanced · Ext 1 · Ext 2",
+        "hook": "NESA 注册在职中学数学教师，熟悉校内评估节奏。",
+        "bio": "NESA 注册中学数学教师，持 Child Protection 与 Anaphylaxis 认证，五年以上 Extension 1 / 2 教学经验。2022 年起任教于 Mary MacKillop Catholic College（Wakeley）7–12 年级数学，此前任教于 Southern Cross Catholic College（Burwood）。",
+        "result": "2025 年其 Advanced 学生数学成绩中位数 91（Band 6）；代数、函数与微积分技巧稳步扎实。"
+      }
+    },
+    {
+      "id": "anthony",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Anthony",
+        "role": "Mathematics Tutor",
+        "tag": "Mathematics",
+        "qual": "BSc (Hons I), PhD · USYD",
+        "subjectShort": "Maths 7–12 · Ext 1 & 2 · AP / SAT",
+        "subject": "Maths 7–10 · HSC Standard · Advanced · Ext 1 · Ext 2 · AP / SAT (on request)",
+        "hook": "University maths lecturer who breaks every hard question into steps you can execute.",
+        "bio": "BSc (Applied Mathematics, First Class Honours) and PhD, University of Sydney, where he has tutored undergraduate maths since 2016 — Faculty of Science Teacher Commendation (2024) and accredited Advance HE Associate Fellow (2025). Taught weekly Years 7–12 classes including Ext 1 and 2, co-authoring notes and HSC solutions, and taught AP and SAT.",
+        "result": "Student evaluations up to 4.94 / 5 against a 4.5 benchmark, with clear gains in problem solving under time pressure and calculus technique."
+      },
+      "zh": {
+        "name": "Anthony",
+        "role": "数学导师",
+        "tag": "数学",
+        "qual": "BSc (Hons I), PhD · USYD",
+        "subjectShort": "数学 7–12 · Ext 1 & 2 · AP / SAT",
+        "subject": "Maths 7–10 · HSC Standard · Advanced · Ext 1 · Ext 2 · AP / SAT（可安排）",
+        "hook": "大学数学讲师，把每道难题拆成可执行的步骤。",
+        "bio": "悉尼大学应用数学一等荣誉学士与博士。2016 年起在悉大担任本科数学助教，2024 年获理学院教学嘉奖，2025 年成为 Advance HE 认证 Associate Fellow。带过 7–12 年级每周课程（含 Ext 1 / Ext 2），合著讲义与 HSC 解析，另教授 AP 与 SAT。",
+        "result": "学生评教高达 4.94 / 5（基准 4.5）；学生在限时条件下的解题与微积分技巧明显提升。"
+      }
+    },
+    {
+      "id": "jerry",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Jerry",
+        "role": "Mathematics Tutor",
+        "tag": "Maths · International",
+        "qual": "B.Maths · UC San Diego / M.CompSci · USYD",
+        "subjectShort": "Maths 10–12 · IB · A Level · AP",
+        "subject": "Maths 10–12: Standard · Advanced · Ext 1 · Ext 2 · IB Mathematics · A Level · AP",
+        "hook": "Covers both international and NSW curricula; diagnoses the knowledge structure first.",
+        "bio": "Bachelor of Mathematics, UC San Diego; Master of Computer Science at the University of Sydney; top 0.5% in the Gaokao. Three years tutoring university-level mathematics in the US, two years across A Level, AP and IB, and one year in the NSW senior curriculum.",
+        "result": "Guided more than 20 students to High Distinction outcomes across A Level, AP and IB Mathematics."
+      },
+      "zh": {
+        "name": "Jerry",
+        "role": "数学导师",
+        "tag": "数学 · 国际课程",
+        "qual": "B.Maths · UC San Diego / M.CompSci · USYD",
+        "subjectShort": "数学 10–12 · IB · A Level · AP",
+        "subject": "Maths 10–12: Standard · Advanced · Ext 1 · Ext 2 · IB Mathematics · A Level · AP",
+        "hook": "国际课程与澳洲课程通吃，先诊断知识结构再定计划。",
+        "bio": "加州大学圣地亚哥分校数学学士，悉尼大学计算机科学硕士在读，高考成绩位列全国前 0.5%。三年以上美国大学数学教学经验，两年国际课程（A Level、AP、IB）与一年澳洲高年级数学教学。",
+        "result": "指导 20 名以上学生在 A Level、AP 与 IB 数学中取得 High Distinction。"
+      }
+    },
+    {
+      "id": "christopher",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Christopher",
+        "role": "Maths & Science Tutor",
+        "tag": "Maths · Science",
+        "qual": "ATAR 98.55 · Actuarial / Commerce · UNSW",
+        "subjectShort": "Maths 7–12 · Physics · Chemistry",
+        "subject": "Maths 7–12: Advanced · Ext 1 · Ext 2 · Physics · Chemistry",
+        "hook": "Rank 1 in Ext 2 and Physics; every note, quiz and homework set is syllabus-built.",
+        "bio": "Ryde Secondary College graduate, ATAR 98.55: Rank 1 in Mathematics Extension 2, Rank 2 in Extension 1, Rank 1 in Physics, Rank 4 in Chemistry, and a Dux candidate. Actuarial Studies and Commerce at UNSW. Two years of one-to-one tutoring with personalised syllabus-aligned notes, quizzes and homework.",
+        "result": "An Extension 2 student improved from Rank 19 to Rank 5; another went from 65% to 83% on a test; most Advanced students achieve 90% on school assessments."
+      },
+      "zh": {
+        "name": "Christopher",
+        "role": "数理导师",
+        "tag": "数学 · 理科",
+        "qual": "ATAR 98.55 · 精算 / 商学 · UNSW",
+        "subjectShort": "数学 7–12 · 物理 · 化学",
+        "subject": "Maths 7–12: Advanced · Ext 1 · Ext 2 · Physics · Chemistry",
+        "hook": "Ext 2 校排第 1、物理校排第 1，讲义与测验全部按大纲定制。",
+        "bio": "Ryde Secondary College 毕业，ATAR 98.55：数学 Ext 2 校排第 1、Ext 1 第 2、物理第 1、化学第 4，Dux 候选。UNSW 精算与商学在读。两年一对一教学经验，按大纲为每位学生定制讲义、测验与作业。",
+        "result": "一位 Extension 2 学生校排由 19 名升至 5 名；另一位测验成绩由 65% 提升到 83%；多数 Advanced 学生校内评估达 90%。"
+      }
+    },
+    {
+      "id": "daniel",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Daniel",
+        "role": "Mathematics Tutor",
+        "tag": "Mathematics",
+        "qual": "ATAR 98.30 · B.Eng (EE) / CompSci · UNSW",
+        "subjectShort": "Maths 10–12 · Adv · Ext 1 & 2",
+        "subject": "Maths 10–12: Advanced · Ext 1 · Ext 2",
+        "hook": "Band 6 in Ext 1, Ext 2, Physics and Chemistry; breaks hard ideas into clear steps.",
+        "bio": "Ryde Secondary College graduate, ATAR 98.30, with Band 6 in Mathematics Extension 1, Extension 2, Physics and Chemistry. Electrical Engineering and Computer Science at UNSW. Two years of one-to-one tutoring: complex ideas in clear steps, plus exam strategy and study routines.",
+        "result": "Students usually show steady improvement after one term; a Year 10 student at Knox achieved full marks in a school exam after three weeks of targeted preparation."
+      },
+      "zh": {
+        "name": "Daniel",
+        "role": "数学导师",
+        "tag": "数学",
+        "qual": "ATAR 98.30 · 电气工程 / 计算机 · UNSW",
+        "subjectShort": "数学 10–12 · Adv · Ext 1 & 2",
+        "subject": "Maths 10–12: Advanced · Ext 1 · Ext 2",
+        "hook": "数学 Ext 1 / Ext 2、物理、化学全 Band 6，把难点拆成清晰步骤。",
+        "bio": "Ryde Secondary College 毕业，ATAR 98.30，数学 Extension 1、Extension 2、物理、化学均取得 Band 6。UNSW 电气工程与计算机科学在读。两年一对一教学经验，把复杂概念拆成清晰步骤，并教考试策略与学习习惯。",
+        "result": "学生通常在一学期后成绩稳步提升；一位 Knox 十年级学生经三周针对性训练后校内考试取得满分。"
+      }
+    },
+    {
+      "id": "ethan",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Ethan",
+        "role": "Mathematics Tutor",
+        "tag": "Mathematics",
+        "qual": "ATAR 95.05 · B.Eng (EE) · UNSW",
+        "subjectShort": "Maths 7–10 · HSC Adv · Ext 1 & 2",
+        "subject": "Maths 7–10 · HSC Advanced · Ext 1 · Ext 2",
+        "hook": "Unpacks marking criteria against school assessments and drills timed responses.",
+        "bio": "The Scots College graduate, ATAR 95.05, with Band 6 in Mathematics Advanced, Extension 1 and Extension 2. Electrical Engineering at UNSW. Two years of one-to-one tutoring with personalised notes and weekly practice, unpacking marking criteria and drilling timed responses.",
+        "result": "A Year 9 group at Pymble Ladies' College improved from an average grade of C to the top 5 of the cohort after one term."
+      },
+      "zh": {
+        "name": "Ethan",
+        "role": "数学导师",
+        "tag": "数学",
+        "qual": "ATAR 95.05 · 电气工程 · UNSW",
+        "subjectShort": "数学 7–10 · HSC Adv · Ext 1 & 2",
+        "subject": "Maths 7–10 · HSC Advanced · Ext 1 · Ext 2",
+        "hook": "按校内评估拆解评分标准，训练限时作答策略。",
+        "bio": "The Scots College 毕业，ATAR 95.05，数学 Advanced、Extension 1、Extension 2 均取得 Band 6。UNSW 电气工程在读。两年一对一教学经验，按学校评估进度定制讲义与每周练习，并通过拆解评分标准与限时训练备考。",
+        "result": "Pymble Ladies’ College 一个九年级小组经一学期辅导后，由平均 C 提升到年级前 5。"
+      }
+    },
+    {
+      "id": "andrey",
+      "group": "maths",
+      "hidden": false,
+      "en": {
+        "name": "Andrey",
+        "role": "Maths & Science Tutor",
+        "tag": "Maths / Science · IB",
+        "qual": "ATAR eq. 99.75 · Dux · UNSW",
+        "subjectShort": "Maths 7–10 · HSC Physics · IB",
+        "subject": "Maths 7–10 · HSC Physics · IB Maths / Physics / Chemistry / Business",
+        "hook": "School Dux covering both HSC and IB maths and science.",
+        "bio": "Dux of Westbourne College Sydney with an ATAR equivalent of 99.75. Studying Commerce (Finance) and Actuarial Studies at UNSW. Diagnoses knowledge gaps, then teaches through concept, challenge, active recall and past-paper practice.",
+        "result": "Guided a student to a university mark of 90 (HD) after two weeks of structured lessons."
+      },
+      "zh": {
+        "name": "Andrey",
+        "role": "数理导师",
+        "tag": "数理 · IB",
+        "qual": "ATAR 等效 99.75 · Dux · UNSW",
+        "subjectShort": "数学 7–10 · HSC 物理 · IB",
+        "subject": "Maths 7–10 · HSC Physics · IB Maths / Physics / Chemistry / Business",
+        "hook": "中学毕业生代表，同时覆盖 HSC 与 IB 数理科目。",
+        "bio": "Westbourne College Sydney 毕业生代表（Dux），ATAR 等效 99.75。UNSW 商学（金融）与精算在读。先诊断知识缺口，再用“讲解—挑战—主动回忆—真题训练”的结构推进。",
+        "result": "曾在两周结构化辅导后，带学生取得大学科目 90 分（HD）。"
+      }
+    }
+  ],
+  "pricing": {
+    "english": [
+      {
+        "id": "senior",
+        "labelEn": "Senior Tutor",
+        "labelZh": "资深导师 Senior Tutor",
+        "values": [
+          105,
+          115,
+          125,
+          135
+        ]
+      },
+      {
+        "id": "academic",
+        "labelEn": "Academic Tutor",
+        "labelZh": "学科导师 Academic Tutor",
+        "values": [
+          95,
+          105,
+          115,
+          125
+        ]
+      },
+      {
+        "id": "yvonne",
+        "labelEn": "Dr Yvonne Smith",
+        "labelZh": "Dr Yvonne Smith",
+        "values": [
+          155,
+          180,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "rate-957a1ae0-9ab1-46bb-84f3-0999c8f6f76d",
+        "labelEn": "Test Tutor",
+        "labelZh": "Test",
+        "values": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "maths": [
+      {
+        "id": "chantry",
+        "labelEn": "Chantry Khem",
+        "labelZh": "Chantry Khem",
+        "values": [
+          115,
+          125,
+          135,
+          135
+        ]
+      },
+      {
+        "id": "anthony",
+        "labelEn": "Anthony Cheung",
+        "labelZh": "Anthony Cheung",
+        "values": [
+          115,
+          125,
+          135,
+          135
+        ]
+      },
+      {
+        "id": "team",
+        "labelEn": "Daniel Li, Chris Du, Ethan Lin, Jerry",
+        "labelZh": "Daniel Li · Chris Du · Ethan Lin · Jerry",
+        "values": [
+          80,
+          80,
+          100,
+          100
+        ]
+      }
+    ]
+  },
+  "groupClasses": {
+    "english": 65,
+    "mathematics": 85
+  },
+  "updatedAt": "2026-09-19T12:18:37.228Z"
+}

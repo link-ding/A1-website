@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Website Admin | Academy One</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --paper:#fbf8f3; --surface:#fffdf9; --ink:#221e1f; --muted:#6b615c; --line:#e3dad0; --accent:#9c2a2b; --accent-dark:#7c1f20; --soft:#f3ebe1; --radius:10px; }
+    * { box-sizing:border-box; }
+    html { background:var(--paper); color:var(--ink); font-family:Figtree,system-ui,sans-serif; }
+    body { margin:0; min-height:100dvh; }
+    button,input,textarea,select { font:inherit; }
+    button { cursor:pointer; }
+    button:active { transform:translateY(1px); }
+    button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible { outline:3px solid rgba(156,42,43,.28); outline-offset:2px; }
+    .shell { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    header { border-bottom:1px solid var(--line); background:rgba(251,248,243,.96); }
+    .header-inner { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:12px; color:var(--ink); text-decoration:none; }
+    .brand img { width:44px; height:44px; object-fit:contain; }
+    .brand strong { display:block; font-family:"Libre Baskerville",Georgia,serif; font-size:18px; }
+    .brand small { display:block; margin-top:3px; color:var(--accent); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    main { padding:48px 0 72px; }
+    h1,h2 { font-family:"Libre Baskerville",Georgia,serif; color:#3b201f; }
+    h1 { margin:0 0 12px; font-size:clamp(30px,4vw,46px); font-weight:400; }
+    h2 { margin:0; font-size:23px; font-weight:400; }
+    p { line-height:1.6; }
+    .muted { color:var(--muted); }
+    .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); }
+    .login { width:min(460px,100%); margin:6vh auto 0; padding:34px; }
+    .field { display:grid; gap:8px; margin-top:20px; }
+    label { font-size:14px; font-weight:600; }
+    input,textarea,select { width:100%; min-height:46px; padding:10px 12px; color:var(--ink); background:#fff; border:1px solid #cfc2b4; border-radius:7px; }
+    textarea { min-height:84px; resize:vertical; line-height:1.5; }
+    .primary,.secondary,.danger { min-height:44px; padding:10px 17px; border-radius:7px; font-weight:600; white-space:nowrap; }
+    .primary { color:#fffaf4; background:var(--accent); border:1px solid var(--accent); }
+    .primary:hover { background:var(--accent-dark); }
+    .secondary { color:var(--ink); background:transparent; border:1px solid #cfc2b4; }
+    .secondary:hover { border-color:var(--ink); }
+    .danger { color:var(--accent); background:transparent; border:1px solid #d8aaa7; }
+    .danger:hover { background:#fbefed; }
+    .full { width:100%; margin-top:24px; }
+    .error,.notice { margin:18px 0 0; padding:11px 13px; border-radius:7px; font-size:14px; }
+    .error { color:#7c1f20; background:#fbefed; border:1px solid #e8c8c4; }
+    .notice { color:#28533e; background:#eef6f1; border:1px solid #c9dfd1; }
+    .topline { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin-bottom:32px; }
+    .topline p { margin:0; }
+    .actions { display:flex; align-items:center; gap:10px; }
+    .panel { margin-top:22px; overflow:hidden; }
+    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 24px; border-bottom:1px solid var(--line); }
+    .panel-head p { margin:5px 0 0; color:var(--muted); font-size:14px; }
+    .panel-tools { display:flex; align-items:center; gap:12px; }
+    .tutor-editor { border-bottom:1px solid var(--line); }
+    .tutor-editor:last-child { border-bottom:0; }
+    .tutor-editor summary { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 24px; cursor:pointer; list-style:none; }
+    .tutor-editor summary::-webkit-details-marker { display:none; }
+    .tutor-editor summary strong,.tutor-editor summary small { display:block; }
+    .tutor-editor summary small { margin-top:4px; color:var(--muted); font-size:13px; }
+    .tutor-editor .summary-action { color:var(--accent); font-size:13px; font-weight:700; }
+    .tutor-editor[open] .summary-action::after { content:' close'; }
+    .tutor-editor.is-hidden { background:var(--soft); }
+    .tutor-editor.is-hidden summary strong { color:var(--muted); text-decoration:line-through; }
+    .tutor-settings { display:grid; grid-template-columns:minmax(220px,1fr) auto; align-items:end; gap:16px; padding:20px 24px; border-top:1px solid var(--line); }
+    .language-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; padding:4px 24px 28px; }
+    .language-grid section { min-width:0; }
+    .language-grid h3 { margin:16px 0 4px; font-family:"Libre Baskerville",Georgia,serif; font-size:18px; font-weight:400; }
+    .editor-field { display:grid; gap:7px; margin-top:14px; }
+    .editor-field > span { color:var(--muted); font-size:12px; font-weight:700; }
+    .price-section-head { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 24px 10px; }
+    .price-section-head h3 { margin:0; font-size:15px; }
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; min-width:1080px; border-collapse:collapse; }
+    th,td { padding:13px 14px; border-bottom:1px solid var(--line); text-align:left; }
+    th { color:var(--muted); background:var(--soft); font-size:12px; letter-spacing:.03em; }
+    td:first-child,td:nth-child(2) { width:19%; }
+    td input { min-width:92px; }
+    .compact { min-height:38px; padding:7px 11px; }
+    .group-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:22px 24px 26px; }
+    .group-price { padding:20px; background:var(--soft); border-radius:var(--radius); }
+    .group-price .field { margin-top:12px; }
+    .savebar { position:sticky; bottom:16px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:24px; padding:14px 16px; background:#302725; color:#fffaf4; border-radius:var(--radius); box-shadow:0 10px 32px rgba(59,32,31,.18); }
+    .savebar p { margin:0; font-size:14px; }
+    [hidden] { display:none !important; }
+    @media (max-width:720px) {
+      .shell { width:min(100% - 24px,1120px); }
+      main { padding-top:28px; }
+      .header-inner { min-height:68px; }
+      .topline { display:block; }
+      .topline .actions { margin-top:20px; }
+      .panel-head { align-items:flex-start; padding:18px; }
+      .panel-tools { align-items:flex-end; flex-direction:column; }
+      .language-grid,.group-grid,.tutor-settings { grid-template-columns:1fr; }
+      .tutor-editor summary,.tutor-settings,.language-grid { padding-left:18px; padding-right:18px; }
+      .login { padding:24px; }
+      .savebar { align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Academy One website">
+        <img src="/assets/academy-one-crest.png" alt="">
+        <span><strong>Academy One</strong><small>Website admin</small></span>
+      </a>
+      <a href="/" class="secondary" style="display:inline-flex;align-items:center;text-decoration:none">View website</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="loading-view" class="card login">
+      <h1>Loading admin</h1>
+      <p class="muted">Checking your session and website content.</p>
+    </section>
+    <section id="login-view" class="card login" hidden>
+      <h1>Website sign in</h1>
+      <p class="muted">Use your Academy One email to manage tutors and pricing.</p>
+      <form id="login-form">
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+        <button class="primary full" type="submit">Sign in</button>
+        <p id="login-error" class="error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section id="admin-view" hidden>
+      <div class="topline">
+        <div><h1>Website content</h1><p class="muted">修改导师资料和价格后，点击页面底部保存即可同步到网站。</p></div>
+        <div class="actions"><span id="account-email" class="muted"></span><button id="logout" class="secondary" type="button">Sign out</button></div>
+      </div>
+      <p id="page-message" role="status" hidden></p>
+
+      <section class="card panel" aria-labelledby="tutor-title">
+        <div class="panel-head"><div><h2 id="tutor-title">Tutors</h2><p>展开导师可修改中英文资料。隐藏后仍可恢复，不会丢失内容。</p></div><div class="panel-tools"><span id="tutor-count" class="muted"></span><button id="add-tutor" class="primary" type="button">Add Tutor</button></div></div>
+        <div id="tutor-list" class="tutor-list"></div>
+      </section>
+
+      <section class="card panel" aria-labelledby="price-title">
+        <div class="panel-head"><div><h2 id="price-title">One-on-one pricing</h2><p>可修改中英文行名与每小时澳元价格；价格留空表示 Not available。</p></div></div>
+        <div class="price-section-head"><h3>English</h3><button id="add-english-rate" class="secondary" type="button">Add English row</button></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>English name</th><th>中文名称</th><th>Term Y6-10</th><th>Term Y11-12</th><th>Individual Y6-10</th><th>Individual Y11-12</th><th></th></tr></thead>
+            <tbody id="english-prices"></tbody>
+          </table>
+        </div>
+        <div class="price-section-head"><h3>Mathematics</h3><button id="add-maths-rate" class="secondary" type="button">Add Mathematics row</button></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>English name</th><th>中文名称</th><th>Term Y6-10</th><th>Term Y11-12</th><th>Individual Y6-10</th><th>Individual Y11-12</th><th></th></tr></thead>
+            <tbody id="maths-prices"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card panel" aria-labelledby="group-title">
+        <div class="panel-head"><div><h2 id="group-title">Group class pricing</h2><p>每节 1.5 小时的单价。</p></div></div>
+        <div class="group-grid">
+          <div class="group-price"><strong>English group class</strong><div class="field"><label for="group-english">Price per 1.5 hours (AUD)</label><input id="group-english" type="number" min="1" max="10000" step="0.01" required></div></div>
+          <div class="group-price"><strong>Mathematics group class</strong><div class="field"><label for="group-mathematics">Price per 1.5 hours (AUD)</label><input id="group-mathematics" type="number" min="1" max="10000" step="0.01" required></div></div>
+        </div>
+      </section>
+
+      <div class="savebar">
+        <p id="save-hint">Changes are not published until you save.</p>
+        <button id="save" class="primary" type="button">Save changes</button>
+      </div>
+    </section>
+  </main>
+  <script src="/admin.js" defer></script>
+</body>
+</html>

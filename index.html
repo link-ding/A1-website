@@ -422,7 +422,7 @@
         <div style="background:#F3EBE1;border-radius:12px;padding:32px">
           <p style="margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">形式二</span><span style="display:{{ ei }}">Option two</span></p>
           <img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">小班课</span><span style="display:{{ ei }}">Group classes</span></h3>
-          <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每节 1.5 小时：英文 $65、数学 $85。英文 Year 6–10（Foundations / Enrichment 分流），数学 Year 6–12。</span><span style="display:{{ eb }}">1.5 hours per class: $65 English, $85 Mathematics. English for Years 6–10 (Foundations / Enrichment streams), Mathematics for Years 6–12.</span></p>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每节 1.5 小时：英文 {{ groupEnglishPrice }}、数学 {{ groupMathematicsPrice }}。英文 Year 6-10（Foundations / Enrichment 分流），数学 Year 6-12。</span><span style="display:{{ eb }}">1.5 hours per class: {{ groupEnglishPrice }} English, {{ groupMathematicsPrice }} Mathematics. English for Years 6-10 (Foundations / Enrichment streams), Mathematics for Years 6-12.</span></p>
           <a href="/timetable" onClick="{{ goTimetable }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看本期课程表 →</span><span style="display:{{ ei }}">See this term's timetable →</span></a>
         </div>
       </div>
@@ -660,12 +660,12 @@
       <div class="ao-group-pricing">
         <div class="ao-group-price"><img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48">
           <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">小班课 · 英文</span><span style="display:{{ ei }}">Group class · English</span></p>
-          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">$65<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
+          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">{{ groupEnglishPrice }}<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
           <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#D6CCC3"><span style="display:{{ zb }}">Year 6–10，Foundations 与 Enrichment 分流。Year 11–12 暂不开小班。</span><span style="display:{{ eb }}">Years 6–10, in Foundations and Enrichment streams. Not available for Years 11–12.</span></p>
         </div>
         <div class="ao-group-price"><img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48">
           <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">小班课 · 数学</span><span style="display:{{ ei }}">Group class · Mathematics</span></p>
-          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">$85<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
+          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">{{ groupMathematicsPrice }}<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
           <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#D6CCC3"><span style="display:{{ zb }}">Year 6–12 均可报名，按年级与课程等级分班。</span><span style="display:{{ eb }}">Years 6–12, grouped by year and course level.</span></p>
         </div>
       </div>
@@ -820,7 +820,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;zh&quot;,&quot;en&quot;],&quot;default&quot;:&quot;zh&quot;,&quot;tsType&quot;:&quot;'zh' | 'en'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showRates&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
-  state = { showAllTutors: false, subject: 'all', lang: this.initialLanguage(), page: 'home', active: null, statsProgress: 0 };
+  state = { showAllTutors: false, subject: 'all', lang: this.initialLanguage(), page: 'home', active: null, statsProgress: 0, managedContent: null };
   componentDidMount() {
     document.documentElement.lang = this.lang === 'zh' ? 'zh-CN' : 'en';
     this.onKey = (e) => { if (e.key === 'Escape') this.setState({ active: null }); };
@@ -861,6 +861,10 @@ class Component extends DCLogic {
     }, { threshold: 0.25 });
     const stats = document.querySelector('.ao-stats');
     if (stats) this.statsObserver.observe(stats);
+    fetch('/api/content', { cache: 'no-store' })
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(managedContent => this.setState({ managedContent }))
+      .catch(() => { /* Keep the built-in content if the content service is unavailable. */ });
   }
   componentWillUnmount() {
     this.revealObserver?.disconnect();
@@ -1050,27 +1054,44 @@ class Component extends DCLogic {
       { title: 'English tutor (Years 6–12)', meta: 'Part-time · Chatswood', body: 'Text analysis and writing, with the patience and method to mark essays properly. NSW classroom experience preferred.', cta: 'Send your CV →' },
       { title: 'Science tutor (Physics / Chemistry)', meta: 'Part-time · Chatswood', body: 'HSC or IB Physics and Chemistry, mainly one-on-one.', cta: 'Send your CV →' }
     ];
+    const managedContent = this.state.managedContent || {};
     const na = zh ? '不提供' : 'Not available';
-    const englishRates = [
-      { label: zh ? '资深导师 Senior Tutor' : 'Senior Tutor', a: '$105', b: '$115', c: '$125', d: '$135' },
-      { label: zh ? '学科导师 Academic Tutor' : 'Academic Tutor', a: '$95', b: '$105', c: '$115', d: '$125' },
-      { label: 'Dr Yvonne Smith', a: '$155', b: '$180', c: na, d: na }
-    ];
-    const mathsRates = [
-      { label: 'Chantry Khem', a: '$115', b: '$125', c: '$135', d: '$135' },
-      { label: 'Anthony Cheung', a: '$115', b: '$125', c: '$135', d: '$135' },
-      { label: zh ? 'Daniel Li · Chris Du · Ethan Lin · Jerry' : 'Daniel Li, Chris Du, Ethan Lin, Jerry', a: '$80', b: '$80', c: '$100', d: '$100' }
-    ];
+    const money = (value, fallback) => value === null ? na : (Number.isFinite(Number(value)) ? '$' + Number(value) : fallback);
+    const priceRows = (subject, defaults) => {
+      const rows = Array.isArray(managedContent.pricing?.[subject]) ? managedContent.pricing[subject] : defaults;
+      return rows.map(row => {
+        const values = row.values.map(value => money(value, na));
+        return { label: zh ? (row.labelZh || row.labelEn) : (row.labelEn || row.labelZh), a: values[0], b: values[1], c: values[2], d: values[3] };
+      });
+    };
+    const englishRates = priceRows('english', [
+      { id: 'senior', labelEn: 'Senior Tutor', labelZh: '资深导师 Senior Tutor', values: [105, 115, 125, 135] },
+      { id: 'academic', labelEn: 'Academic Tutor', labelZh: '学科导师 Academic Tutor', values: [95, 105, 115, 125] },
+      { id: 'yvonne', labelEn: 'Dr Yvonne Smith', labelZh: 'Dr Yvonne Smith', values: [155, 180, null, null] }
+    ]);
+    const mathsRates = priceRows('maths', [
+      { id: 'chantry', labelEn: 'Chantry Khem', labelZh: 'Chantry Khem', values: [115, 125, 135, 135] },
+      { id: 'anthony', labelEn: 'Anthony Cheung', labelZh: 'Anthony Cheung', values: [115, 125, 135, 135] },
+      { id: 'team', labelEn: 'Daniel Li, Chris Du, Ethan Lin, Jerry', labelZh: 'Daniel Li · Chris Du · Ethan Lin · Jerry', values: [80, 80, 100, 100] }
+    ]);
     const bgs = ['linear-gradient(160deg,#7C1F20,#2A2120)', 'linear-gradient(160deg,#3B2F2C,#1C1716)', 'linear-gradient(160deg,#9C2A2B,#4A2220)', 'linear-gradient(160deg,#2A2120,#5C3A24)', 'linear-gradient(160deg,#6E2426,#241C1B)', 'linear-gradient(160deg,#9C2A2B,#3B2F2C)', 'linear-gradient(160deg,#4A2220,#8A4726)', 'linear-gradient(160deg,#7C1F20,#3B2F2C)', 'linear-gradient(160deg,#2A2120,#7C1F20)', 'linear-gradient(160deg,#8A3A2E,#2A2120)', 'linear-gradient(160deg,#3B2F2C,#9C2A2B)', 'linear-gradient(160deg,#5C3A24,#221E1F)'];
-    const list = (zh ? tutorsZh : tutorsEn).map((t, i) => ({
-      ...t,
+    const managedTutors = Array.isArray(managedContent.tutors)
+      ? managedContent.tutors
+      : tutorsEn.map((en, i) => ({ id: en.name, group: i < 10 ? 'english' : 'maths', hidden: false, en, zh: tutorsZh[i] }));
+    const list = managedTutors.filter(tutor => !tutor.hidden).map((tutor, i) => ({
+      ...(zh ? tutor.zh : tutor.en),
+      subjectGroup: tutor.group,
       bg: bgs[i % bgs.length],
-      bgImage: 'radial-gradient(circle at 78% 18%, rgba(217,155,54,0.42), transparent 58%)',
+      bgImage: 'radial-gradient(circle at 78% 18%, rgba(217,155,54,0.42), transparent 58%)'
+    })).map((t, i) => ({
+      ...t,
       open: () => this.setState({ active: i }),
-      mailto: 'mailto:operations@academyone.com.au?subject=' + encodeURIComponent('Tutor enquiry — ' + t.name)
+      mailto: 'mailto:operations@academyone.com.au?subject=' + encodeURIComponent('Tutor enquiry - ' + t.name)
     }));
-    const filtered = list.filter((t, i) => this.state.subject === 'all' || (this.state.subject === 'english' ? i < 10 : i >= 10));
-    const preview = this.state.subject === 'all' ? [list[0], list[1], list[10], list[11]] : filtered.slice(0, 4);
+    const filtered = list.filter(t => this.state.subject === 'all' || t.subjectGroup === this.state.subject);
+    const preview = this.state.subject === 'all'
+      ? [...list.filter(t => t.subjectGroup === 'english').slice(0, 2), ...list.filter(t => t.subjectGroup === 'maths').slice(0, 2)]
+      : filtered.slice(0, 4);
     const active = this.state.active === null ? null : list[this.state.active];
     const progress = this.state.statsProgress;
     return {
@@ -1113,6 +1134,8 @@ class Component extends DCLogic {
       railHint: zh ? '按科目查看导师，点击资料卡了解教学背景。' : 'Browse by subject and select a profile for teaching background.',
       englishRates,
       mathsRates,
+      groupEnglishPrice: '$' + Number(managedContent.groupClasses?.english ?? 65),
+      groupMathematicsPrice: '$' + Number(managedContent.groupClasses?.mathematics ?? 85),
       showRates: this.props.showRates !== false,
       hasActive: !!active,
       active: active || {},
