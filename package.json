@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "node dev-server.js",
+    "generate:seo": "node scripts/generate-seo-pages.mjs",
     "test": "node --test"
   },
   "dependencies": {

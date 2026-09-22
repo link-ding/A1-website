@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estimate your NSW ATAR by entering your HSC courses and expected marks. See which courses contribute to your best 10 units.">
+  <title>NSW ATAR Calculator — Academy One</title>
+  <link rel="canonical" href="https://academyone.com.au/resources/atar-calculator/">
+  <meta property="og:title" content="NSW ATAR Calculator — Academy One">
+  <meta property="og:description" content="Estimate your NSW ATAR and see which courses contribute to your best 10 units.">
+  <meta property="og:url" content="https://academyone.com.au/resources/atar-calculator/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Figtree:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --paper:#fbf8f3; --surface:#fffdf9; --ink:#261f1e; --muted:#6b615c; --line:#dfd5ca; --red:#9c2a2b; --red-dark:#781f20; --gold:#c98225; --soft:#f1e9df; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:'Figtree','Noto Sans SC',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    button, input, select { font:inherit; }
+    button, select { cursor:pointer; }
+    :focus-visible { outline:3px solid var(--red); outline-offset:3px; }
+    .utility-header { border-bottom:1px solid var(--line); background:rgba(251,248,243,.92); backdrop-filter:blur(12px); }
+    .utility-header-inner { width:min(1180px,calc(100% - 40px)); min-height:88px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand img { width:49px; height:auto; }
+    .brand strong { display:block; font:700 21px/1 'Libre Baskerville',Georgia,serif; color:#3b2f2c; }
+    .brand small { display:block; margin-top:5px; color:#c1443f; font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; }
+    .back { min-height:44px; display:inline-flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-weight:600; }
+    .back:hover { color:var(--red); }
+    .intro { width:min(1180px,calc(100% - 40px)); margin:0 auto; padding:72px 0 48px; display:grid; grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr); gap:clamp(40px,8vw,110px); align-items:end; }
+    .eyebrow { margin:0 0 18px; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    h1, h2 { font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif; color:#3b201f; }
+    h1 { max-width:12em; margin:0; font-size:clamp(38px,6vw,72px); font-weight:400; line-height:1.08; letter-spacing:-.035em; text-wrap:balance; }
+    .intro-copy { margin:24px 0 0; max-width:42em; color:#584e49; font-size:17px; line-height:1.75; }
+    .model-note { padding:22px 0 4px 22px; border-left:2px solid var(--gold); color:var(--muted); font-size:14px; line-height:1.65; }
+    .model-note strong { display:block; margin-bottom:5px; color:var(--ink); }
+    .workspace { width:min(1180px,calc(100% - 40px)); margin:0 auto 80px; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(320px,.6fr); gap:28px; align-items:start; }
+    .input-panel, .result-panel { border-top:1px solid var(--ink); }
+    .panel-heading { padding:24px 0 20px; display:flex; align-items:end; justify-content:space-between; gap:20px; }
+    .panel-heading h2 { margin:0; font-size:23px; font-weight:400; }
+    .panel-heading p { margin:0; color:var(--muted); font-size:13px; }
+    .course-labels { display:grid; grid-template-columns:minmax(0,1fr) 92px 44px; gap:10px; padding:0 0 8px; color:var(--muted); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    .course-row { display:grid; grid-template-columns:minmax(0,1fr) 92px 44px; gap:10px; padding:7px 0; animation:row-in .28s ease both; }
+    .course-row select, .course-row input { width:100%; min-height:50px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink); }
+    .course-row select { padding:0 42px 0 14px; }
+    .course-row input { padding:0 12px; text-align:center; font-variant-numeric:tabular-nums; }
+    .course-row.is-duplicate select { border-color:var(--red); box-shadow:0 0 0 1px var(--red); }
+    .remove-course { width:44px; min-height:44px; border:0; background:transparent; color:#998c85; font-size:22px; border-radius:50%; }
+    .remove-course:hover { color:var(--red); background:var(--soft); }
+    .form-actions { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:20px; padding-top:20px; border-top:1px solid var(--line); }
+    .add-course { min-height:44px; border:0; background:transparent; color:var(--red); font-weight:700; }
+    .calculate { min-height:48px; padding:0 24px; border:0; border-radius:6px; color:#fffaf3; background:var(--red); font-weight:700; transition:transform .18s ease,background .18s ease; }
+    .calculate:hover { background:var(--red-dark); transform:translateY(-1px); }
+    .result-panel { position:sticky; top:24px; padding-bottom:28px; background:var(--soft); border-top-color:var(--red); }
+    .result-inner { padding:28px; }
+    .result-kicker { margin:0; color:var(--red); font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .atar-value { margin:16px 0 6px; font:400 clamp(58px,8vw,92px)/1 'Libre Baskerville',Georgia,serif; color:#3b201f; letter-spacing:-.06em; font-variant-numeric:tabular-nums; transition:opacity .18s ease; }
+    .result-state { margin:0; color:var(--muted); font-size:13px; }
+    .result-state[data-state='error'] { color:var(--red); }
+    .aggregate { margin:30px 0 0; padding:18px 0; display:flex; justify-content:space-between; gap:16px; border-top:1px solid #d6c9bc; border-bottom:1px solid #d6c9bc; font-size:14px; }
+    .aggregate strong { font-variant-numeric:tabular-nums; }
+    .counted-title { margin:24px 0 10px; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    .counted-list { margin:0; padding:0; list-style:none; }
+    .counted-list li { display:flex; justify-content:space-between; gap:12px; padding:8px 0; color:#887c75; font-size:13px; }
+    .counted-list li strong { color:inherit; font-size:12px; }
+    .counted-list .is-counted { color:var(--ink); }
+    .method { width:min(1180px,calc(100% - 40px)); margin:0 auto 84px; padding-top:34px; border-top:1px solid var(--line); display:grid; grid-template-columns:.65fr 1.35fr; gap:clamp(32px,8vw,100px); }
+    .method h2 { margin:0; font-size:25px; font-weight:400; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    .step span { display:block; margin-bottom:16px; color:var(--red); font:400 28px/1 'Libre Baskerville',Georgia,serif; }
+    .step h3 { margin:0 0 8px; font-size:15px; }
+    .step p { margin:0; color:var(--muted); font-size:13px; line-height:1.65; }
+    footer { padding:28px 20px; border-top:1px solid var(--line); color:var(--muted); text-align:center; font-size:12px; }
+    @keyframes row-in { from { opacity:0; transform:translateY(7px); } }
+    @media (max-width:800px) {
+      .intro { grid-template-columns:1fr; padding-top:52px; gap:30px; }
+      .workspace { grid-template-columns:1fr; }
+      .result-panel { position:static; }
+      .method { grid-template-columns:1fr; }
+    }
+    @media (max-width:560px) {
+      .utility-header-inner, .intro, .workspace, .method { width:min(100% - 28px,1180px); }
+      .utility-header-inner { min-height:72px; }
+      .brand img { width:39px; }
+      .brand strong { font-size:17px; }
+      .brand small { font-size:7px; }
+      .back span { display:none; }
+      .intro { padding:42px 0 34px; }
+      h1 { font-size:39px; }
+      .panel-heading { align-items:start; flex-direction:column; gap:6px; }
+      .course-row, .course-labels { grid-template-columns:minmax(0,1fr) 72px 40px; gap:7px; }
+      .form-actions { align-items:stretch; flex-direction:column; }
+      .calculate { order:-1; }
+      .steps { grid-template-columns:1fr; gap:24px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <header class="utility-header">
+    <div class="utility-header-inner">
+      <a class="brand" href="/" aria-label="Academy One home">
+        <img src="/assets/academy-one-crest.png" alt="">
+        <span><strong>Academy One</strong><small>Private Tuition</small></span>
+      </a>
+      <a class="back" href="/resources/how-is-atar-calculated/"><span aria-hidden="true">←</span><span>How ATAR is calculated</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">NSW HSC · Study planning tool</p>
+        <h1>Where could your marks take you?</h1>
+        <p class="intro-copy">Add your courses and expected HSC marks. The calculator includes at least 2 units of English, then selects your best 10 units to produce a planning estimate.</p>
+      </div>
+      <aside class="model-note">
+        <strong>About this estimate</strong>
+        This model uses non-UAC demonstration curves and does not reproduce copyrighted UAC scaling tables. Use it to compare course combinations and set study goals—not as an official ATAR or a subject-selection guarantee.
+      </aside>
+    </section>
+
+    <section class="workspace" aria-label="ATAR calculator">
+      <form class="input-panel" id="atar-form">
+        <div class="panel-heading">
+          <h2>Courses and expected marks</h2>
+          <p>At least 10 units · marks from 0–100</p>
+        </div>
+        <div class="course-labels" aria-hidden="true"><span>Course</span><span>HSC mark</span><span></span></div>
+        <div id="course-rows"></div>
+        <div class="form-actions">
+          <button class="add-course" id="add-course" type="button">＋ Add a course</button>
+          <button class="calculate" type="submit">Update estimate</button>
+        </div>
+      </form>
+
+      <aside class="result-panel" id="result-panel" aria-live="polite">
+        <div class="result-inner">
+          <p class="result-kicker">Estimated ATAR</p>
+          <p class="atar-value" id="atar-value">—</p>
+          <p class="result-state" id="result-state">Updates as you edit your courses</p>
+          <div class="aggregate"><span>Estimated aggregate</span><strong id="aggregate-value">— / 500</strong></div>
+          <p class="counted-title">Courses in your best 10 units</p>
+          <ul class="counted-list" id="counted-list"></ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="method">
+      <h2>How the estimate works</h2>
+      <div class="steps">
+        <div class="step"><span>01</span><h3>Estimate each scaled mark</h3><p>Your course and mark are placed on a demonstration curve using linear interpolation.</p></div>
+        <div class="step"><span>02</span><h3>Select the best 10 units</h3><p>At least 2 units of English are included first, followed by the highest remaining contributions.</p></div>
+        <div class="step"><span>03</span><h3>Estimate your ATAR</h3><p>The aggregate is mapped to a planning estimate. Actual scaling changes from year to year.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <template id="course-row-template">
+    <div class="course-row">
+      <select></select>
+      <input type="number" min="0" max="100" step="1" inputmode="decimal">
+      <button class="remove-course" type="button" aria-label="Remove course">×</button>
+    </div>
+  </template>
+
+  <footer>© 2026 Academy One Private Tuition · For study planning only · <a href="/resources/hsc-scaling/">HSC scaling explained</a> · <a href="/hsc-tutoring/">HSC tutoring</a></footer>
+  <script type="module" src="/atar-calculator.js"></script>
+</body>
+</html>

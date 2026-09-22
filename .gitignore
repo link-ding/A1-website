@@ -3,3 +3,8 @@ node_modules/
 .vercel/
 .env
 .env.*
+.impeccable/
+output/
+uploads/
+Academy One.before-redesign.html
+Academy One.original.html

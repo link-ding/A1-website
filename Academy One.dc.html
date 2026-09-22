@@ -9,7 +9,13 @@
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Academy One Private Tuition — Chatswood</title>
+<title>Tutoring Sydney | Academy One Private Tuition Chatswood</title>
+<meta name="description" content="Personalised tutoring in Sydney for Maths, English, Science and HSC students. Learn in Chatswood or online with Academy One Private Tuition.">
+<link rel="canonical" href="https://academyone.com.au/">
+<meta property="og:title" content="Tutoring Sydney | Academy One Private Tuition">
+<meta property="og:description" content="Personalised Maths, English, Science and HSC tutoring in Chatswood and online.">
+<meta property="og:url" content="https://academyone.com.au/">
+<meta property="og:image" content="https://academyone.com.au/assets/academy-one-classroom.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Figtree:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -184,9 +190,10 @@
   .ao-subjects article:nth-child(-n+2) { grid-row: span 2; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .ao-subjects article:nth-child(-n+2) .ao-icon { width: 62px; height: 62px; }
   .ao-subjects article:nth-child(n+3) { display: grid; grid-template-columns: 44px 1fr; gap: 0 16px; }
-  .ao-subjects article:nth-child(n+3) .ao-icon { width: 40px; height: 40px; grid-row: span 3; }
+  .ao-subjects article:nth-child(n+3) .ao-icon { width: 40px; height: 40px; grid-row: span 4; }
   .ao-subjects article h3 { color: #3B201F; font-weight: 400 !important; }
-  .ao-subjects article p:last-child { padding-top: 14px; border-top: 1px solid #E3DAD0; }
+  .ao-subjects .ao-subject-meta { padding-top: 14px; border-top: 1px solid #E3DAD0; }
+  .ao-subject-link { display: inline-flex; align-items: center; margin-top: 16px; font-size: 14px; font-weight: 600; text-underline-offset: 4px; }
   .ao-formats { background: #FFFCF7; border: 1px solid #E3DAD0; border-radius: 8px; gap: 0 !important; }
   .ao-formats > div { background: transparent !important; border-radius: 0 !important; padding: 24px !important; }
   .ao-formats > div + div { border-left: 1px solid #E3DAD0; }
@@ -317,6 +324,16 @@
   .ao-header nav a[aria-current="location"]::after { transform: scaleX(1); }
   .ao-header nav a[aria-current="location"] { color: #9C2A2B !important; }
   @media (prefers-reduced-motion: reduce) { .ao-header nav a::after { transition: none; } }
+  .ao-resources { position: relative; flex-shrink: 0; }
+  .ao-resources > summary { min-height: 44px; display: flex; align-items: center; gap: 6px; padding: 8px 11px; color: #4A423E; font-family: 'Libre Baskerville','Noto Serif SC',Georgia,serif; font-size: 14px; font-weight: 500; list-style: none; white-space: nowrap; }
+  .ao-resources > summary::-webkit-details-marker { display: none; }
+  .ao-resources > summary::after { content: '⌄'; color: #9C2A2B; font-family: system-ui,sans-serif; font-size: 12px; transform: translateY(-1px); }
+  .ao-resources-menu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 80; display: none; width: 260px; padding: 8px; background: #FFFCF7; border: 1px solid #E3DAD0; border-radius: 8px; box-shadow: 0 18px 44px rgba(59,32,31,.13); }
+  .ao-resources[open] > .ao-resources-menu, .ao-resources:hover > .ao-resources-menu { display: block; }
+  .ao-header nav .ao-resources-menu a { display: block; min-height: 0; padding: 11px 12px !important; border-radius: 5px; font-family: 'Figtree','Noto Sans SC',system-ui,sans-serif; font-size: 13px !important; line-height: 1.35; }
+  .ao-header nav .ao-resources-menu a::after { display: none; }
+  .ao-header nav .ao-resources-menu a:hover { background: #F1E9DF; text-decoration: none; }
+  @media (max-width: 1100px) { .ao-header nav:has(.ao-resources[open]) { overflow: visible; } }
 </style>
 </helmet>
 
@@ -337,6 +354,16 @@
         <a href="/tutors" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">师资</span><span style="display:{{ ei }}">Tutors</span></a>
         <a href="/timetable" onClick="{{ goTimetable }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程表</span><span style="display:{{ ei }}">Timetable</span></a>
         <a href="/careers" onClick="{{ goCareers }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">招聘</span><span style="display:{{ ei }}">Careers</span></a>
+        <details class="ao-resources">
+          <summary><span style="display:{{ zi }}">资源</span><span style="display:{{ ei }}">Resources</span></summary>
+          <div class="ao-resources-menu">
+            <a href="/resources/atar-calculator/" aria-label="ATAR Calculator"><span style="display:{{ zi }}">ATAR 估算工具</span><span style="display:{{ ei }}">ATAR Calculator</span></a>
+            <a href="/resources/how-is-atar-calculated/" aria-label="How ATAR Is Calculated"><span style="display:{{ zi }}">ATAR 如何计算</span><span style="display:{{ ei }}">How ATAR Is Calculated</span></a>
+            <a href="/resources/hsc-scaling/" aria-label="HSC Scaling Explained"><span style="display:{{ zi }}">HSC Scaling 解释</span><span style="display:{{ ei }}">HSC Scaling Explained</span></a>
+            <a href="/resources/hsc-study-tips/" aria-label="HSC Study Tips"><span style="display:{{ zi }}">HSC 学习建议</span><span style="display:{{ ei }}">HSC Study Tips</span></a>
+            <a href="/resources/selective-oc-guides/" aria-label="Selective and OC Guides"><span style="display:{{ zi }}">精英中学 / OC 指南</span><span style="display:{{ ei }}">Selective / OC Guides</span></a>
+          </div>
+        </details>
       </nav>
       <div class="ao-header-actions">
         <button class="ao-language-switch" aria-label="{{ languageSwitchLabel }}" onClick="{{ toggleLang }}" style="margin-left:6px;padding:7px 12px;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:0.04em;color:#221E1F;background:transparent;border:0;border-radius:0;cursor:pointer" style-hover="color:#9C2A2B">{{ langLabel }}</button>
@@ -356,7 +383,7 @@
         <span style="display:{{ zb }}">One For All</span><span style="display:{{ eb }}">One For All</span>
       </h1>
       <p style="margin:22px 0 0;max-width:34em;font-size:clamp(16px,1.6vw,19px);line-height:1.65;color:#5C534E;text-wrap:pretty">
-        <span style="display:{{ zb }}">Year 6–12 英文与数学，由 PhD 与 NESA 注册教师领衔。一对一与小班课并行。</span><span style="display:{{ eb }}">Years 6–12 English and Mathematics, led by PhD-qualified and NESA-accredited teachers. One-on-one and group classes.</span>
+        <span style="display:{{ zb }}">悉尼辅导，从每一位学生出发。Year 6–12 英文与数学，由 PhD 与 NESA 注册教师领衔。</span><span style="display:{{ eb }}">Sydney tutoring, built around one student at a time. Years 6–12 English and Mathematics, led by PhD-qualified and NESA-accredited teachers.</span>
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
         <a href="https://academyoneprivatetuition.teachworks.com/form/academy-one-private-tutoring-student-registration-form" target="_blank" rel="noopener" style="padding:15px 26px;font-size:16px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">填写报名表</span><span style="display:{{ ei }}">Register</span></a>
@@ -393,22 +420,26 @@
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #D99B36">
           <img class="ao-icon" src="/assets/icons/book.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">英文 English</span><span style="display:{{ ei }}">English</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">对齐 NESA 大纲，从 7–10 年级延伸至 HSC 与 Extension，另含 EALD 与精英中学考试准备。</span><span style="display:{{ eb }}">NESA-aligned, from Years 7–10 through to HSC and Extension, plus EALD and selective test prep.</span></p>
-          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Advanced · Ext 1 · Ext 2 · EALD</p>
+          <p class="ao-subject-meta" style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Advanced · Ext 1 · Ext 2 · EALD</p>
+          <a class="ao-subject-link" href="/tutoring/english/"><span style="display:{{ zi }}">查看英文辅导 →</span><span style="display:{{ ei }}">Explore English tutoring →</span></a>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #9C2A2B">
           <img class="ao-icon" src="/assets/icons/calculator.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">数学 Mathematics</span><span style="display:{{ ei }}">Mathematics</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">7–10 年级到 HSC Extension 1 / 2，由 NESA 注册教师与大学数学讲师授课。AP / SAT 可另行安排。</span><span style="display:{{ eb }}">Years 7–10 through HSC Extension 1 and 2, taught by a NESA-accredited teacher and a university maths lecturer. AP / SAT on request.</span></p>
-          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Adv · Ext 1 · Ext 2 · AP / SAT</p>
+          <p class="ao-subject-meta" style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Adv · Ext 1 · Ext 2 · AP / SAT</p>
+          <a class="ao-subject-link" href="/tutoring/maths/"><span style="display:{{ zi }}">查看数学辅导 →</span><span style="display:{{ ei }}">Explore Maths tutoring →</span></a>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #221E1F">
           <img class="ao-icon" src="/assets/icons/atom.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">物理 Physics</span><span style="display:{{ ei }}">Physics</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">由物理校排第一的导师授课，概念推导与题型分类并重。HSC 与 IB 均可。</span><span style="display:{{ eb }}">Taught by a tutor who ranked 1st in Physics — concept derivation and question-type mapping. HSC and IB.</span></p>
-          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">HSC · IB · <span style="display:{{ zi }}">一对一</span><span style="display:{{ ei }}">one-on-one</span></p>
+          <p class="ao-subject-meta" style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">HSC · IB · <span style="display:{{ zi }}">一对一</span><span style="display:{{ ei }}">one-on-one</span></p>
+          <a class="ao-subject-link" href="/tutoring/physics/"><span style="display:{{ zi }}">查看物理辅导 →</span><span style="display:{{ ei }}">Explore Physics tutoring →</span></a>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #7C1F20">
           <img class="ao-icon" src="/assets/icons/flask.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">化学 Chemistry</span><span style="display:{{ ei }}">Chemistry</span></h3>
           <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">方程式、计算与实验分析三条主线，讲义与测验按大纲定制。HSC 与 IB 均可。</span><span style="display:{{ eb }}">Equations, calculations and experimental analysis, with syllabus-built notes and quizzes. HSC and IB.</span></p>
-          <p style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">HSC · IB · <span style="display:{{ zi }}">一对一</span><span style="display:{{ ei }}">one-on-one</span></p>
+          <p class="ao-subject-meta" style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">HSC · IB · <span style="display:{{ zi }}">一对一</span><span style="display:{{ ei }}">one-on-one</span></p>
+          <a class="ao-subject-link" href="/tutoring/chemistry/"><span style="display:{{ zi }}">查看化学辅导 →</span><span style="display:{{ ei }}">Explore Chemistry tutoring →</span></a>
         </article>
       </div>
 
@@ -789,7 +820,9 @@
       <div>
         <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">课程</span><span style="display:{{ ei }}">Courses</span></p>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
-          <a href="/courses" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">数学 / 英文 / 物理 / 化学</span><span style="display:{{ ei }}">Maths / English / Physics / Chemistry</span></a>
+          <a href="/tutoring/maths/" style="color:#4A423E"><span style="display:{{ zi }}">数学辅导</span><span style="display:{{ ei }}">Maths tutoring</span></a>
+          <a href="/tutoring/english/" style="color:#4A423E"><span style="display:{{ zi }}">英文辅导</span><span style="display:{{ ei }}">English tutoring</span></a>
+          <a href="/hsc-tutoring/" style="color:#4A423E">HSC tutoring</a>
           <a href="/timetable" onClick="{{ goTimetable }}" style="color:#4A423E"><span style="display:{{ zi }}">小班课程表</span><span style="display:{{ ei }}">Small group timetable</span></a>
           <a href="/pricing" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">学费与课时包</span><span style="display:{{ ei }}">Pricing</span></a>
         </div>
@@ -798,6 +831,8 @@
         <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">中心</span><span style="display:{{ ei }}">Centre</span></p>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
           <a href="/credit" onClick="{{ goCredit }}" style="color:#4A423E"><span style="display:{{ zi }}">课时政策</span><span style="display:{{ ei }}">Credit policy</span></a>
+          <a href="/resources/atar-calculator/" style="color:#4A423E"><span style="display:{{ zi }}">ATAR 估算工具</span><span style="display:{{ ei }}">ATAR calculator</span></a>
+          <a href="/resources/how-is-atar-calculated/" style="color:#4A423E"><span style="display:{{ zi }}">ATAR 计算方式</span><span style="display:{{ ei }}">How ATAR is calculated</span></a>
           <a href="/careers" onClick="{{ goCareers }}" style="color:#4A423E"><span style="display:{{ zi }}">加入我们</span><span style="display:{{ ei }}">Careers</span></a>
           <a href="https://www.google.com/search?q=Academy+One+Private+Tuition+Chatswood" target="_blank" rel="noopener" style="color:#4A423E">Google Reviews</a>
         </div>

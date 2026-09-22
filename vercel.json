@@ -43,6 +43,18 @@
     {
       "source": "/credit",
       "destination": "/Academy One.dc.html"
+    },
+    {
+      "source": "/atar-calculator",
+      "destination": "/atar-calculator.html"
+    },
+    {
+      "source": "/resources/atar-calculator",
+      "destination": "/atar-calculator.html"
+    },
+    {
+      "source": "/resources/atar-calculator/",
+      "destination": "/atar-calculator.html"
     }
   ],
   "headers": [

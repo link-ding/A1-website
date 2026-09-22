@@ -22,6 +22,9 @@ const contentTypes = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml'
@@ -53,8 +56,9 @@ http.createServer(async (incoming, outgoing) => {
 
   let filePath;
   if (url.pathname === '/admin') filePath = path.join(root, 'admin.html');
+  else if (url.pathname === '/atar-calculator' || url.pathname.replace(/\/$/, '') === '/resources/atar-calculator') filePath = path.join(root, 'atar-calculator.html');
   else if (websiteRoutes.has(url.pathname)) filePath = path.join(root, 'Academy One.dc.html');
-  else filePath = safeFilePath(url.pathname);
+  else filePath = safeFilePath(url.pathname.endsWith('/') ? `${url.pathname}index.html` : url.pathname);
 
   try {
     if (!filePath) throw new Error('Invalid path');
