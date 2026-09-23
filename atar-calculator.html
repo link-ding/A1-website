@@ -9,6 +9,7 @@
   <meta property="og:title" content="NSW ATAR Calculator — Academy One">
   <meta property="og:description" content="Estimate your NSW ATAR and see which courses contribute to your best 10 units.">
   <meta property="og:url" content="https://academyone.com.au/resources/atar-calculator/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Academy One NSW ATAR Calculator","applicationCategory":"EducationalApplication","operatingSystem":"Web","url":"https://academyone.com.au/resources/atar-calculator/","description":"A planning calculator that estimates a NSW ATAR from expected HSC marks using Academy One's model.","author":{"@type":"EducationalOrganization","name":"Academy One Private Tuition","url":"https://academyone.com.au/"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Figtree:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
@@ -118,7 +119,7 @@
       </div>
       <aside class="model-note">
         <strong>About this estimate</strong>
-        This model uses non-UAC demonstration curves and does not reproduce copyrighted UAC scaling tables. Use it to compare course combinations and set study goals—not as an official ATAR or a subject-selection guarantee.
+        Academy One planning model 2026.09. It applies current NSW eligibility and unit-selection rules, then uses Academy One modelled scaling curves. It is not affiliated with UAC and cannot predict an official ATAR.
       </aside>
     </section>
 
@@ -151,7 +152,7 @@
     <section class="method">
       <h2>How the estimate works</h2>
       <div class="steps">
-        <div class="step"><span>01</span><h3>Estimate each scaled mark</h3><p>Your course and mark are placed on a demonstration curve using linear interpolation.</p></div>
+        <div class="step"><span>01</span><h3>Validate the course pattern</h3><p>The tool checks English and Mathematics Extension prerequisites and the core NSW ATAR eligibility rules.</p></div>
         <div class="step"><span>02</span><h3>Select the best 10 units</h3><p>At least 2 units of English are included first, followed by the highest remaining contributions.</p></div>
         <div class="step"><span>03</span><h3>Estimate your ATAR</h3><p>The aggregate is mapped to a planning estimate. Actual scaling changes from year to year.</p></div>
       </div>
@@ -166,7 +167,7 @@
     </div>
   </template>
 
-  <footer>© 2026 Academy One Private Tuition · For study planning only · <a href="/resources/hsc-scaling/">HSC scaling explained</a> · <a href="/hsc-tutoring/">HSC tutoring</a></footer>
+  <footer>© 2026 Academy One Private Tuition · For study planning only · <a href="https://uac.edu.au/future-applicants/atar/how-your-atar-is-calculated" target="_blank" rel="noopener">UAC calculation rules</a> · <a href="/resources/hsc-scaling/">HSC scaling explained</a> · <a href="/hsc-tutoring/">HSC tutoring</a></footer>
   <script type="module" src="/atar-calculator.js"></script>
 </body>
 </html>

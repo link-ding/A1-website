@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
 </head>
 <body>
@@ -245,7 +244,7 @@
   .ao-individual-pricing { min-width: 0; padding: 26px; background: #FFFCF7; border: 1px solid #E3DAD0; border-radius: 8px; }
   .ao-individual-pricing h3 { color: #3B201F; font-weight: 400 !important; }
   #pricing .ao-table-scroll { border: 0 !important; border-radius: 0 !important; }
-  #pricing .ao-table-scroll > div { min-width: 620px !important; background: transparent !important; gap: 0 !important; grid-template-columns: 1.6fr repeat(4,1fr) !important; }
+  #pricing .ao-table-scroll > div { min-width: 520px !important; background: transparent !important; gap: 0 !important; grid-template-columns: 1.6fr repeat(2,1fr) !important; }
   #pricing .ao-table-scroll > div > div { padding: 14px 10px !important; background: transparent !important; border-bottom: 1px solid #E3DAD0; font-size: 13px !important; }
   .ao-maths-pricing { margin-top: 22px; }
   .ao-maths-pricing > div:first-of-type { margin-top: 20px !important; }
@@ -298,22 +297,34 @@
   #ao-tutor-rail { grid-template-columns: repeat(4,minmax(0,1fr)) !important; gap: 0 !important; }
   .ao-tutor { padding: 16px 24px; gap: 16px; background: transparent; border: 0; border-radius: 0; transition: background .2s; }
   .ao-tutor + .ao-tutor { border-left: 1px solid #D8CEC4; }
-  .ao-tutor-name { font-size: 32px; font-weight: 400; letter-spacing: -.035em; color: #3B201F; }
-  .ao-tutor-role { font-size: 12px; line-height: 1.6; letter-spacing: .08em; text-transform: uppercase; color: #5C534E; }
-  .ao-tutor-role::after { content: ''; display: block; width: 32px; height: 1px; background: #9C2A2B; margin-top: 18px; }
+  .ao-tutor-name { min-height: 1.18em; font-size: 26px; line-height: 1.18; font-weight: 400; letter-spacing: -.035em; color: #3B201F; white-space: nowrap; }
+  .ao-tutor-name-medium { font-size: 23px; }
+  .ao-tutor-name-long { font-size: 20px; }
+  .ao-tutor-role { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px; min-height: 55px; }
+  .ao-tutor-role-tag { max-width: 100%; padding: 5px 6px; border: 1px solid #DFC9C4; border-radius: 999px; background: #F7EEEB; color: #7C1F20; font-size: 10px; line-height: 1.35; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; white-space: nowrap; }
+  .ao-tutor-role-tag-academic { border-color: #C9DACD; background: #EAF0EA; color: #355A3F; }
+  .ao-tutor-role-tag-senior { border-color: #C8D4E0; background: #E9EEF4; color: #344C68; }
+  .ao-tutor-role-tag-accredited { border-color: #E3CFA8; background: #F6EEDC; color: #755522; }
+  .ao-tutor-role-tag-leadership { border-color: #E4C2BE; background: #F6E8E7; color: #792B2F; }
   .ao-tutor-qual { min-height: 44px; font-size: 13px; }
   .ao-tutor-hook { color: #6B615C; font-size: 14px; line-height: 1.7; }
   .ao-tutor-level { padding: 14px; border: 0; background: #E8EDE5; color: #414B40; font-size: 12px; font-weight: 500; letter-spacing: .02em; }
   @media (hover: hover) { .ao-tutor:hover { background: #F3EEE6; } }
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     #ao-tutor-rail { grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 32px 0 !important; }
     .ao-tutor:nth-child(odd) { border-left: 0; }
+    .ao-tutor-name { font-size: 30px; }
+    .ao-tutor-name-medium { font-size: 28px; }
+    .ao-tutor-name-long { font-size: 25px; }
   }
   @media (max-width: 600px) {
     #ao-tutor-rail { grid-template-columns: 1fr !important; gap: 0 !important; }
     .ao-tutor { padding: 28px 0; }
     .ao-tutor + .ao-tutor { border-left: 0; border-top: 1px solid #D8CEC4; }
-    .ao-tutor-name { font-size: 36px; }
+    .ao-tutor-name { min-height: 0; font-size: 28px; }
+    .ao-tutor-name-medium { font-size: 26px; }
+    .ao-tutor-name-long { font-size: 22px; }
+    .ao-tutor-role { min-height: 0; }
     .ao-tutor-qual { min-height: 0; }
   }
   @media (prefers-reduced-motion: reduce) { .ao-tutor { transition: none; } }
@@ -350,10 +361,11 @@
       </a>
       <nav aria-label="Main navigation" style="display:flex;flex-wrap:wrap;gap:4px;margin-left:auto;align-items:center">
         <a href="/courses" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程</span><span style="display:{{ ei }}">Courses</span></a>
-        <a href="/pricing" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">学费</span><span style="display:{{ ei }}">Pricing</span></a>
-        <a href="/tutors" onClick="{{ goHome }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">师资</span><span style="display:{{ ei }}">Tutors</span></a>
+        <a href="/pricing/" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">学费</span><span style="display:{{ ei }}">Pricing</span></a>
+        <a href="/tutors/" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">师资</span><span style="display:{{ ei }}">Tutors</span></a>
         <a href="/timetable" onClick="{{ goTimetable }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">课程表</span><span style="display:{{ ei }}">Timetable</span></a>
-        <a href="/careers" onClick="{{ goCareers }}" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">招聘</span><span style="display:{{ ei }}">Careers</span></a>
+        <a href="/careers/" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">招聘</span><span style="display:{{ ei }}">Careers</span></a>
+        <a href="/contact/" style="padding:8px 11px;font-size:14px;font-weight:500;color:#4A423E;text-decoration:none;border-radius:6px" style-hover="background:#F1E9DF;color:#9C2A2B"><span style="display:{{ zi }}">联系</span><span style="display:{{ ei }}">Contact</span></a>
         <details class="ao-resources">
           <summary><span style="display:{{ zi }}">资源</span><span style="display:{{ ei }}">Resources</span></summary>
           <div class="ao-resources-menu">
@@ -387,7 +399,7 @@
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
         <a href="https://academyoneprivatetuition.teachworks.com/form/academy-one-private-tutoring-student-registration-form" target="_blank" rel="noopener" style="padding:15px 26px;font-size:16px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">填写报名表</span><span style="display:{{ ei }}">Register</span></a>
-        <a href="/contact" onClick="{{ goHome }}" style="padding:15px 26px;font-size:16px;font-weight:600;color:#221E1F;background:transparent;border:1px solid #CFC2B4;border-radius:8px;text-decoration:none" style-hover="border-color:#221E1F;color:#221E1F;text-decoration:none"><span style="display:{{ zi }}">微信 / 电话咨询</span><span style="display:{{ ei }}">WeChat or call us</span></a>
+        <a href="/contact/" style="padding:15px 26px;font-size:16px;font-weight:600;color:#221E1F;background:transparent;border:1px solid #CFC2B4;border-radius:8px;text-decoration:none" style-hover="border-color:#221E1F;color:#221E1F;text-decoration:none"><span style="display:{{ zi }}">微信 / 电话咨询</span><span style="display:{{ ei }}">WeChat or call us</span></a>
       </div>
       </div>
     </section>
@@ -400,7 +412,7 @@
         </div>
         <div style="background:#FFFCF7;padding:26px 24px">
           <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700;color:#9C2A2B"><span data-countup="98">{{ statMedian }}</span></p>
-          <p style="margin:10px 0 0;font-size:14px;line-height:1.5;color:#5C534E"><span style="display:{{ zb }}">资深导师学生的 ATAR 中位数</span><span style="display:{{ eb }}">median ATAR among senior tutor's students</span></p>
+          <p style="margin:10px 0 0;font-size:14px;line-height:1.5;color:#5C534E"><span style="display:{{ zb }}">一位资深导师所教学生的 ATAR 中位数</span><span style="display:{{ eb }}">median ATAR among a senior tutor's students</span></p>
         </div>
         <div style="background:#FFFCF7;padding:26px 24px">
           <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700;color:#9C2A2B"><span data-countup="91">{{ statMaths }}</span></p>
@@ -419,8 +431,8 @@
       <div class="ao-subjects" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,248px),1fr));gap:20px">
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #D99B36">
           <img class="ao-icon" src="/assets/icons/book.svg" alt="" width="48" height="48"><h3 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:22px;font-weight:700"><span style="display:{{ zi }}">英文 English</span><span style="display:{{ ei }}">English</span></h3>
-          <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">对齐 NESA 大纲，从 7–10 年级延伸至 HSC 与 Extension，另含 EALD 与精英中学考试准备。</span><span style="display:{{ eb }}">NESA-aligned, from Years 7–10 through to HSC and Extension, plus EALD and selective test prep.</span></p>
-          <p class="ao-subject-meta" style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Advanced · Ext 1 · Ext 2 · EALD</p>
+          <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#5C534E"><span style="display:{{ zb }}">对齐 NESA 大纲，从 7–10 年级延伸至 HSC 与 Extension，另含 EAL/D 与精英中学考试准备。</span><span style="display:{{ eb }}">NESA-aligned, from Years 7–10 through to HSC and Extension, plus EAL/D and selective test prep.</span></p>
+          <p class="ao-subject-meta" style="margin:0;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B615C">Year 6–10 · Standard · Advanced · Ext 1 · Ext 2 · EAL/D</p>
           <a class="ao-subject-link" href="/tutoring/english/"><span style="display:{{ zi }}">查看英文辅导 →</span><span style="display:{{ ei }}">Explore English tutoring →</span></a>
         </article>
         <article style="background:#FFFCF7;border:1px solid #E3DAD0;border-radius:12px;padding:28px;border-top:3px solid #9C2A2B">
@@ -447,13 +459,13 @@
         <div style="background:#F3EBE1;border-radius:12px;padding:32px">
           <p style="margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">形式一</span><span style="display:{{ ei }}">Option one</span></p>
           <img class="ao-icon" src="/assets/icons/user.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">一对一课程</span><span style="display:{{ ei }}">One-on-one tuition</span></h3>
-          <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每周最少 1.5 小时，按学生的学校进度与弱项定制。整期预订享较低时薪。可线上或到校区上课。</span><span style="display:{{ eb }}">Minimum 1.5 hours a week, built around the student's school program and weak spots. Term block bookings earn the lower rate. In centre or online.</span></p>
-          <a href="/pricing" onClick="{{ goHome }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看 2026 价目 →</span><span style="display:{{ ei }}">See 2026 rates →</span></a>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每周最少 1.5 小时，按学生的学校进度与弱项定制。整学期价格按导师等级与学生年级划分。可线上或到校区上课。</span><span style="display:{{ eb }}">Minimum 1.5 hours a week, built around the student's school program and weak spots. Entire-term rates are tiered by tutor category and student year. In centre or online.</span></p>
+          <a href="/pricing" onClick="{{ goHome }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看 2027 价目 →</span><span style="display:{{ ei }}">See 2027 rates →</span></a>
         </div>
         <div style="background:#F3EBE1;border-radius:12px;padding:32px">
           <p style="margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">形式二</span><span style="display:{{ ei }}">Option two</span></p>
           <img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48"><h3 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:26px;font-weight:700"><span style="display:{{ zi }}">小班课</span><span style="display:{{ ei }}">Group classes</span></h3>
-          <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每节 1.5 小时：英文 {{ groupEnglishPrice }}、数学 {{ groupMathematicsPrice }}。英文 Year 6-10（Foundations / Enrichment 分流），数学 Year 6-12。</span><span style="display:{{ eb }}">1.5 hours per class: {{ groupEnglishPrice }} English, {{ groupMathematicsPrice }} Mathematics. English for Years 6-10 (Foundations / Enrichment streams), Mathematics for Years 6-12.</span></p>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">每节 1.5 小时：英文与数学小班均为 {{ groupEnglishPrice }}。英文 Year 6-10（Foundations / Enrichment 分流），数学 Year 6-12。</span><span style="display:{{ eb }}">Per 1.5-hour class: {{ groupEnglishPrice }} for both English and Mathematics. English for Years 6-10 (Foundations / Enrichment streams), Mathematics for Years 6-12.</span></p>
           <a href="/timetable" onClick="{{ goTimetable }}" style="display:inline-block;margin-top:16px;font-size:15px;font-weight:600"><span style="display:{{ zi }}">查看本期课程表 →</span><span style="display:{{ ei }}">See this term's timetable →</span></a>
         </div>
       </div>
@@ -477,18 +489,18 @@
         </figure>
         <figure class="ao-result-quote">
           <span class="ao-quote-mark" aria-hidden="true">“</span>
-          <blockquote><span style="display:{{ zb }}">补习后，各科有明显进步；老师把内容讲得清楚易懂。</span><span style="display:{{ eb }}">Tutoring helped them make progress across subjects, with teachers explaining the material clearly.</span></blockquote>
-          <figcaption><a href="https://www.google.com/maps/contrib/118333599104404054773/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Mobin Shafeian · Google 评价摘要</span><span style="display:{{ ei }}">Mobin Shafeian · Google review summary</span></a></figcaption>
+          <blockquote><span style="display:{{ zb }}">开始补习后，我看到自己各科都有了显著进步。</span><span style="display:{{ eb }}">Since I began receiving tutoring, I have seen significant progress in my subjects.</span></blockquote>
+          <figcaption><a href="https://www.google.com/maps/contrib/118333599104404054773/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Mobin Shafeian · Google 评价摘录</span><span style="display:{{ ei }}">Mobin Shafeian · Google review excerpt</span></a></figcaption>
         </figure>
         <figure class="ao-result-quote">
           <span class="ao-quote-mark" aria-hidden="true">“</span>
-          <blockquote><span style="display:{{ zb }}">Kevin 能找出需要加强的地方，帮助学生有针对性地学习。</span><span style="display:{{ eb }}">Kevin identified areas to improve and helped them focus their learning.</span></blockquote>
-          <figcaption><a href="https://www.google.com/maps/contrib/115122350242582100182/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Wisdom Shin · Google 评价摘要</span><span style="display:{{ ei }}">Wisdom Shin · Google review summary</span></a></figcaption>
+          <blockquote><span style="display:{{ zb }}">他知道我需要改进什么，并帮助我很好地集中注意力、变得更好。</span><span style="display:{{ eb }}">He knew what I had to work on and helped me focus very well and be better.</span></blockquote>
+          <figcaption><a href="https://www.google.com/maps/contrib/115122350242582100182/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Wisdom Shin · Google 评价摘录</span><span style="display:{{ ei }}">Wisdom Shin · Google review excerpt</span></a></figcaption>
         </figure>
         <figure class="ao-result-quote">
           <span class="ao-quote-mark" aria-hidden="true">“</span>
-          <blockquote><span style="display:{{ zb }}">八年级的儿子补习英语半年后进步很大，也很喜欢老师。</span><span style="display:{{ eb }}">Their Year 8 son made strong progress after six months of English tutoring and enjoyed his lessons.</span></blockquote>
-          <figcaption><a href="https://www.google.com/maps/contrib/110868990458452748659/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Tung Ling Yu · Google 评价摘要</span><span style="display:{{ ei }}">Tung Ling Yu · Google review summary</span></a></figcaption>
+          <blockquote><span style="display:{{ zb }}">跟 Kelvin 补习英语半年后，我的儿子进步非常大。</span><span style="display:{{ eb }}">After half year English tutoring with Kelvin, my son has huge improvement.</span></blockquote>
+          <figcaption><a href="https://www.google.com/maps/contrib/110868990458452748659/reviews?hl=en" target="_blank" rel="noopener"><span style="display:{{ zi }}">Tung Ling Yu · Google 评价摘录（原文使用 Kelvin）</span><span style="display:{{ ei }}">Tung Ling Yu · Google review excerpt (original uses Kelvin)</span></a></figcaption>
         </figure>
         <div class="ao-review-link-card">
           <img class="ao-google-maps-logo" src="/assets/google-maps-logo.png" alt="Google Maps" width="150" height="35">
@@ -554,8 +566,8 @@
         <div id="ao-tutor-rail" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
           <sc-for list="{{ tutors }}" as="t" hint-placeholder-count="12">
             <button class="ao-tutor" onClick="{{ t.open }}">
-              <span class="ao-tutor-name">{{ t.name }}</span>
-              <span class="ao-tutor-role">{{ t.role }}</span>
+              <span class="ao-tutor-name {{ t.nameSize }}">{{ t.name }}</span>
+              <span class="ao-tutor-role"><sc-for list="{{ t.roleTags }}" as="tag"><span class="ao-tutor-role-tag {{ tag.className }}">{{ tag.label }}</span></sc-for></span>
               <span class="ao-tutor-qual">{{ t.qual }}</span>
               <span class="ao-tutor-hook">{{ t.hook }}</span>
               <span class="ao-tutor-level">{{ t.subjectShort }}</span>
@@ -563,7 +575,7 @@
           </sc-for>
         </div>
       </div>
-      <button class="ao-more-tutors" onClick="{{ toggleTutorList }}" aria-expanded="{{ tutorsExpanded }}">{{ moreTutorsLabel }}</button>
+      <sc-if value="{{ showMoreTutors }}"><button class="ao-more-tutors" onClick="{{ toggleTutorList }}" aria-expanded="{{ tutorsExpanded }}">{{ moreTutorsLabel }}</button></sc-if>
       <p style="margin:6px 0 0;font-size:13px;color:#6B615C">{{ railHint }}</p>
       <div style="margin-top:20px;padding:28px 30px;background:#F3EBE1;border-radius:12px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
         <p style="margin:0;max-width:38em;font-size:16px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">不确定该找哪位导师？告诉我们年级、科目和目前成绩，我们推荐最合适的两位。</span><span style="display:{{ eb }}">Not sure who's the right fit? Tell us the year, subject and current marks and we'll recommend two.</span></p>
@@ -606,102 +618,57 @@
 
 
     <section id="pricing" style="max-width:1180px;margin:0 auto;padding:84px 24px 0">
-      <h2 style="margin:0 0 8px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">学费与课时包</span><span style="display:{{ eb }}">Pricing &amp; lesson packages</span></h2>
-      <p style="margin:0 0 34px;max-width:44em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">2026 年正式价目，每周最少 1.5 小时。整期预订享较低时薪；少于五节按单独时薪计算。</span><span style="display:{{ eb }}">Official 2026 rates, minimum 1.5 hours per week. Term block bookings earn the lower rate; fewer than five lessons is charged individually.</span></p>
+      <h2 style="margin:0 0 8px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(26px,3vw,38px);line-height:1.2;font-weight:700"><span style="display:{{ zb }}">2027 年学费</span><span style="display:{{ eb }}">2027 tuition fees</span></h2>
+      <p style="margin:0 0 34px;max-width:48em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">以下为整学期预订的每小时时薪，按导师等级与学生年级划分；每周最少 1.5 小时。</span><span style="display:{{ eb }}">Hourly rates for entire-term bookings, tiered by tutor category and student year. Minimum 1.5 hours per week.</span></p>
 
       <div class="ao-pricing-layout">
       <sc-if value="{{ showRates }}" hint-placeholder-val="{{ true }}">
       <div class="ao-individual-pricing">
-      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin-bottom:14px">
-        <h3 style="margin:0;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:24px;font-weight:700"><span style="display:{{ zi }}">英文课程 English</span><span style="display:{{ ei }}">English tuition</span></h3>
-        <p style="margin:0;font-size:14px;color:#6B615C"><span style="display:{{ zi }}">每周最少 1.5 小时</span><span style="display:{{ ei }}">Minimum 1.5 hours per week</span></p>
-      </div>
-      <div class="ao-table-scroll ao-desktop-rates" tabindex="0" role="region" aria-label="Tuition rates" style="overflow-x:auto;border:1px solid #E3DAD0;border-radius:12px;background:#FFFCF7">
-        <div style="min-width:700px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:1px;background:#E3DAD0">
-          <div style="background:#F3EBE1;padding:16px 18px 10px"></div>
-          <div style="background:#F3EBE1;padding:16px 18px 10px;grid-column:span 2;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">整期预订 时薪</span><span style="display:{{ ei }}">Term block, hourly</span></div>
-          <div style="background:#F3EBE1;padding:16px 18px 10px;grid-column:span 2;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">单独预订 时薪</span><span style="display:{{ ei }}">Individual, hourly</span></div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">导师</span><span style="display:{{ ei }}">Tutor</span></div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 6–10</div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 11–12</div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 6–10</div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 11–12</div>
-          <sc-for list="{{ englishRates }}" as="r" hint-placeholder-count="4">
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;font-weight:600">{{ r.label }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.a }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.b }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.c }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.d }}</div>
-          </sc-for>
-        </div>
-      </div>
-      <div class="ao-mobile-rates">
-        <sc-for list="{{ englishRates }}" as="r">
-          <details class="ao-rate">
-            <summary>{{ r.label }}<span class="ao-rate-hint"><span style="display:{{ zi }}">查看时薪</span><span style="display:{{ ei }}">Hourly rates</span></span></summary>
-            <div class="ao-rate-years">
-              <div><h4>Year 6–10</h4><p>{{ termRateLabel }} <strong>{{ r.a }}</strong></p><p>{{ individualRateLabel }} <strong>{{ r.c }}</strong></p></div>
-              <div><h4>Year 11–12</h4><p>{{ termRateLabel }} <strong>{{ r.b }}</strong></p><p>{{ individualRateLabel }} <strong>{{ r.d }}</strong></p></div>
-            </div>
-          </details>
-        </sc-for>
-      </div>
-
-      <div class="ao-maths-pricing">
-        
-      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin:40px 0 14px">
-        <h3 style="margin:0;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:24px;font-weight:700"><span style="display:{{ zi }}">数学课程 Mathematics</span><span style="display:{{ ei }}">Mathematics tuition</span></h3>
-        <p style="margin:0;font-size:14px;color:#6B615C"><span style="display:{{ zi }}">每周最少 1.5 小时</span><span style="display:{{ ei }}">Minimum 1.5 hours per week</span></p>
-      </div>
-      <div class="ao-table-scroll ao-desktop-rates" tabindex="0" role="region" aria-label="Tuition rates" style="overflow-x:auto;border:1px solid #E3DAD0;border-radius:12px;background:#FFFCF7">
-        <div style="min-width:700px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:1px;background:#E3DAD0">
-          <div style="background:#F3EBE1;padding:16px 18px 10px"></div>
-          <div style="background:#F3EBE1;padding:16px 18px 10px;grid-column:span 2;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">整期预订 时薪</span><span style="display:{{ ei }}">Term block, hourly</span></div>
-          <div style="background:#F3EBE1;padding:16px 18px 10px;grid-column:span 2;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">单独预订 时薪</span><span style="display:{{ ei }}">Individual, hourly</span></div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">导师</span><span style="display:{{ ei }}">Tutor</span></div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 6–10</div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 11–12</div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 6–10</div>
-          <div style="background:#F3EBE1;padding:0 18px 14px;font-size:13px;color:#6B615C">Year 11–12</div>
-          <sc-for list="{{ mathsRates }}" as="r" hint-placeholder-count="4">
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;font-weight:600">{{ r.label }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.a }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.b }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.c }}</div>
-            <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.d }}</div>
-          </sc-for>
-        </div>
-      </div>
-      <div class="ao-mobile-rates">
-        <sc-for list="{{ mathsRates }}" as="r">
-          <details class="ao-rate">
-            <summary>{{ r.label }}<span class="ao-rate-hint"><span style="display:{{ zi }}">查看时薪</span><span style="display:{{ ei }}">Hourly rates</span></span></summary>
-            <div class="ao-rate-years">
-              <div><h4>Year 6–10</h4><p>{{ termRateLabel }} <strong>{{ r.a }}</strong></p><p>{{ individualRateLabel }} <strong>{{ r.c }}</strong></p></div>
-              <div><h4>Year 11–12</h4><p>{{ termRateLabel }} <strong>{{ r.b }}</strong></p><p>{{ individualRateLabel }} <strong>{{ r.d }}</strong></p></div>
+        <sc-for list="{{ pricingSections }}" as="section" hint-placeholder-count="3">
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin:0 0 14px">
+            <h3 style="margin:0;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:24px;font-weight:700">{{ section.title }}</h3>
+            <p style="margin:0;font-size:14px;color:#6B615C">{{ entireTermLabel }}</p>
+          </div>
+          <div class="ao-table-scroll ao-desktop-rates" tabindex="0" role="region" aria-label="{{ section.ariaLabel }}" style="overflow-x:auto;border:1px solid #E3DAD0;border-radius:12px;background:#FFFCF7;margin-bottom:36px">
+            <div style="min-width:520px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:1px;background:#E3DAD0">
+              <div style="background:#F3EBE1;padding:16px 18px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">导师等级</span><span style="display:{{ ei }}">Tutor tier</span></div>
+              <div style="background:#F3EBE1;padding:16px 18px;font-size:13px;color:#6B615C">Year 7–10</div>
+              <div style="background:#F3EBE1;padding:16px 18px;font-size:13px;color:#6B615C">Year 11–12</div>
+              <sc-for list="{{ section.rows }}" as="r" hint-placeholder-count="3">
+                <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;font-weight:600">{{ r.label }}</div>
+                <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.a }}</div>
+                <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#3B2F2C">{{ r.b }}</div>
+              </sc-for>
             </div>
           </div>
+          <div class="ao-mobile-rates" style="margin-bottom:34px">
+            <sc-for list="{{ section.rows }}" as="r">
+              <details class="ao-rate">
+                <summary>{{ r.label }}<span class="ao-rate-hint"><span style="display:{{ zi }}">查看时薪</span><span style="display:{{ ei }}">Hourly rates</span></span></summary>
+                <div class="ao-rate-years">
+                  <div><h4>Year 7–10</h4><p>{{ termRateLabel }} <strong>{{ r.a }}</strong></p></div>
+                  <div><h4>Year 11–12</h4><p>{{ termRateLabel }} <strong>{{ r.b }}</strong></p></div>
+                </div>
+              </details>
+            </sc-for>
+          </div>
         </sc-for>
-      </div>
-
-      </details>
-
       </div>
       </sc-if>
       <div class="ao-group-pricing">
         <div class="ao-group-price"><img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48">
           <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">小班课 · 英文</span><span style="display:{{ ei }}">Group class · English</span></p>
-          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">{{ groupEnglishPrice }}<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
+          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">{{ groupEnglishPrice }}<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"><span style="display:{{ zi }}"> / 每节 1.5 小时</span><span style="display:{{ ei }}"> per 1.5-hour class</span></span></p>
           <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#D6CCC3"><span style="display:{{ zb }}">Year 6–10，Foundations 与 Enrichment 分流。Year 11–12 暂不开小班。</span><span style="display:{{ eb }}">Years 6–10, in Foundations and Enrichment streams. Not available for Years 11–12.</span></p>
         </div>
         <div class="ao-group-price"><img class="ao-icon" src="/assets/icons/users.svg" alt="" width="48" height="48">
           <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">小班课 · 数学</span><span style="display:{{ ei }}">Group class · Mathematics</span></p>
-          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">{{ groupMathematicsPrice }}<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"> / 1.5<span style="display:{{ zi }}">小时</span><span style="display:{{ ei }}">hrs</span></span></p>
+          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700">{{ groupMathematicsPrice }}<span style="font-family:'Figtree','Noto Sans SC',sans-serif;font-size:15px;font-weight:500;color:#C8BDB5"><span style="display:{{ zi }}"> / 每节 1.5 小时</span><span style="display:{{ ei }}"> per 1.5-hour class</span></span></p>
           <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#D6CCC3"><span style="display:{{ zb }}">Year 6–12 均可报名，按年级与课程等级分班。</span><span style="display:{{ eb }}">Years 6–12, grouped by year and course level.</span></p>
         </div>
       </div>
       </div>
-      <p style="margin:16px 0 0;font-size:13px;line-height:1.7;color:#6B615C"><span style="display:{{ zb }}">Dr Yvonne Smith 的课程仅接受整期预订。请假与退费见 <a href="/credit" onClick="{{ goCredit }}">课时政策</a>。</span><span style="display:{{ eb }}">Dr Yvonne Smith's lessons are available on term block bookings only. Absences and refunds: see the <a href="/credit" onClick="{{ goCredit }}">credit policy</a>.</span></p>
+      <p style="margin:16px 0 0;font-size:13px;line-height:1.7;color:#6B615C"><span style="display:{{ zb }}">所有一对一价格均适用于整学期预订。请假与退费见 <a href="/credit" onClick="{{ goCredit }}">课时政策</a>。</span><span style="display:{{ eb }}">All one-to-one rates apply to entire-term bookings. For absences and refunds, see the <a href="/credit" onClick="{{ goCredit }}">credit policy</a>.</span></p>
     </section>
 
   </main>
@@ -709,29 +676,27 @@
 
   <sc-if value="{{ isTimetable }}">
   <main id="timetable" style="max-width:1180px;margin:0 auto;padding:64px 24px 0">
-    <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">示例课程表 · Term 4 2026（Week 1–10）</span><span style="display:{{ ei }}">Sample timetable · Term 4 2026 (Weeks 1–10)</span></p>
-    <h1 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(30px,4vw,48px);line-height:1.15;font-weight:700"><span style="display:{{ zb }}">本期课程表</span><span style="display:{{ eb }}">This cycle's timetable</span></h1>
-    <p style="margin:0 0 36px;max-width:44em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">每学期（约 10 周）更新一次。每节 1.5 小时：英文 $65、数学 $85。座位按报名顺序分配。</span><span style="display:{{ eb }}">Rebuilt each term (about 10 weeks). Classes run 1.5 hours: $65 English, $85 Mathematics. Seats are allocated in order of enrolment.</span></p>
+    <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">课程表 · Term 4 2026（Week 1–10）</span><span style="display:{{ ei }}">Timetable · Term 4 2026 (Weeks 1–10)</span></p>
+    <h1 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(30px,4vw,48px);line-height:1.15;font-weight:700"><span style="display:{{ zb }}">2026 年 Term 4 课程表</span><span style="display:{{ eb }}">Term 4 2026 class timetable</span></h1>
+    <p style="margin:0 0 36px;max-width:44em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">每学期（约 10 周）更新一次。英文与数学小班每节 1.5 小时，均为 {{ groupEnglishPrice }}。</span><span style="display:{{ eb }}">Rebuilt each term (about 10 weeks). English and Mathematics small-group classes are both {{ groupEnglishPrice }} per 1.5-hour class.</span></p>
     <div class="ao-table-scroll ao-desktop-rates" tabindex="0" role="region" aria-label="Class timetable" style="border:1px solid #E3DAD0;border-radius:12px;overflow-x:auto;background:#FFFCF7">
-      <div style="min-width:760px;display:grid;grid-template-columns:1.1fr 1.4fr 1fr 0.9fr 0.8fr;gap:1px;background:#E3DAD0">
+      <div style="min-width:680px;display:grid;grid-template-columns:1.1fr 1.4fr 1fr 0.9fr;gap:1px;background:#E3DAD0">
         <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">时间</span><span style="display:{{ ei }}">When</span></div>
         <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">科目</span><span style="display:{{ ei }}">Class</span></div>
         <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">年级</span><span style="display:{{ ei }}">Year</span></div>
         <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">导师</span><span style="display:{{ ei }}">Tutor</span></div>
-        <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">座位</span><span style="display:{{ ei }}">Seats</span></div>
         <sc-for list="{{ classes }}" as="c" hint-placeholder-count="8">
           <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;font-weight:600">{{ c.when }}</div>
           <div style="background:#FFFCF7;padding:16px 18px;font-size:15px">{{ c.subject }}</div>
           <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#5C534E">{{ c.year }}</div>
           <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#5C534E">{{ c.tutor }}</div>
-          <div style="background:#FFFCF7;padding:16px 18px;font-size:14px;font-weight:600;color:#9C2A2B">{{ c.seats }}</div>
         </sc-for>
       </div>
     </div>
     <div class="ao-mobile-rates ao-schedule">
-      <sc-for list="{{ classes }}" as="c"><article><h3>{{ c.subject }}</h3><p>{{ c.when }}</p><p>{{ c.year }} · {{ c.tutor }}</p><p class="ao-seats">{{ c.seats }}</p></article></sc-for>
+      <sc-for list="{{ classes }}" as="c"><article><h3>{{ c.subject }}</h3><p>{{ c.when }}</p><p>{{ c.year }} · {{ c.tutor }}</p></article></sc-for>
     </div>
-    <p style="margin:16px 0 0;font-size:13px;color:#6B615C"><span style="display:{{ zb }}">* 示例排课，请替换为本期真实课表。公共假期停课，顺延一周。</span><span style="display:{{ eb }}">* Sample schedule — replace with the live timetable. Classes pause on public holidays and the cycle extends by a week.</span></p>
+    <p style="margin:16px 0 0;font-size:13px;color:#6B615C"><span style="display:{{ zb }}">* 公共假期停课，课程周期顺延一周。</span><span style="display:{{ eb }}">* Classes pause on public holidays and the cycle extends by one week.</span></p>
     <div style="margin:36px 0 0;padding:28px;background:#F3EBE1;border-radius:12px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
       <p style="margin:0;max-width:34em;font-size:16px;line-height:1.65;color:#4A423E"><span style="display:{{ zb }}">想要的时段不在表上？告诉我们孩子的年级与科目，我们会安排新班或一对一时段。</span><span style="display:{{ eb }}">Can't see the slot you need? Tell us the year and subject and we'll look at opening a class or a one-on-one slot.</span></p>
       <a href="mailto:operations@academyone.com.au" style="padding:14px 24px;font-size:15px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">申请开班</span><span style="display:{{ ei }}">Request a class</span></a>
@@ -824,7 +789,7 @@
           <a href="/tutoring/english/" style="color:#4A423E"><span style="display:{{ zi }}">英文辅导</span><span style="display:{{ ei }}">English tutoring</span></a>
           <a href="/hsc-tutoring/" style="color:#4A423E">HSC tutoring</a>
           <a href="/timetable" onClick="{{ goTimetable }}" style="color:#4A423E"><span style="display:{{ zi }}">小班课程表</span><span style="display:{{ ei }}">Small group timetable</span></a>
-          <a href="/pricing" onClick="{{ goHome }}" style="color:#4A423E"><span style="display:{{ zi }}">学费与课时包</span><span style="display:{{ ei }}">Pricing</span></a>
+          <a href="/pricing/" style="color:#4A423E"><span style="display:{{ zi }}">学费与课时包</span><span style="display:{{ ei }}">Pricing</span></a>
         </div>
       </div>
       <div>
@@ -833,7 +798,8 @@
           <a href="/credit" onClick="{{ goCredit }}" style="color:#4A423E"><span style="display:{{ zi }}">课时政策</span><span style="display:{{ ei }}">Credit policy</span></a>
           <a href="/resources/atar-calculator/" style="color:#4A423E"><span style="display:{{ zi }}">ATAR 估算工具</span><span style="display:{{ ei }}">ATAR calculator</span></a>
           <a href="/resources/how-is-atar-calculated/" style="color:#4A423E"><span style="display:{{ zi }}">ATAR 计算方式</span><span style="display:{{ ei }}">How ATAR is calculated</span></a>
-          <a href="/careers" onClick="{{ goCareers }}" style="color:#4A423E"><span style="display:{{ zi }}">加入我们</span><span style="display:{{ ei }}">Careers</span></a>
+          <a href="/careers/" style="color:#4A423E"><span style="display:{{ zi }}">加入我们</span><span style="display:{{ ei }}">Careers</span></a>
+          <a href="/contact/" style="color:#4A423E"><span style="display:{{ zi }}">联系我们</span><span style="display:{{ ei }}">Contact</span></a>
           <a href="https://www.google.com/search?q=Academy+One+Private+Tuition+Chatswood" target="_blank" rel="noopener" style="color:#4A423E">Google Reviews</a>
         </div>
       </div>
@@ -1005,77 +971,76 @@ class Component extends DCLogic {
     const zh = this.lang === 'zh';
     const cap = this.props.groupCap ?? 8;
     const tutorsZh = [
-      { name: 'Kevin', role: '创办人 / 资深导师', tag: '英文 · 商科', qual: 'B.Comm (Dist) · LLB 在读 · UNSW', subjectShort: '英文 7–12 · 经济 · 商科 · 法律', subject: 'English 7–10 · EAL/D · Advanced · Standard · Ext 1 & 2 · Business · Economics · Legal Studies', hook: '创办人。金融从业背景转做教学，主张“聪明地学，而不是拼时间”。', bio: 'Academy One 创办人与总监。UNSW 商学（Distinction）毕业，曾从事组合与基金管理，现为 UNSW 银行与金融学院兼任教师，同时在读法学。2017 年起持续一对一授课，曾为 North Shore Coaching College 编写英文与经济学教材。', result: '学生 ATAR 中位数 98；2025 届一位 Knox 学生 ATAR 99.85，多数学生英文 Advanced 取得 Band 6、Extension 取得 E4。学生来自 North Sydney Boys、Sydney Grammar、Knox Grammar、Abbotsleigh、The Scots College 等学校。' },
-      { name: 'Dr Yvonne', role: '首席导师', tag: '英文', qual: 'MA (Hons), Dip Ed, PhD · USYD', subjectShort: '英文 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · Stage 6 Advanced & Standard · Ext 1 & 2', hook: 'PhD、前英文科主任与 HSC 阅卷官，最懂评分标准要什么。', bio: 'MA (Hons)、Dip Ed、PhD（悉尼大学），博士论文获校级文学奖项。资深中学英文教师、前英文科主任、HSC 阅卷官，文学研究领域出版作者。曾任 Northholm Grammar 校长，退休前任教于 Newington College。', result: '学生常年取得 HSC Band 6，部分学生进入英文 Extension 1 与 Extension 2 全州前十。' },
-      { name: 'Alexander', role: '英文课程主管（仅线上）', tag: '英文', qual: 'ATAR 98.00 · LLB / 传播（新闻） · UTS', subjectShort: '英文 5–10 · Adv · Ext 1 & 2（线上）', subject: 'English 5–10 · HSC Advanced & Standard · Ext 1 & 2', hook: '五科全 Band 6。负责英文课程开发与新导师培训（仅线上授课）。', bio: 'Killarney Heights High School 毕业，ATAR 98.00，五门科目全部 Band 6。UTS 法学与传播（新闻）三年级，Distinction 均分，澳洲联邦政府大使奖学金获得者。六年教学经验，负责英文课程开发与新导师培训。', result: '学生在 HSC 英文与精英中学考试中取得优异成绩；多位学生英文 Advanced 排名提升并保持，Extension 取得高分。' },
-      { name: 'Christina', role: '英文导师', tag: '英文', qual: 'ATAR 99.50 · B.Comm / LLB · USYD', subjectShort: '英文 7–12 · Adv · Ext 1 & 2 · 辩论', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 & 2', hook: 'ATAR 99.50，兼教初中辩论，课后一定给明确的下一步。', bio: 'Barker College 毕业，ATAR 99.50，悉尼大学商学与法学在读。两年英文一对一教学经验，并指导初中辩论。课程完全个人化，每次课后明确下一步。', result: '学生议论文结构与书面表达明显进步，校内评估随之提升；辩论学生在表达清晰度与说服力上进步明显。' },
-      { name: 'Gloria', role: '英文导师', tag: '英文', qual: 'ATAR 98.30 · B.Comm (Finance), LLB · UNSW', subjectShort: '英文 7–12 · 精英中学 · EALD', subject: 'English 7–10 · HSC Advanced & Standard · Selective 考试 · EALD', hook: 'James Ruse 毕业，用理科思维讲清英文分析框架。', bio: 'James Ruse 毕业，ATAR 98.30，英文 Advanced 校排第 3、数学 Advanced 第 11。UNSW 商学（金融）与法学在读。六年一对一、四年小班教学经验，另提供学习方法与升学申请指导。', result: '用清晰的分析框架让理科思维的学生也能拿下英文；写作质量与考场信心同步提升。' },
-      { name: 'Audrey', role: '英文导师', tag: '英文', qual: 'ATAR 99.00 · PPE (Dalyell) · USYD', subjectShort: '英文 7–12 · Adv · Ext 1', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1', hook: 'ATAR 99，三科校排第一，擅长循序渐进地带学生独立。', bio: 'Cheltenham Girls 毕业，ATAR 99.00，法律研究、古代史、英文 Extension 1 均校排第一。悉尼大学 PPE（Dalyell 荣誉学者）在读。三年教学经验，也有带注意力较弱或需额外支持学生的经验。采用 Gradual Release 教学法。', result: '课程按学生的节奏与目标定制，先建立概念理解，再走向独立解题。' },
-      { name: 'Raina', role: '英文导师', tag: '英文', qual: 'ATAR 97.00 · B.Comm (Finance) · USYD', subjectShort: '英文 7–12 · Ext 1 · EALD · Edutest', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · EALD · Edutest（转学精英中学）', hook: '四年 ESL 与精英中学考试经验，从基础重建阅读与写作。', bio: 'North Sydney Girls 毕业，ATAR 97.00，悉尼大学商学（金融）与高级研究（市场营销）在读。四年英文教学经验，含 ESL 学生与精英中学入学考试准备。逐条讲解批注，帮助学生学会自我修改。', result: '一位 10 年级学生一学期内英文由 C 提升到 A；一位 6 年级学生经八周训练后获 Knox Grammar 录取。' },
-      { name: 'Joshua', role: '英文导师', tag: '英文', qual: 'Ext 1 49/50 · Ext 2 48/50 · UNSW', subjectShort: '英文 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · Ext 2', hook: 'Ext 1 49/50、Ext 2 48/50，专攻议论文结构与临场应变。', bio: 'Fort Street 精英中学毕业，英文 Advanced 93/100、Extension 1 49/50、Extension 2 48/50。UNSW 商学与文学（语言学）在读。专注一对一教学，把方法论与议论文结构讲清楚，同时营造敢提问的课堂氛围。', result: '一位学生三个学期内英文均分由 40% 提升到 90%，并保持独立写作能力。' },
-      { name: 'Lily', role: '英文导师', tag: '英文', qual: 'ATAR 99.20 · LLB / BSc · USYD', subjectShort: '英文 7–12 · EALD · Ext 1', subject: 'English 7–12 · EALD · Advanced · Ext 1', hook: '苏格拉底式提问，先把想法说清楚，再写清楚。', bio: 'Loreto Kirribilli 毕业，ATAR 99.20，悉尼大学法学与理学在读。偏好苏格拉底式教学，用开放式提问带学生进入学术对话。', result: '让学生学会把复杂想法说清楚，从而提升批判性思维与书面表达。' },
-      { name: 'Fiona', role: '英文导师', tag: '英文', qual: 'ATAR 97.20 · B.Comm / B.Eng · UNSW', subjectShort: '英文 7–10 · Adv · Ext 1', subject: 'English 7–10 · EALD · Standard · Advanced · Ext 1', hook: '课程完全个人化，每次课后都给明确的下一步。', bio: 'North Sydney Girls 毕业，ATAR 97.20，UNSW 商学与工程在读。课程完全个人化，持续跟进反馈，每次课后都给出明确的下一步。', result: '学生议论文结构、文本分析与书面表达明显进步，校内评估与考试成绩随之提升。' },
-      { name: 'Chantry', role: '数学导师', tag: '数学', qual: 'NESA 注册中学数学教师', subjectShort: '数学 Standard · Adv · Ext 1 & 2', subject: 'HSC Mathematics: Standard · Advanced · Ext 1 · Ext 2', hook: 'NESA 注册在职中学数学教师，熟悉校内评估节奏。', bio: 'NESA 注册中学数学教师，持 Child Protection 与 Anaphylaxis 认证，五年以上 Extension 1 / 2 教学经验。2022 年起任教于 Mary MacKillop Catholic College（Wakeley）7–12 年级数学，此前任教于 Southern Cross Catholic College（Burwood）。', result: '2025 年其 Advanced 学生数学成绩中位数 91（Band 6）；代数、函数与微积分技巧稳步扎实。' },
-      { name: 'Anthony', role: '数学导师', tag: '数学', qual: 'BSc (Hons I), PhD · USYD', subjectShort: '数学 7–12 · Ext 1 & 2 · AP / SAT', subject: 'Maths 7–10 · HSC Standard · Advanced · Ext 1 · Ext 2 · AP / SAT（可安排）', hook: '大学数学讲师，把每道难题拆成可执行的步骤。', bio: '悉尼大学应用数学一等荣誉学士与博士。2016 年起在悉大担任本科数学助教，2024 年获理学院教学嘉奖，2025 年成为 Advance HE 认证 Associate Fellow。带过 7–12 年级每周课程（含 Ext 1 / Ext 2），合著讲义与 HSC 解析，另教授 AP 与 SAT。', result: '学生评教高达 4.94 / 5（基准 4.5）；学生在限时条件下的解题与微积分技巧明显提升。' },
-      { name: 'Jerry', role: '数学导师', tag: '数学 · 国际课程', qual: 'B.Maths · UC San Diego / M.CompSci · USYD', subjectShort: '数学 10–12 · IB · A Level · AP', subject: 'Maths 10–12: Standard · Advanced · Ext 1 · Ext 2 · IB Mathematics · A Level · AP', hook: '国际课程与澳洲课程通吃，先诊断知识结构再定计划。', bio: '加州大学圣地亚哥分校数学学士，悉尼大学计算机科学硕士在读，高考成绩位列全国前 0.5%。三年以上美国大学数学教学经验，两年国际课程（A Level、AP、IB）与一年澳洲高年级数学教学。', result: '指导 20 名以上学生在 A Level、AP 与 IB 数学中取得 High Distinction。' },
-      { name: 'Christopher', role: '数理导师', tag: '数学 · 理科', qual: 'ATAR 98.55 · 精算 / 商学 · UNSW', subjectShort: '数学 7–12 · 物理 · 化学', subject: 'Maths 7–12: Advanced · Ext 1 · Ext 2 · Physics · Chemistry', hook: 'Ext 2 校排第 1、物理校排第 1，讲义与测验全部按大纲定制。', bio: 'Ryde Secondary College 毕业，ATAR 98.55：数学 Ext 2 校排第 1、Ext 1 第 2、物理第 1、化学第 4，Dux 候选。UNSW 精算与商学在读。两年一对一教学经验，按大纲为每位学生定制讲义、测验与作业。', result: '一位 Extension 2 学生校排由 19 名升至 5 名；另一位测验成绩由 65% 提升到 83%；多数 Advanced 学生校内评估达 90%。' },
-      { name: 'Daniel', role: '数学导师', tag: '数学', qual: 'ATAR 98.30 · 电气工程 / 计算机 · UNSW', subjectShort: '数学 10–12 · Adv · Ext 1 & 2', subject: 'Maths 10–12: Advanced · Ext 1 · Ext 2', hook: '数学 Ext 1 / Ext 2、物理、化学全 Band 6，把难点拆成清晰步骤。', bio: 'Ryde Secondary College 毕业，ATAR 98.30，数学 Extension 1、Extension 2、物理、化学均取得 Band 6。UNSW 电气工程与计算机科学在读。两年一对一教学经验，把复杂概念拆成清晰步骤，并教考试策略与学习习惯。', result: '学生通常在一学期后成绩稳步提升；一位 Knox 十年级学生经三周针对性训练后校内考试取得满分。' },
-      { name: 'Ethan', role: '数学导师', tag: '数学', qual: 'ATAR 95.05 · 电气工程 · UNSW', subjectShort: '数学 7–10 · HSC Adv · Ext 1 & 2', subject: 'Maths 7–10 · HSC Advanced · Ext 1 · Ext 2', hook: '按校内评估拆解评分标准，训练限时作答策略。', bio: 'The Scots College 毕业，ATAR 95.05，数学 Advanced、Extension 1、Extension 2 均取得 Band 6。UNSW 电气工程在读。两年一对一教学经验，按学校评估进度定制讲义与每周练习，并通过拆解评分标准与限时训练备考。', result: 'Pymble Ladies’ College 一个九年级小组经一学期辅导后，由平均 C 提升到年级前 5。' },
-      { name: 'Andrey', role: '数理导师', tag: '数理 · IB', qual: 'ATAR 等效 99.75 · Dux · UNSW', subjectShort: '数学 7–10 · HSC 物理 · IB', subject: 'Maths 7–10 · HSC Physics · IB Maths / Physics / Chemistry / Business', hook: '中学毕业生代表，同时覆盖 HSC 与 IB 数理科目。', bio: 'Westbourne College Sydney 毕业生代表（Dux），ATAR 等效 99.75。UNSW 商学（金融）与精算在读。先诊断知识缺口，再用“讲解—挑战—主动回忆—真题训练”的结构推进。', result: '曾在两周结构化辅导后，带学生取得大学科目 90 分（HD）。' },
+{ name: 'Kevin Zhang', role: '创办人 / 资深导师', tag: '英文 · 商科', qual: 'B.Comm (Dist) · LLB 在读 · UNSW', subjectShort: '英文 7–12 · 经济 · 商科 · 法律', subject: 'English 7–10 · EAL/D · Advanced · Standard · Ext 1 & 2 · Business · Economics · Legal Studies', hook: '创办人。金融从业背景转做教学，主张“聪明地学，而不是拼时间”。', bio: 'Academy One 创办人与总监。UNSW 商学（Distinction）毕业，曾从事组合与基金管理，现为 UNSW 银行与金融学院兼任教师，同时在读法学。2017 年起持续一对一授课，曾为 North Shore Coaching College 编写英文与经济学教材。', result: '学生 ATAR 中位数 98；2025 届一位 Knox 学生 ATAR 99.85，多数学生英文 Advanced 取得 Band 6、Extension 取得 E4。学生来自 North Sydney Boys、Sydney Grammar、Knox Grammar、Abbotsleigh、The Scots College 等学校。' },
+      { name: 'Dr Yvonne Smith', role: '首席 / 认证英文导师', tag: '英文', qual: 'MA (Hons), Dip Ed, PhD · USYD', subjectShort: '英文 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · Stage 6 Advanced & Standard · Ext 1 & 2', hook: 'PhD、前英文科主任与 HSC 阅卷官，最懂评分标准要什么。', bio: 'MA (Hons)、Dip Ed、PhD（悉尼大学），博士论文获校级文学奖项。资深中学英文教师、前英文科主任、HSC 阅卷官，文学研究领域出版作者。曾任 Northholm Grammar 校长，退休前任教于 Newington College。', result: '学生常年取得 HSC Band 6，部分学生进入英文 Extension 1 与 Extension 2 全州前十。' },
+{ name: 'Alexander Socratous', role: '学科导师（仅线上）', tag: '英文', qual: 'ATAR 98.00 · LLB / 传播（新闻） · UTS', subjectShort: '英文 5–10 · Adv · Ext 1 & 2（线上）', subject: 'English 5–10 · HSC Advanced & Standard · Ext 1 & 2', hook: '五科全 Band 6。负责英文课程开发与新导师培训（仅线上授课）。', bio: 'Killarney Heights High School 毕业，ATAR 98.00，五门科目全部 Band 6。UTS 法学与传播（新闻）三年级，Distinction 均分，澳洲联邦政府大使奖学金获得者。六年教学经验，负责英文课程开发与新导师培训。', result: '学生在 HSC 英文与精英中学考试中取得优异成绩；多位学生英文 Advanced 排名提升并保持，Extension 取得高分。' },
+      { name: 'Christina Kong', role: '学科导师', tag: '英文', qual: 'ATAR 99.50 · B.Comm / LLB · USYD', subjectShort: '英文 7–12 · Adv · Ext 1 & 2 · 辩论', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 & 2', hook: 'ATAR 99.50，兼教初中辩论，课后一定给明确的下一步。', bio: 'Barker College 毕业，ATAR 99.50，悉尼大学商学与法学在读。两年英文一对一教学经验，并指导初中辩论。课程完全个人化，每次课后明确下一步。', result: '学生议论文结构与书面表达明显进步，校内评估随之提升；辩论学生在表达清晰度与说服力上进步明显。' },
+      { name: 'Gloria Chan', role: '学科导师', tag: '英文', qual: 'ATAR 98.30 · B.Comm (Finance), LLB · UNSW', subjectShort: '英文 7–12 · 精英中学 · EAL/D', subject: 'English 7–10 · HSC Advanced & Standard · Selective 考试 · EAL/D', hook: 'James Ruse 毕业，用理科思维讲清英文分析框架。', bio: 'James Ruse 毕业，ATAR 98.30，英文 Advanced 校排第 3、数学 Advanced 第 11。UNSW 商学（金融）与法学在读。六年一对一、四年小班教学经验，另提供学习方法与升学申请指导。', result: '用清晰的分析框架让理科思维的学生也能拿下英文；写作质量与考场信心同步提升。' },
+      { name: 'Audrey Ng', role: '学科导师', tag: '英文', qual: 'ATAR 99.00 · PPE (Dalyell) · USYD', subjectShort: '英文 7–12 · Adv · Ext 1', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1', hook: 'ATAR 99，三科校排第一，擅长循序渐进地带学生独立。', bio: 'Cheltenham Girls 毕业，ATAR 99.00，法律研究、古代史、英文 Extension 1 均校排第一。悉尼大学 PPE（Dalyell 荣誉学者）在读。三年教学经验，也有带注意力较弱或需额外支持学生的经验。采用 Gradual Release 教学法。', result: '课程按学生的节奏与目标定制，先建立概念理解，再走向独立解题。' },
+      { name: 'Raina Qian', role: '学科导师', tag: '英文', qual: 'ATAR 97.00 · B.Comm (Finance) · USYD', subjectShort: '英文 7–12 · Ext 1 · EAL/D · Edutest', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · EAL/D · Edutest（转学精英中学）', hook: '四年 ESL 与精英中学考试经验，从基础重建阅读与写作。', bio: 'North Sydney Girls 毕业，ATAR 97.00，悉尼大学商学（金融）与高级研究（市场营销）在读。四年英文教学经验，含 ESL 学生与精英中学入学考试准备。逐条讲解批注，帮助学生学会自我修改。', result: '一位 10 年级学生一学期内英文由 C 提升到 A；一位 6 年级学生经八周训练后获 Knox Grammar 录取。' },
+      { name: 'Joshua Tong', role: '学科导师', tag: '英文', qual: 'Ext 1 49/50 · Ext 2 48/50 · UNSW', subjectShort: '英文 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · Ext 2', hook: 'Ext 1 49/50、Ext 2 48/50，专攻议论文结构与临场应变。', bio: 'Fort Street 精英中学毕业，英文 Advanced 93/100、Extension 1 49/50、Extension 2 48/50。UNSW 商学与文学（语言学）在读。专注一对一教学，把方法论与议论文结构讲清楚，同时营造敢提问的课堂氛围。', result: '一位学生三个学期内英文均分由 40% 提升到 90%，并保持独立写作能力。' },
+      { name: 'Lily', role: '学科导师', tag: '英文', qual: 'ATAR 99.20 · LLB / BSc · USYD', subjectShort: '英文 7–12 · EAL/D · Ext 1', subject: 'English 7–12 · EAL/D · Advanced · Ext 1', hook: '苏格拉底式提问，先把想法说清楚，再写清楚。', bio: 'Loreto Kirribilli 毕业，ATAR 99.20，悉尼大学法学与理学在读。偏好苏格拉底式教学，用开放式提问带学生进入学术对话。', result: '让学生学会把复杂想法说清楚，从而提升批判性思维与书面表达。' },
+      { name: 'Fiona', role: '学科导师', tag: '英文', qual: 'ATAR 97.20 · B.Comm / B.Eng · UNSW', subjectShort: '英文 7–10 · Adv · Ext 1', subject: 'English 7–10 · EAL/D · Standard · Advanced · Ext 1', hook: '课程完全个人化，每次课后都给明确的下一步。', bio: 'North Sydney Girls 毕业，ATAR 97.20，UNSW 商学与工程在读。课程完全个人化，持续跟进反馈，每次课后都给出明确的下一步。', result: '学生议论文结构、文本分析与书面表达明显进步，校内评估与考试成绩随之提升。' },
+      { name: 'Chantry Khem', role: '认证数学导师', tag: '数学', qual: 'NESA 注册中学数学教师', subjectShort: '数学 Standard · Adv · Ext 1 & 2', subject: 'HSC Mathematics: Standard · Advanced · Ext 1 · Ext 2', hook: 'NESA 注册在职中学数学教师，熟悉校内评估节奏。', bio: 'NESA 注册中学数学教师，持 Child Protection 与 Anaphylaxis 认证，五年以上 Extension 1 / 2 教学经验。2022 年起任教于 Mary MacKillop Catholic College（Wakeley）7–12 年级数学，此前任教于 Southern Cross Catholic College（Burwood）。', result: '2025 年其 Advanced 学生数学成绩中位数 91（Band 6）；代数、函数与微积分技巧稳步扎实。' },
+      { name: 'Anthony Cheung', role: '资深数学导师', tag: '数学', qual: 'BSc (Hons I), PhD · USYD', subjectShort: '数学 7–12 · Ext 1 & 2 · AP / SAT', subject: 'Maths 7–10 · HSC Standard · Advanced · Ext 1 · Ext 2 · AP / SAT（可安排）', hook: '大学数学讲师，把每道难题拆成可执行的步骤。', bio: '悉尼大学应用数学一等荣誉学士与博士。2016 年起在悉大担任本科数学助教，2024 年获理学院教学嘉奖，2025 年成为 Advance HE 认证 Associate Fellow。带过 7–12 年级每周课程（含 Ext 1 / Ext 2），合著讲义与 HSC 解析，另教授 AP 与 SAT。', result: '学生评教高达 4.94 / 5（基准 4.5）；学生在限时条件下的解题与微积分技巧明显提升。' },
+      { name: 'Jerry Wang', role: '学科数学导师', tag: '数学 · 国际课程', qual: 'B.Maths · UC San Diego / M.CompSci · USYD', subjectShort: '数学 10–12 · IB · A Level · AP', subject: 'Maths 10–12: Standard · Advanced · Ext 1 · Ext 2 · IB Mathematics · A Level · AP', hook: '国际课程与澳洲课程通吃，先诊断知识结构再定计划。', bio: '加州大学圣地亚哥分校数学学士，悉尼大学计算机科学硕士在读，高考成绩位列全国前 0.5%。三年以上美国大学数学教学经验，两年国际课程（A Level、AP、IB）与一年澳洲高年级数学教学。', result: '曾辅导 20 名以上 A Level、AP 与 IB 数学学生。' },
+      { name: 'Christopher Du', role: '学科数理导师', tag: '数学 · 理科', qual: 'ATAR 98.55 · 年级 201 人中第 4 · UNSW', subjectShort: '数学 7–12 · 物理 · 化学', subject: 'Maths 7–12: Advanced · Ext 1 · Ext 2 · Physics · Chemistry', hook: 'Ext 2 校排第 1、物理校排第 1，讲义与测验全部按大纲定制。', bio: 'Ryde Secondary College 毕业，ATAR 98.55：数学 Ext 2 校排第 1、Ext 1 第 2、物理第 1、化学第 4，年级 201 人中排名第 4，并获 Academic Excellence Award。UNSW 精算与商学在读。两年一对一教学经验，按大纲为每位学生定制讲义、测验与作业。', result: '一位 Extension 2 学生校排由 19 名升至 5 名；另一位测验成绩由 65% 提升到 83%；多数 Advanced 学生校内评估达 90%。' },
+      { name: 'Daniel Li', role: '学科数学导师', tag: '数学', qual: 'ATAR 98.30 · 电气工程 / 计算机 · UNSW', subjectShort: '数学 10–12 · Adv · Ext 1 & 2', subject: 'Maths 10–12: Advanced · Ext 1 · Ext 2', hook: '数学 Ext 1 / Ext 2 取得 E4，物理、化学取得 Band 6；把难点拆成清晰步骤。', bio: 'Ryde Secondary College 毕业，ATAR 98.30，数学 Extension 1、Extension 2 取得 E4，物理、化学取得 Band 6。UNSW 电气工程与计算机科学在读。两年一对一教学经验，把复杂概念拆成清晰步骤，并教考试策略与学习习惯。', result: '学生通常在一学期后成绩稳步提升；一位 Knox 十年级学生经三周针对性训练后校内考试取得满分。' },
+      { name: 'Ethan Lin', role: '学科数学导师', tag: '数学', qual: 'ATAR 95.05 · 电气工程 · UNSW', subjectShort: '数学 7–10 · HSC Adv · Ext 1 & 2', subject: 'Maths 7–10 · HSC Advanced · Ext 1 · Ext 2', hook: '按校内评估拆解评分标准，训练限时作答策略。', bio: 'The Scots College 毕业，ATAR 95.05，数学 Advanced 取得 Band 6，Extension 1、Extension 2 取得 E4。UNSW 电气工程在读。两年一对一教学经验，按学校评估进度定制讲义与每周练习，并通过拆解评分标准与限时训练备考。', result: 'Pymble Ladies’ College 一个九年级小组经一学期辅导后，由平均 C 提升到年级前 5。' },
+      { name: 'Andrey', role: '学科数理导师', tag: '数理 · IB', qual: 'ATAR 等效 99.75 · Dux · UNSW', subjectShort: '数学 7–10 · HSC 物理 · IB 商科', subject: 'Maths 7–10 · HSC Physics · IB Maths / Physics / Chemistry / Business', hook: '中学毕业生代表，同时覆盖 HSC 与 IB 数理科目。', bio: 'Westbourne College Sydney 毕业生代表（Dux），ATAR 等效 99.75。UNSW 商学（金融）与精算在读。先诊断知识缺口，再用“讲解—挑战—主动回忆—真题训练”的结构推进。', result: '曾在两周结构化辅导后，带学生取得大学科目 90 分（HD）。' },
     ];
     const tutorsEn = [
-      { name: 'Kevin', role: 'Founder / Senior Tutor', tag: 'English · Business', qual: 'B.Comm (Dist) · LLB in progress · UNSW', subjectShort: 'English 7–12 · Economics · Legal', subject: 'English 7–10 · EAL/D · Advanced · Standard · Ext 1 & 2 · Business · Economics · Legal Studies', hook: 'Founder. Came from fund management to teaching, on a “work smart, not hard” philosophy.', bio: "Director and founder of Academy One. B.Comm (Distinction) from UNSW; worked in portfolio and fund management before returning to teach as a Sessional Academic at UNSW's School of Banking and Finance, while studying law. Tutoring privately since 2017, and designed English and economics materials for North Shore Coaching College.", result: 'Students have a median ATAR of 98. In 2025 a Knox student achieved 99.85, with most others taking Band 6 in English Advanced and E4 in Extension. Students come from North Sydney Boys, Sydney Grammar, Knox Grammar, Abbotsleigh and The Scots College.' },
-      { name: 'Dr Yvonne', role: 'Principal Tutor', tag: 'English', qual: 'MA (Hons), Dip Ed, PhD · USYD', subjectShort: 'English 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · Stage 6 Advanced & Standard · Ext 1 & 2', hook: 'PhD, former Head of English and HSC marker — she knows what the marking criteria reward.', bio: 'MA (Hons), Dip Ed, PhD (University of Sydney), awarded a university prize for her doctoral thesis in literature. Qualified secondary English teacher, former Head Teacher of English, HSC marker and published author in literary studies. Former principal of Northholm Grammar, most recently at Newington College.', result: "Students regularly achieve Band 6 in the HSC, with some ranking in the state's top 10 in English Extension 1 and 2." },
-      { name: 'Alexander', role: 'English Curriculum Lead (online only)', tag: 'English', qual: 'ATAR 98.00 · LLB / Communications · UTS', subjectShort: 'English 5–10 · Adv · Ext 1 & 2 (online)', subject: 'English 5–10 · HSC Advanced & Standard · Ext 1 & 2', hook: 'Band 6 in all five subjects. Leads curriculum development and tutor training (online only).', bio: 'Killarney Heights High School graduate, ATAR 98.00 with Band 6 in all five subjects. Third year of Law and Communications (Journalism) at UTS on a Distinction average, and holder of an Australian Federal Government ambassador scholarship. Six years of teaching; leads English curriculum development and mentors tutors.', result: 'Students have achieved top results in HSC English and selective school exams, lifting and holding English Advanced rankings and scoring highly in Extension.' },
-      { name: 'Christina', role: 'English Tutor', tag: 'English', qual: 'ATAR 99.50 · B.Comm / LLB · USYD', subjectShort: 'English 7–12 · Adv · Ext 1 & 2 · Debating', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 & 2', hook: 'ATAR 99.50, also coaches junior debating; every lesson ends with a clear next step.', bio: 'Barker College graduate, ATAR 99.50, studying Commerce and Law at the University of Sydney. Two years of private English tutoring, including debating for junior students. Personalised lessons with clear next steps after every session.', result: 'Students improve essay structure and written expression, which shows in school assessments; debating students gain clarity and persuasiveness.' },
-      { name: 'Gloria', role: 'English Tutor', tag: 'English', qual: 'ATAR 98.30 · B.Comm (Finance), LLB · UNSW', subjectShort: 'English 7–12 · Selective · EALD', subject: 'English 7–10 · HSC Advanced & Standard · Selective test prep · EALD', hook: 'James Ruse graduate who makes English analysis click for quantitative thinkers.', bio: 'James Ruse graduate, ATAR 98.30, ranked 3rd in English Advanced and 11th in Maths Advanced. B.Comm (Finance) / LLB at UNSW. Six years of private tutoring and four years of group teaching, plus study-skills and application guidance.', result: 'Clear analytical frameworks make English approachable for quantitatively oriented students, with stronger writing and exam confidence.' },
-      { name: 'Audrey', role: 'English Tutor', tag: 'English', qual: 'ATAR 99.00 · PPE (Dalyell) · USYD', subjectShort: 'English 7–12 · Adv · Ext 1', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1', hook: 'ATAR 99 and ranked 1st in three subjects; teaches for independence, step by step.', bio: 'Cheltenham Girls graduate, ATAR 99.00, ranked 1st in Legal Studies, Ancient History and English Extension 1. PPE at the University of Sydney in the Dalyell Scholars stream. Three years of tutoring, including students with shorter attention spans. Teaches on the Gradual Release model.', result: 'Lessons are tailored to pace and goals, building conceptual understanding for confident independent work.' },
-      { name: 'Raina', role: 'English Tutor', tag: 'English', qual: 'ATAR 97.00 · B.Comm (Finance) · USYD', subjectShort: 'English 7–12 · Ext 1 · EALD · Edutest', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · EALD · Edutest for selective transfers', hook: 'Four years of ESL and selective-exam coaching, rebuilding reading and writing from the base.', bio: 'North Sydney Girls graduate, ATAR 97.00, studying B.Comm (Finance) and Advanced Studies (Marketing) at the University of Sydney. Four years of English tutoring, including ESL students and selective school entry, with detailed feedback so students learn to edit their own work.', result: 'A Year 10 student lifted English from a C to an A in one term; a Year 6 student received a Knox Grammar offer after an eight-week program.' },
-      { name: 'Joshua', role: 'English Tutor', tag: 'English', qual: 'Ext 1 49/50 · Ext 2 48/50 · UNSW', subjectShort: 'English 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · Ext 2', hook: '49/50 in Ext 1 and 48/50 in Ext 2; specialises in essay structure and unseen questions.', bio: 'Fort Street Selective graduate: 93/100 English Advanced, 49/50 Extension 1, 48/50 Extension 2. B.Comm / B.Arts (Linguistics) at UNSW. Teaches essay construction and how to adapt to questions in exam conditions, in a room where students are free to ask anything.', result: 'One student improved from a 40% average to a 90% average over three terms while becoming an independent writer.' },
-      { name: 'Lily', role: 'English Tutor', tag: 'English', qual: 'ATAR 99.20 · LLB / BSc · USYD', subjectShort: 'English 7–12 · EALD · Ext 1', subject: 'English 7–12 · EALD · Advanced · Ext 1', hook: 'Socratic questioning — say the idea clearly first, then write it clearly.', bio: 'Loreto Kirribilli graduate, ATAR 99.20, studying Law and Science at the University of Sydney. Teaches by the Socratic method, drawing students into academic conversation through open-ended questions.', result: 'Verbalising complex ideas sharpens both critical thinking and written expression.' },
-      { name: 'Fiona', role: 'English Tutor', tag: 'English', qual: 'ATAR 97.20 · B.Comm / B.Eng · UNSW', subjectShort: 'English 7–10 · Adv · Ext 1', subject: 'English 7–10 · EALD · Standard · Advanced · Ext 1', hook: 'Fully personalised lessons with clear next steps after every session.', bio: 'North Sydney Girls graduate, ATAR 97.20, studying Commerce and Engineering at UNSW. Builds personalised lessons with ongoing feedback and clear next steps after every session.', result: 'Students improve essay structure, analysis and written expression, which shows up in school assessments and exams.' },
-      { name: 'Chantry', role: 'Mathematics Tutor', tag: 'Mathematics', qual: 'NESA-accredited maths teacher', subjectShort: 'Maths Standard · Adv · Ext 1 & 2', subject: 'HSC Mathematics: Standard · Advanced · Ext 1 · Ext 2', hook: 'NESA-accredited classroom maths teacher, in tune with school assessment cycles.', bio: 'NESA-accredited high school mathematics teacher with Child Protection and Anaphylaxis certification and 5+ years of Extension 1 and 2 teaching. Mathematics teacher (Years 7–12) at Mary MacKillop Catholic College, Wakeley since 2022, previously at Southern Cross Catholic College, Burwood.', result: 'Median mathematics score of 91 (Band 6) for his Advanced students in 2025, with steady gains in algebraic technique, functions and calculus.' },
-      { name: 'Anthony', role: 'Mathematics Tutor', tag: 'Mathematics', qual: 'BSc (Hons I), PhD · USYD', subjectShort: 'Maths 7–12 · Ext 1 & 2 · AP / SAT', subject: 'Maths 7–10 · HSC Standard · Advanced · Ext 1 · Ext 2 · AP / SAT (on request)', hook: 'University maths lecturer who breaks every hard question into steps you can execute.', bio: 'BSc (Applied Mathematics, First Class Honours) and PhD, University of Sydney, where he has tutored undergraduate maths since 2016 — Faculty of Science Teacher Commendation (2024) and accredited Advance HE Associate Fellow (2025). Taught weekly Years 7–12 classes including Ext 1 and 2, co-authoring notes and HSC solutions, and taught AP and SAT.', result: 'Student evaluations up to 4.94 / 5 against a 4.5 benchmark, with clear gains in problem solving under time pressure and calculus technique.' },
-      { name: 'Jerry', role: 'Mathematics Tutor', tag: 'Maths · International', qual: 'B.Maths · UC San Diego / M.CompSci · USYD', subjectShort: 'Maths 10–12 · IB · A Level · AP', subject: 'Maths 10–12: Standard · Advanced · Ext 1 · Ext 2 · IB Mathematics · A Level · AP', hook: 'Covers both international and NSW curricula; diagnoses the knowledge structure first.', bio: 'Bachelor of Mathematics, UC San Diego; Master of Computer Science at the University of Sydney; top 0.5% in the Gaokao. Three years tutoring university-level mathematics in the US, two years across A Level, AP and IB, and one year in the NSW senior curriculum.', result: 'Guided more than 20 students to High Distinction outcomes across A Level, AP and IB Mathematics.' },
-      { name: 'Christopher', role: 'Maths & Science Tutor', tag: 'Maths · Science', qual: 'ATAR 98.55 · Actuarial / Commerce · UNSW', subjectShort: 'Maths 7–12 · Physics · Chemistry', subject: 'Maths 7–12: Advanced · Ext 1 · Ext 2 · Physics · Chemistry', hook: 'Rank 1 in Ext 2 and Physics; every note, quiz and homework set is syllabus-built.', bio: 'Ryde Secondary College graduate, ATAR 98.55: Rank 1 in Mathematics Extension 2, Rank 2 in Extension 1, Rank 1 in Physics, Rank 4 in Chemistry, and a Dux candidate. Actuarial Studies and Commerce at UNSW. Two years of one-to-one tutoring with personalised syllabus-aligned notes, quizzes and homework.', result: 'An Extension 2 student improved from Rank 19 to Rank 5; another went from 65% to 83% on a test; most Advanced students achieve 90% on school assessments.' },
-      { name: 'Daniel', role: 'Mathematics Tutor', tag: 'Mathematics', qual: 'ATAR 98.30 · B.Eng (EE) / CompSci · UNSW', subjectShort: 'Maths 10–12 · Adv · Ext 1 & 2', subject: 'Maths 10–12: Advanced · Ext 1 · Ext 2', hook: 'Band 6 in Ext 1, Ext 2, Physics and Chemistry; breaks hard ideas into clear steps.', bio: 'Ryde Secondary College graduate, ATAR 98.30, with Band 6 in Mathematics Extension 1, Extension 2, Physics and Chemistry. Electrical Engineering and Computer Science at UNSW. Two years of one-to-one tutoring: complex ideas in clear steps, plus exam strategy and study routines.', result: 'Students usually show steady improvement after one term; a Year 10 student at Knox achieved full marks in a school exam after three weeks of targeted preparation.' },
-      { name: 'Ethan', role: 'Mathematics Tutor', tag: 'Mathematics', qual: 'ATAR 95.05 · B.Eng (EE) · UNSW', subjectShort: 'Maths 7–10 · HSC Adv · Ext 1 & 2', subject: 'Maths 7–10 · HSC Advanced · Ext 1 · Ext 2', hook: 'Unpacks marking criteria against school assessments and drills timed responses.', bio: 'The Scots College graduate, ATAR 95.05, with Band 6 in Mathematics Advanced, Extension 1 and Extension 2. Electrical Engineering at UNSW. Two years of one-to-one tutoring with personalised notes and weekly practice, unpacking marking criteria and drilling timed responses.', result: "A Year 9 group at Pymble Ladies' College improved from an average grade of C to the top 5 of the cohort after one term." },
-      { name: 'Andrey', role: 'Maths & Science Tutor', tag: 'Maths / Science · IB', qual: 'ATAR eq. 99.75 · Dux · UNSW', subjectShort: 'Maths 7–10 · HSC Physics · IB', subject: 'Maths 7–10 · HSC Physics · IB Maths / Physics / Chemistry / Business', hook: 'School Dux covering both HSC and IB maths and science.', bio: 'Dux of Westbourne College Sydney with an ATAR equivalent of 99.75. Studying Commerce (Finance) and Actuarial Studies at UNSW. Diagnoses knowledge gaps, then teaches through concept, challenge, active recall and past-paper practice.', result: 'Guided a student to a university mark of 90 (HD) after two weeks of structured lessons.' },
+{ name: 'Kevin Zhang', role: 'Founder / Senior Tutor', tag: 'English · Business', qual: 'B.Comm (Dist) · LLB in progress · UNSW', subjectShort: 'English 7–12 · Economics · Business Studies · Legal Studies', subject: 'English 7–10 · EAL/D · Advanced · Standard · Ext 1 & 2 · Business · Economics · Legal Studies', hook: 'Founder. Came from fund management to teaching, on a “work smart, not hard” philosophy.', bio: "Director and founder of Academy One. B.Comm (Distinction) from UNSW; worked in portfolio and fund management before returning to teach as a Sessional Academic at UNSW's School of Banking and Finance, while studying law. Tutoring privately since 2017, and designed English and economics materials for North Shore Coaching College.", result: 'Students have a median ATAR of 98. In 2025 a Knox student achieved 99.85, with most others taking Band 6 in English Advanced and E4 in Extension. Students come from North Sydney Boys, Sydney Grammar, Knox Grammar, Abbotsleigh and The Scots College.' },
+      { name: 'Dr Yvonne Smith', role: 'Principal / Accredited English Tutor', tag: 'English', qual: 'MA (Hons), Dip Ed, PhD · USYD', subjectShort: 'English 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · Stage 6 Advanced & Standard · Ext 1 & 2', hook: 'PhD, former Head of English and HSC marker — she knows what the marking criteria reward.', bio: 'MA (Hons), Dip Ed, PhD (University of Sydney), awarded a university prize for her doctoral thesis in literature. Qualified secondary English teacher, former Head Teacher of English, HSC marker and published author in literary studies. Former principal of Northholm Grammar, most recently at Newington College.', result: "Students regularly achieve Band 6 in the HSC, with some ranking in the state's top 10 in English Extension 1 and 2." },
+      { name: 'Alexander Socratous', role: 'Academic Tutor (online only)', tag: 'English', qual: 'ATAR 98.00 · LLB / Communications · UTS', subjectShort: 'English 5–10 · Adv · Ext 1 & 2 (online)', subject: 'English 5–10 · HSC Advanced & Standard · Ext 1 & 2', hook: 'Band 6 in all five subjects. Leads curriculum development and tutor training (online only).', bio: 'Killarney Heights High School graduate, ATAR 98.00 with Band 6 in all five subjects. Third year of Law and Communications (Journalism) at UTS on a Distinction average, and holder of an Australian Federal Government ambassador scholarship. Six years of teaching; leads English curriculum development and mentors tutors.', result: 'Students have achieved top results in HSC English and selective school exams, lifting and holding English Advanced rankings and scoring highly in Extension.' },
+      { name: 'Christina Kong', role: 'Academic Tutor', tag: 'English', qual: 'ATAR 99.50 · B.Comm / LLB · USYD', subjectShort: 'English 7–12 · Adv · Ext 1 & 2 · Debating', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 & 2', hook: 'ATAR 99.50, also coaches junior debating; every lesson ends with a clear next step.', bio: 'Barker College graduate, ATAR 99.50, studying Commerce and Law at the University of Sydney. Two years of private English tutoring, including debating for junior students. Personalised lessons with clear next steps after every session.', result: 'Students improve essay structure and written expression, which shows in school assessments; debating students gain clarity and persuasiveness.' },
+      { name: 'Gloria Chan', role: 'Academic Tutor', tag: 'English', qual: 'ATAR 98.30 · B.Comm (Finance), LLB · UNSW', subjectShort: 'English 7–12 · Selective · EAL/D', subject: 'English 7–10 · HSC Advanced & Standard · Selective test prep · EAL/D', hook: 'James Ruse graduate who makes English analysis click for quantitative thinkers.', bio: 'James Ruse graduate, ATAR 98.30, ranked 3rd in English Advanced and 11th in Maths Advanced. B.Comm (Finance) / LLB at UNSW. Six years of private tutoring and four years of group teaching, plus study-skills and application guidance.', result: 'Clear analytical frameworks make English approachable for quantitatively oriented students, with stronger writing and exam confidence.' },
+      { name: 'Audrey Ng', role: 'Academic Tutor', tag: 'English', qual: 'ATAR 99.00 · PPE (Dalyell) · USYD', subjectShort: 'English 7–12 · Adv · Ext 1', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1', hook: 'ATAR 99 and ranked 1st in three subjects; teaches for independence, step by step.', bio: 'Cheltenham Girls graduate, ATAR 99.00, ranked 1st in Legal Studies, Ancient History and English Extension 1. PPE at the University of Sydney in the Dalyell Scholars stream. Three years of tutoring, including students with shorter attention spans. Teaches on the Gradual Release model.', result: 'Lessons are tailored to pace and goals, building conceptual understanding for confident independent work.' },
+      { name: 'Raina Qian', role: 'Academic Tutor', tag: 'English', qual: 'ATAR 97.00 · B.Comm (Finance) · USYD', subjectShort: 'English 7–12 · Ext 1 · EAL/D · Edutest', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · EAL/D · Edutest for selective transfers', hook: 'Four years of ESL and selective-exam coaching, rebuilding reading and writing from the base.', bio: 'North Sydney Girls graduate, ATAR 97.00, studying B.Comm (Finance) and Advanced Studies (Marketing) at the University of Sydney. Four years of English tutoring, including ESL students and selective school entry, with detailed feedback so students learn to edit their own work.', result: 'A Year 10 student lifted English from a C to an A in one term; a Year 6 student received a Knox Grammar offer after an eight-week program.' },
+      { name: 'Joshua Tong', role: 'Academic Tutor', tag: 'English', qual: 'Ext 1 49/50 · Ext 2 48/50 · UNSW', subjectShort: 'English 7–12 · Adv · Ext 1 & 2', subject: 'English 7–10 · HSC Advanced & Standard · Ext 1 · Ext 2', hook: '49/50 in Ext 1 and 48/50 in Ext 2; specialises in essay structure and unseen questions.', bio: 'Fort Street Selective graduate: 93/100 English Advanced, 49/50 Extension 1, 48/50 Extension 2. B.Comm / B.Arts (Linguistics) at UNSW. Teaches essay construction and how to adapt to questions in exam conditions, in a room where students are free to ask anything.', result: 'One student improved from a 40% average to a 90% average over three terms while becoming an independent writer.' },
+      { name: 'Lily', role: 'Academic Tutor', tag: 'English', qual: 'ATAR 99.20 · LLB / BSc · USYD', subjectShort: 'English 7–12 · EAL/D · Ext 1', subject: 'English 7–12 · EAL/D · Advanced · Ext 1', hook: 'Socratic questioning — say the idea clearly first, then write it clearly.', bio: 'Loreto Kirribilli graduate, ATAR 99.20, studying Law and Science at the University of Sydney. Teaches by the Socratic method, drawing students into academic conversation through open-ended questions.', result: 'Verbalising complex ideas sharpens both critical thinking and written expression.' },
+      { name: 'Fiona', role: 'Academic Tutor', tag: 'English', qual: 'ATAR 97.20 · B.Comm / B.Eng · UNSW', subjectShort: 'English 7–10 · Adv · Ext 1', subject: 'English 7–10 · EAL/D · Standard · Advanced · Ext 1', hook: 'Fully personalised lessons with clear next steps after every session.', bio: 'North Sydney Girls graduate, ATAR 97.20, studying Commerce and Engineering at UNSW. Builds personalised lessons with ongoing feedback and clear next steps after every session.', result: 'Students improve essay structure, analysis and written expression, which shows up in school assessments and exams.' },
+      { name: 'Chantry Khem', role: 'Accredited Mathematics Tutor', tag: 'Mathematics', qual: 'NESA-accredited maths teacher', subjectShort: 'Maths Standard · Adv · Ext 1 & 2', subject: 'HSC Mathematics: Standard · Advanced · Ext 1 · Ext 2', hook: 'NESA-accredited classroom maths teacher, in tune with school assessment cycles.', bio: 'NESA-accredited high school mathematics teacher with Child Protection and Anaphylaxis certification and 5+ years of Extension 1 and 2 teaching. Mathematics teacher (Years 7–12) at Mary MacKillop Catholic College, Wakeley since 2022, previously at Southern Cross Catholic College, Burwood.', result: 'Median mathematics score of 91 (Band 6) for his Advanced students in 2025, with steady gains in algebraic technique, functions and calculus.' },
+      { name: 'Anthony Cheung', role: 'Senior Mathematics Tutor', tag: 'Mathematics', qual: 'BSc (Hons I), PhD · USYD', subjectShort: 'Maths 7–12 · Ext 1 & 2 · AP / SAT', subject: 'Maths 7–10 · HSC Standard · Advanced · Ext 1 · Ext 2 · AP / SAT (on request)', hook: 'University maths lecturer who breaks every hard question into steps you can execute.', bio: 'BSc (Applied Mathematics, First Class Honours) and PhD, University of Sydney, where he has tutored undergraduate maths since 2016 — Faculty of Science Teacher Commendation (2024) and accredited Advance HE Associate Fellow (2025). Taught weekly Years 7–12 classes including Ext 1 and 2, co-authoring notes and HSC solutions, and taught AP and SAT.', result: 'Student evaluations up to 4.94 / 5 against a 4.5 benchmark, with clear gains in problem solving under time pressure and calculus technique.' },
+      { name: 'Jerry Wang', role: 'Academic Mathematics Tutor', tag: 'Maths · International', qual: 'B.Maths · UC San Diego / M.CompSci · USYD', subjectShort: 'Maths 10–12 · IB · A Level · AP', subject: 'Maths 10–12: Standard · Advanced · Ext 1 · Ext 2 · IB Mathematics · A Level · AP', hook: 'Covers both international and NSW curricula; diagnoses the knowledge structure first.', bio: 'Bachelor of Mathematics, UC San Diego; Master of Computer Science at the University of Sydney; top 0.5% in the Gaokao. Three years tutoring university-level mathematics in the US, two years across A Level, AP and IB, and one year in the NSW senior curriculum.', result: 'Supported more than 20 students across A Level, AP and IB Mathematics.' },
+      { name: 'Christopher Du', role: 'Academic Maths & Science Tutor', tag: 'Maths · Science', qual: 'ATAR 98.55 · 4th of 201 · UNSW', subjectShort: 'Maths 7–12 · Physics · Chemistry', subject: 'Maths 7–12: Advanced · Ext 1 · Ext 2 · Physics · Chemistry', hook: 'Rank 1 in Ext 2 and Physics; every note, quiz and homework set is syllabus-built.', bio: 'Ryde Secondary College graduate, ATAR 98.55: Rank 1 in Mathematics Extension 2, Rank 2 in Extension 1, Rank 1 in Physics, Rank 4 in Chemistry, placed 4th out of 201 overall, and received an Academic Excellence Award. Actuarial Studies and Commerce at UNSW. Two years of one-to-one tutoring with personalised syllabus-aligned notes, quizzes and homework.', result: 'An Extension 2 student improved from Rank 19 to Rank 5; another went from 65% to 83% on a test; most Advanced students achieve 90% on school assessments.' },
+      { name: 'Daniel Li', role: 'Academic Mathematics Tutor', tag: 'Mathematics', qual: 'ATAR 98.30 · B.Eng (EE) / CompSci · UNSW', subjectShort: 'Maths 10–12 · Adv · Ext 1 & 2', subject: 'Maths 10–12: Advanced · Ext 1 · Ext 2', hook: 'E4 in Ext 1 and Ext 2; Band 6 in Physics and Chemistry; breaks hard ideas into clear steps.', bio: 'Ryde Secondary College graduate, ATAR 98.30, with E4 results in Mathematics Extension 1 and Extension 2, plus Band 6 results in Physics and Chemistry. Electrical Engineering and Computer Science at UNSW. Two years of one-to-one tutoring: complex ideas in clear steps, plus exam strategy and study routines.', result: 'Students usually show steady improvement after one term; a Year 10 student at Knox achieved full marks in a school exam after three weeks of targeted preparation.' },
+      { name: 'Ethan Lin', role: 'Academic Mathematics Tutor', tag: 'Mathematics', qual: 'ATAR 95.05 · B.Eng (EE) · UNSW', subjectShort: 'Maths 7–10 · HSC Adv · Ext 1 & 2', subject: 'Maths 7–10 · HSC Advanced · Ext 1 · Ext 2', hook: 'Unpacks marking criteria against school assessments and drills timed responses.', bio: 'The Scots College graduate, ATAR 95.05, with Band 6 in Mathematics Advanced and E4 results in Extension 1 and Extension 2. Electrical Engineering at UNSW. Two years of one-to-one tutoring with personalised notes and weekly practice, unpacking marking criteria and drilling timed responses.', result: "A Year 9 group at Pymble Ladies' College improved from an average grade of C to the top 5 of the cohort after one term." },
+      { name: 'Andrey', role: 'Academic Maths & Science Tutor', tag: 'Maths / Science · IB', qual: 'ATAR eq. 99.75 · Dux · UNSW', subjectShort: 'Maths 7–10 · HSC Physics · IB Business', subject: 'Maths 7–10 · HSC Physics · IB Maths / Physics / Chemistry / Business', hook: 'School Dux covering both HSC and IB maths and science.', bio: 'Dux of Westbourne College Sydney with an ATAR equivalent of 99.75. Studying Commerce (Finance) and Actuarial Studies at UNSW. Diagnoses knowledge gaps, then teaches through concept, challenge, active recall and past-paper practice.', result: 'Guided a student to a university mark of 90 (HD) after two weeks of structured lessons.' },
     ];
     const classesZh = [
-      { when: '周一 16:30–18:00', subject: 'Maths Advanced', year: 'Year 11', tutor: 'Anthony', seats: '剩 2 位' },
-      { when: '周一 18:15–19:45', subject: 'Maths Ext 1', year: 'Year 12', tutor: 'Chantry', seats: '等候名单' },
-      { when: '周二 16:30–18:00', subject: 'English · Enrichment', year: 'Year 9–10', tutor: 'Gloria', seats: '剩 3 位' },
-      { when: '周三 16:30–18:00', subject: 'Maths', year: 'Year 9–10', tutor: 'Chantry', seats: '剩 1 位' },
-      { when: '周四 16:30–18:00', subject: 'English · Foundations', year: 'Year 7–8', tutor: 'Raina', seats: '剩 4 位' },
-      { when: '周六 09:00–10:30', subject: 'English · Enrichment', year: 'Year 7–8', tutor: 'Christina', seats: '剩 2 位' },
-      { when: '周六 10:45–12:15', subject: 'English · Foundations', year: 'Year 9–10', tutor: 'Audrey', seats: '剩 5 位' },
-      { when: '周日 10:00–11:30', subject: 'Maths Advanced', year: 'Year 12', tutor: 'Anthony', seats: '剩 3 位' }
+      { when: '周一 16:30–18:00', subject: 'Maths Advanced', year: 'Year 11', tutor: 'Anthony Cheung' },
+      { when: '周一 18:15–19:45', subject: 'Maths Ext 1', year: 'Year 12', tutor: 'Chantry Khem' },
+      { when: '周二 16:30–18:00', subject: 'English · Enrichment', year: 'Year 9–10', tutor: 'Gloria Chan' },
+      { when: '周三 16:30–18:00', subject: 'Maths', year: 'Year 9–10', tutor: 'Chantry Khem' },
+      { when: '周四 16:30–18:00', subject: 'English · Foundations', year: 'Year 7–8', tutor: 'Raina Qian' },
+      { when: '周六 09:00–10:30', subject: 'English · Enrichment', year: 'Year 7–8', tutor: 'Christina Kong' },
+      { when: '周六 10:45–12:15', subject: 'English · Foundations', year: 'Year 9–10', tutor: 'Audrey Ng' },
+      { when: '周日 10:00–11:30', subject: 'Maths Advanced', year: 'Year 12', tutor: 'Anthony Cheung' }
     ];
     const classesEn = classesZh.map((c, i) => ({
-      when: ['Mon 4:30–6:00pm', 'Mon 6:15–7:45pm', 'Tue 4:30–6:00pm', 'Wed 4:30–6:00pm', 'Thu 4:30–6:00pm', 'Sat 9:00–10:30am', 'Sat 10:45am–12:15pm', 'Sun 10:00–11:30am'][i],
+      when: ['Monday, 4:30–6:00 pm', 'Monday, 6:15–7:45 pm', 'Tuesday, 4:30–6:00 pm', 'Wednesday, 4:30–6:00 pm', 'Thursday, 4:30–6:00 pm', 'Saturday, 9:00–10:30 am', 'Saturday, 10:45 am–12:15 pm', 'Sunday, 10:00–11:30 am'][i],
       subject: c.subject,
       year: c.year,
-      tutor: c.tutor,
-      seats: ['2 seats left', 'Waitlist', '3 seats left', '1 seat left', '4 seats left', '2 seats left', '5 seats left', '3 seats left'][i]
+      tutor: c.tutor
     }));
     const policyZh = [
-      { n: '01', title: '课时如何计算', body: '一个课时 = 一节已排定的课。小班课与一对一课程均以整期（School Term Block）为单位预订，每周最少 1.5 小时；预订少于五节课按 Individual 时薪计算。报名确认后课时进入学生账户。' },
-      { n: '02', title: '提前请假（24 小时以上）', body: '上课开始前 24 小时以上通知，课时保留。一对一可另约时间；小班课可在同一整期内插班同科目其他班次补课，视座位情况而定。' },
-      { n: '03', title: '临时请假（24 小时以内）', body: '24 小时以内取消或缺席，课时按已上处理。导师会把当次讲义与作业发给学生，以便学生自行跟上进度。' },
+      { n: '01', title: '课时如何计算', body: '一个课时 = 一节已排定的课。小班课与一对一课程均以整期（School Term Block）为单位预订，一对一课程每周最少 1.5 小时。报名确认后课时进入学生账户。' },
+      { n: '02', title: '提前请假（至少 24 小时）', body: '上课开始前至少 24 小时通知，课时保留。一对一可另约时间；小班课可在同一整期内插班同科目其他班次补课，视座位情况而定。' },
+      { n: '03', title: '临时请假（不足 24 小时）', body: '不足 24 小时取消或缺席，课时按已上处理。导师会把当次讲义与作业发给学生，以便学生自行跟上进度。' },
       { n: '04', title: '补课安排', body: '补课需在同一整期（School Term Block）内完成，逾期不结转。补课不可折算现金，也不可转让给其他学生。' },
       { n: '05', title: '课时有效期', body: '课时仅在报名当期（School Term Block）内有效，不结转至下一期。如需跨期安排，请提前与课务联系。' },
-      { n: '06', title: '退课与退费', body: '一期开课前 7 天以上申请退课，全额退还未使用课时。开课后申请，按已上课时以 Individual 时薪扣除后退还余额，并可能收取行政费（具体金额以正式条款为准）。' },
+      { n: '06', title: '退课与退费', body: '一期开课前 7 天以上申请退课，全额退还未使用课时。开课后申请，已上课时按该学期适用时薪扣除后退还余额，并可能收取行政费（具体金额以正式条款为准）。' },
       { n: '07', title: '停课与公共假期', body: '公共假期不排课，整期顺延一周。因导师原因取消的课程，一律另行补课或全额返还课时。' },
       { n: '08', title: '转班与转科', body: '同一整期内可申请一次免费转班或转科，视座位情况而定。请通过邮件或微信提出申请。' }
     ];
     const policyEn = [
-      { n: '01', title: 'How credits work', body: 'One credit = one scheduled lesson. Both group classes and one-on-one lessons are booked by the school term block, with a minimum of 1.5 hours per week; bookings of fewer than five lessons are charged at the individual hourly rate. Credits are added to the student account once enrolment is confirmed.' },
-      { n: '02', title: 'Notice given (more than 24 hours)', body: 'With more than 24 hours notice the credit is retained. One-on-one lessons can be rescheduled; group students may sit in on another class in the same subject within the term block, subject to seats.' },
-      { n: '03', title: 'Late notice (within 24 hours)', body: 'Cancellations inside 24 hours, and no-shows, are treated as taken. The tutor sends through the lesson notes and homework so the student can keep pace.' },
+      { n: '01', title: 'How credits work', body: 'One credit = one scheduled lesson. Both group classes and one-to-one lessons are booked by the school term block, with a minimum of 1.5 hours per week for one-to-one tuition. Credits are added to the student account once enrolment is confirmed.' },
+      { n: '02', title: 'Notice given (at least 24 hours)', body: 'With at least 24 hours’ notice the credit is retained. One-on-one lessons can be rescheduled; group students may sit in on another class in the same subject within the term block, subject to availability.' },
+      { n: '03', title: 'Late notice (less than 24 hours)', body: 'Cancellations with less than 24 hours’ notice, and no-shows, are treated as taken. The tutor sends through the lesson notes and homework so the student can keep pace.' },
       { n: '04', title: 'Make-up lessons', body: 'Make-ups must be taken within the same term block and do not carry over. They cannot be exchanged for cash or transferred to another student.' },
       { n: '05', title: 'Credit expiry', body: 'Credits apply to the enrolled term block only and do not roll into the next. Contact operations in advance if lessons need to span terms.' },
-      { n: '06', title: 'Withdrawal and refunds', body: 'Withdraw more than 7 days before a term starts and unused fees are refunded in full. After it starts, lessons taken are deducted at the individual hourly rate and the balance refunded, less an administration fee (amount per the final terms).' },
+      { n: '06', title: 'Withdrawal and refunds', body: 'Withdraw more than 7 days before a term starts and unused fees are refunded in full. After it starts, lessons taken are deducted at the applicable rate for that term and the balance refunded, less an administration fee (amount per the final terms).' },
       { n: '07', title: 'Closures and public holidays', body: 'No classes run on public holidays; the cycle extends accordingly. Any lesson cancelled by us is rescheduled or credited in full.' },
       { n: '08', title: 'Changing class or subject', body: 'One free class or subject change per cycle, subject to availability. Request it by email or WeChat.' }
     ];
@@ -1096,18 +1061,22 @@ class Component extends DCLogic {
       const rows = Array.isArray(managedContent.pricing?.[subject]) ? managedContent.pricing[subject] : defaults;
       return rows.map(row => {
         const values = row.values.map(value => money(value, na));
-        return { label: zh ? (row.labelZh || row.labelEn) : (row.labelEn || row.labelZh), a: values[0], b: values[1], c: values[2], d: values[3] };
+        return { label: zh ? (row.labelZh || row.labelEn) : (row.labelEn || row.labelZh), a: values[0], b: values[1] };
       });
     };
     const englishRates = priceRows('english', [
-      { id: 'senior', labelEn: 'Senior Tutor', labelZh: '资深导师 Senior Tutor', values: [105, 115, 125, 135] },
-      { id: 'academic', labelEn: 'Academic Tutor', labelZh: '学科导师 Academic Tutor', values: [95, 105, 115, 125] },
-      { id: 'yvonne', labelEn: 'Dr Yvonne Smith', labelZh: 'Dr Yvonne Smith', values: [155, 180, null, null] }
+      { id: 'academic', labelEn: 'Academic Tutor', labelZh: '学科导师 Academic Tutor', values: [95, 105] },
+      { id: 'senior', labelEn: 'Senior Tutor', labelZh: '资深导师 Senior Tutor', values: [110, 120] },
+      { id: 'accredited', labelEn: 'Accredited Tutor', labelZh: '认证导师 Accredited Tutor', values: [155, 180] }
     ]);
     const mathsRates = priceRows('maths', [
-      { id: 'chantry', labelEn: 'Chantry Khem', labelZh: 'Chantry Khem', values: [115, 125, 135, 135] },
-      { id: 'anthony', labelEn: 'Anthony Cheung', labelZh: 'Anthony Cheung', values: [115, 125, 135, 135] },
-      { id: 'team', labelEn: 'Daniel Li, Chris Du, Ethan Lin, Jerry', labelZh: 'Daniel Li · Chris Du · Ethan Lin · Jerry', values: [80, 80, 100, 100] }
+      { id: 'academic', labelEn: 'Academic Tutor', labelZh: '学科导师 Academic Tutor', values: [85, 95] },
+      { id: 'senior', labelEn: 'Senior Tutor', labelZh: '资深导师 Senior Tutor', values: [100, 110] },
+      { id: 'accredited', labelEn: 'Accredited Tutor', labelZh: '认证导师 Accredited Tutor', values: [115, 125] }
+    ]);
+    const humanitiesScienceRates = priceRows('humanitiesScience', [
+      { id: 'junior', labelEn: 'Junior Tutor', labelZh: '初级导师 Junior Tutor', values: [85, 95] },
+      { id: 'senior', labelEn: 'Senior Tutor', labelZh: '资深导师 Senior Tutor', values: [100, 110] }
     ]);
     const bgs = ['linear-gradient(160deg,#7C1F20,#2A2120)', 'linear-gradient(160deg,#3B2F2C,#1C1716)', 'linear-gradient(160deg,#9C2A2B,#4A2220)', 'linear-gradient(160deg,#2A2120,#5C3A24)', 'linear-gradient(160deg,#6E2426,#241C1B)', 'linear-gradient(160deg,#9C2A2B,#3B2F2C)', 'linear-gradient(160deg,#4A2220,#8A4726)', 'linear-gradient(160deg,#7C1F20,#3B2F2C)', 'linear-gradient(160deg,#2A2120,#7C1F20)', 'linear-gradient(160deg,#8A3A2E,#2A2120)', 'linear-gradient(160deg,#3B2F2C,#9C2A2B)', 'linear-gradient(160deg,#5C3A24,#221E1F)'];
     const managedTutors = Array.isArray(managedContent.tutors)
@@ -1115,7 +1084,13 @@ class Component extends DCLogic {
       : tutorsEn.map((en, i) => ({ id: en.name, group: i < 10 ? 'english' : 'maths', hidden: false, en, zh: tutorsZh[i] }));
     const list = managedTutors.filter(tutor => !tutor.hidden).map((tutor, i) => ({
       ...(zh ? tutor.zh : tutor.en),
+      nameSize: tutor.en.name.length >= 18 ? 'ao-tutor-name-long' : tutor.en.name.length >= 14 ? 'ao-tutor-name-medium' : '',
       subjectGroup: tutor.group,
+      roleTags: (zh ? tutor.zh.role : tutor.en.role).split(' / ').filter(Boolean).map((label, index) => {
+        const role = tutor.en.role.split(' / ')[index];
+        const tier = /^Academic\b/.test(role) ? 'academic' : /^Senior\b/.test(role) ? 'senior' : /^Accredited\b/.test(role) ? 'accredited' : /^(Founder|Principal)\b/.test(role) ? 'leadership' : '';
+        return { label, className: tier ? 'ao-tutor-role-tag-' + tier : '' };
+      }),
       bg: bgs[i % bgs.length],
       bgImage: 'radial-gradient(circle at 78% 18%, rgba(217,155,54,0.42), transparent 58%)'
     })).map((t, i) => ({
@@ -1124,8 +1099,9 @@ class Component extends DCLogic {
       mailto: 'mailto:operations@academyone.com.au?subject=' + encodeURIComponent('Tutor enquiry - ' + t.name)
     }));
     const filtered = list.filter(t => this.state.subject === 'all' || t.subjectGroup === this.state.subject);
+    const humanitiesPreview = list.filter(t => t.subjectGroup === 'humanities').slice(0, 1);
     const preview = this.state.subject === 'all'
-      ? [...list.filter(t => t.subjectGroup === 'english').slice(0, 2), ...list.filter(t => t.subjectGroup === 'maths').slice(0, 2)]
+      ? [...list.filter(t => t.subjectGroup === 'english').slice(0, 2), ...list.filter(t => t.subjectGroup === 'maths').slice(0, humanitiesPreview.length ? 1 : 2), ...humanitiesPreview]
       : filtered.slice(0, 4);
     const active = this.state.active === null ? null : list[this.state.active];
     const progress = this.state.statsProgress;
@@ -1151,6 +1127,7 @@ class Component extends DCLogic {
       goCredit: this.go('credit'),
       goCareers: this.go('careers'),
       tutors: this.state.showAllTutors ? filtered : preview,
+      showMoreTutors: filtered.length > preview.length,
       toggleTutorList: () => this.setState({ showAllTutors: !this.state.showAllTutors }),
       tutorsExpanded: this.state.showAllTutors,
       moreTutorsLabel: this.state.showAllTutors ? (zh ? '收起导师列表' : 'Show fewer tutors') : (zh ? '查看此分类全部 ' + filtered.length + ' 位导师' : 'View all ' + filtered.length + ' tutors in this category'),
@@ -1164,13 +1141,18 @@ class Component extends DCLogic {
       englishLabel: zh ? '英文' : 'English',
       mathsLabel: zh ? '数学与理科' : 'Maths & Science',
       matchLabel: zh ? '请帮我匹配导师 →' : 'Help me find a tutor →',
-      termRateLabel: zh ? '整期预订 / 小时' : 'Term block / hour',
-      individualRateLabel: zh ? '单独预订 / 小时' : 'Individual / hour',
+      termRateLabel: zh ? '整期预订价 / 小时' : 'Entire-term rate / hour',
+      entireTermLabel: zh ? '整学期预订 · 每小时时薪' : 'Entire-term booking · hourly rate',
       railHint: zh ? '按科目查看导师，点击资料卡了解教学背景。' : 'Browse by subject and select a profile for teaching background.',
       englishRates,
       mathsRates,
-      groupEnglishPrice: '$' + Number(managedContent.groupClasses?.english ?? 65),
-      groupMathematicsPrice: '$' + Number(managedContent.groupClasses?.mathematics ?? 85),
+      pricingSections: [
+        { title: zh ? '英文课程 English' : 'English tuition', ariaLabel: 'English tuition rates', rows: englishRates },
+        { title: zh ? '数学课程 Mathematics' : 'Mathematics tuition', ariaLabel: 'Mathematics tuition rates', rows: mathsRates },
+        { title: zh ? '人文与理科 Humanities & Science' : 'Humanities & Science tuition', ariaLabel: 'Humanities and Science tuition rates', rows: humanitiesScienceRates }
+      ],
+      groupEnglishPrice: '$' + Number(managedContent.groupClasses?.english ?? 75),
+      groupMathematicsPrice: '$' + Number(managedContent.groupClasses?.mathematics ?? 75),
       showRates: this.props.showRates !== false,
       hasActive: !!active,
       active: active || {},

@@ -42,7 +42,7 @@ test('creates and verifies a signed session cookie', () => {
 test('validates bilingual tutors and prices', () => {
   const valid = validateContent(defaultContent);
   assert.equal(valid.tutors.length, 17);
-  assert.equal(valid.groupClasses.english, 65);
+  assert.equal(valid.groupClasses.english, 75);
   assert.throws(() => validateContent({ ...defaultContent, groupClasses: { english: -1, mathematics: 85 } }), /greater than 0/);
   const missingChineseName = structuredClone(defaultContent);
   missingChineseName.tutors[0].zh.name = '';
@@ -58,11 +58,13 @@ test('allows new tutors and editable pricing rows', () => {
     en: { name: 'New Tutor' },
     zh: { name: '新导师' }
   });
-  input.pricing.english.push({ id: 'new-rate', labelEn: 'New Tutor', labelZh: '新导师', values: [90, 100, null, 120] });
+  input.pricing.english.push({ id: 'new-rate', labelEn: 'New Tutor', labelZh: '新导师', values: [90, 100] });
   const valid = validateContent(input);
   assert.equal(valid.tutors.at(-1).en.name, 'New Tutor');
   assert.equal(valid.tutors.at(-1).group, 'maths');
-  assert.deepEqual(valid.pricing.english.at(-1).values, [90, 100, null, 120]);
+  assert.deepEqual(valid.pricing.english.at(-1).values, [90, 100]);
+  input.tutors.at(-1).group = 'humanities';
+  assert.equal(validateContent(input).tutors.at(-1).group, 'humanities');
 });
 
 test('migrates the previous visibility and fixed-price format', () => {
@@ -76,8 +78,16 @@ test('migrates the previous visibility and fixed-price format', () => {
     updatedAt: null
   };
   const migrated = validateContent(legacy);
-  assert.equal(migrated.tutors.find((tutor) => tutor.en.name === 'Kevin').hidden, true);
-  assert.equal(migrated.pricing.english[0].labelEn, 'Senior Tutor');
+  assert.equal(migrated.tutors.find((tutor) => tutor.en.name === 'Kevin Zhang').hidden, true);
+  assert.equal(migrated.pricing.english[0].labelEn, 'Academic Tutor');
+  assert.equal(migrated.pricing.humanitiesScience[0].labelEn, 'Junior Tutor');
+});
+
+test('migrates four-value pricing rows to entire-term rates', () => {
+  const input = structuredClone(defaultContent);
+  input.pricing.english[0].values = [95, 105, 125, 135];
+  const valid = validateContent(input);
+  assert.deepEqual(valid.pricing.english[0].values, [95, 105]);
 });
 
 test('content endpoint blocks unauthenticated writes', async () => {

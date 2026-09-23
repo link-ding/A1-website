@@ -34,3 +34,44 @@ test('selects ten units while retaining compulsory English', () => {
   assert.ok(result.counted.includes('eng-standard'));
   assert.ok(result.atar > 0 && result.atar <= 99.95);
 });
+
+test('enforces English Extension prerequisites', () => {
+  const otherCourses = ['biology', 'chemistry', 'physics', 'economics'].map(id => withMark(id, 80));
+  assert.throws(
+    () => calculateAtar([withMark('eng-ext-1', 80), ...otherCourses]),
+    /English Advanced/
+  );
+  assert.throws(
+    () => calculateAtar([withMark('eng-advanced', 80), withMark('eng-ext-2', 80), ...otherCourses]),
+    /Extension 1/
+  );
+});
+
+test('applies the Mathematics Extension 2 pattern as four units', () => {
+  const inputs = [
+    withMark('eng-advanced', 80),
+    withMark('math-ext-1', 80),
+    withMark('math-ext-2', 80),
+    withMark('biology', 80),
+    withMark('chemistry', 80),
+    withMark('physics', 80)
+  ];
+  const result = calculateAtar(inputs);
+  assert.equal(result.selected.length, 10);
+  assert.throws(
+    () => calculateAtar([withMark('eng-advanced', 80), withMark('math-ext-2', 80), withMark('biology', 80), withMark('chemistry', 80), withMark('physics', 80)]),
+    /Mathematics Extension 1/
+  );
+});
+
+test('checks the four subject-area eligibility rule', () => {
+  const inputs = [
+    withMark('eng-advanced', 80),
+    withMark('eng-ext-1', 80),
+    withMark('eng-ext-2', 80),
+    withMark('math-ext-1', 80),
+    withMark('math-ext-2', 80),
+    withMark('biology', 80)
+  ];
+  assert.throws(() => calculateAtar(inputs), /4 subject areas/);
+});

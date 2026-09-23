@@ -74,7 +74,7 @@ function renderTutors() {
         <span class="summary-action">Edit</span>
       </summary>
       <div class="tutor-settings">
-        <label class="editor-field"><span>Website section</span><select data-tutor-group="${tutor.id}"><option value="english"${tutor.group === 'english' ? ' selected' : ''}>English</option><option value="maths"${tutor.group === 'maths' ? ' selected' : ''}>Maths &amp; Science</option></select></label>
+        <label class="editor-field"><span>Website section</span><select data-tutor-group="${tutor.id}"><option value="english"${tutor.group === 'english' ? ' selected' : ''}>English</option><option value="maths"${tutor.group === 'maths' ? ' selected' : ''}>Maths &amp; Science</option><option value="humanities"${tutor.group === 'humanities' ? ' selected' : ''}>Humanities</option></select></label>
         <button class="${tutor.hidden ? 'secondary' : 'danger'}" type="button" data-toggle-tutor="${tutor.id}">${tutor.hidden ? 'Show on website' : 'Hide from website'}</button>
       </div>
       <div class="language-grid">
@@ -152,7 +152,7 @@ function addPriceRow(subject) {
     id: makeId('rate'),
     labelEn: 'New tutor',
     labelZh: '新导师',
-    values: [null, null, null, null]
+    values: [null, null]
   });
   markDirty();
   renderPriceRows(subject);
@@ -163,6 +163,7 @@ function render() {
   renderTutors();
   renderPriceRows('english');
   renderPriceRows('maths');
+  renderPriceRows('humanitiesScience');
   $('#group-english').value = content.groupClasses.english;
   $('#group-mathematics').value = content.groupClasses.mathematics;
   [$('#group-english'), $('#group-mathematics')].forEach((input) => input.addEventListener('input', () => {
@@ -185,6 +186,7 @@ async function loadAdmin(session) {
 $('#add-tutor').addEventListener('click', addTutor);
 $('#add-english-rate').addEventListener('click', () => addPriceRow('english'));
 $('#add-maths-rate').addEventListener('click', () => addPriceRow('maths'));
+$('#add-humanities-science-rate').addEventListener('click', () => addPriceRow('humanitiesScience'));
 
 $('#login-form').addEventListener('submit', async (event) => {
   event.preventDefault();

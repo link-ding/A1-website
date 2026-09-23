@@ -63,11 +63,12 @@ function languageDetails(input, language) {
 }
 
 function validateTutors(input) {
+  const removedTutors = Array.isArray(input.removedTutors) ? input.removedTutors : [];
   const source = Array.isArray(input.tutors)
     ? input.tutors
     : defaultContent.tutors.map((tutor) => ({
         ...clone(tutor),
-        hidden: Array.isArray(input.removedTutors) && input.removedTutors.includes(tutor.en.name)
+        hidden: removedTutors.some(name => tutor.en.name === name || tutor.en.name.startsWith(`${name} `))
       }));
   if (source.length > 100) throw new Error('A maximum of 100 tutors is allowed.');
   const used = new Set();
@@ -75,7 +76,7 @@ function validateTutors(input) {
     if (!tutor || typeof tutor !== 'object' || Array.isArray(tutor)) throw new Error('Tutor data is invalid.');
     return {
       id: id(tutor.id, tutor.en?.name || `tutor-${index + 1}`, used),
-      group: tutor.group === 'maths' ? 'maths' : 'english',
+      group: ['english', 'maths', 'humanities'].includes(tutor.group) ? tutor.group : 'english',
       hidden: Boolean(tutor.hidden),
       en: languageDetails(tutor.en, 'English'),
       zh: languageDetails(tutor.zh, 'Chinese')
@@ -85,21 +86,21 @@ function validateTutors(input) {
 
 function validatePricing(input) {
   const result = {};
-  for (const subject of ['english', 'maths']) {
-    const rows = input.pricing?.[subject];
+  for (const subject of ['english', 'maths', 'humanitiesScience']) {
+    const rows = input.pricing?.[subject] ?? defaultContent.pricing[subject];
     if (!Array.isArray(rows)) throw new Error(`Missing ${subject} pricing.`);
     if (rows.length > 50) throw new Error(`A maximum of 50 ${subject} price rows is allowed.`);
     const used = new Set();
     result[subject] = rows.map((row, index) => {
       const legacyDefault = defaultContent.pricing[subject].find((candidate) => candidate.id === row?.key);
-      if (!row || !Array.isArray(row.values) || row.values.length !== 4) {
+      if (!row || !Array.isArray(row.values) || ![2, 4].includes(row.values.length)) {
         throw new Error(`Invalid ${subject} pricing row ${index + 1}.`);
       }
       return {
         id: id(row.id || row.key, row.labelEn || legacyDefault?.labelEn || `row-${index + 1}`, used),
         labelEn: text(row.labelEn ?? legacyDefault?.labelEn, 'name', true),
         labelZh: text(row.labelZh ?? legacyDefault?.labelZh, 'name', true),
-        values: row.values.map((value) => validPrice(value, true))
+        values: row.values.slice(0, 2).map((value) => validPrice(value, true))
       };
     });
   }
@@ -109,7 +110,7 @@ function validatePricing(input) {
 export function validateContent(input) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('Invalid content payload.');
   return {
-    version: 2,
+    version: 3,
     tutors: validateTutors(input),
     pricing: validatePricing(input),
     groupClasses: {

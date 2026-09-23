@@ -14,31 +14,58 @@ function curve(offset = 0, units = 2) {
 }
 
 export const courses = [
-  { id: 'eng-standard', name: 'English Standard', units: 2, english: true, offset: -5 },
-  { id: 'eng-advanced', name: 'English Advanced', units: 2, english: true, offset: 2 },
-  { id: 'eng-eald', name: 'English EAL/D', units: 2, english: true, offset: 0 },
-  { id: 'eng-ext-1', name: 'English Extension 1', units: 1, english: true, offset: 7 },
-  { id: 'eng-ext-2', name: 'English Extension 2', units: 1, english: true, offset: 8 },
-  { id: 'math-standard-2', name: 'Mathematics Standard 2', units: 2, english: false, offset: -3 },
-  { id: 'math-advanced', name: 'Mathematics Advanced', units: 2, english: false, offset: 3 },
-  { id: 'math-ext-1', name: 'Mathematics Extension 1', units: 1, english: false, offset: 8 },
-  { id: 'math-ext-2', name: 'Mathematics Extension 2', units: 1, english: false, offset: 12 },
-  { id: 'biology', name: 'Biology', units: 2, english: false, offset: 0 },
-  { id: 'chemistry', name: 'Chemistry', units: 2, english: false, offset: 5 },
-  { id: 'physics', name: 'Physics', units: 2, english: false, offset: 5 },
-  { id: 'economics', name: 'Economics', units: 2, english: false, offset: 5 },
-  { id: 'business', name: 'Business Studies', units: 2, english: false, offset: -2 },
-  { id: 'legal', name: 'Legal Studies', units: 2, english: false, offset: -1 },
-  { id: 'modern-history', name: 'Modern History', units: 2, english: false, offset: 0 },
-  { id: 'ancient-history', name: 'Ancient History', units: 2, english: false, offset: -1 },
-  { id: 'geography', name: 'Geography', units: 2, english: false, offset: 0 },
-  { id: 'pdhpe', name: 'PDHPE', units: 2, english: false, offset: -4 },
-  { id: 'society-culture', name: 'Society and Culture', units: 2, english: false, offset: -3 },
-  { id: 'visual-arts', name: 'Visual Arts', units: 2, english: false, offset: -2 },
-  { id: 'music-1', name: 'Music 1', units: 2, english: false, offset: -2 },
-  { id: 'software-engineering', name: 'Software Engineering', units: 2, english: false, offset: 1 },
-  { id: 'investigating-science', name: 'Investigating Science', units: 2, english: false, offset: -4 }
+  { id: 'eng-standard', name: 'English Standard', units: 2, english: true, subjectArea: 'english', offset: -5 },
+  { id: 'eng-advanced', name: 'English Advanced', units: 2, english: true, subjectArea: 'english', offset: 2 },
+  { id: 'eng-eald', name: 'English EAL/D', units: 2, english: true, subjectArea: 'english', offset: 0 },
+  { id: 'eng-ext-1', name: 'English Extension 1', units: 1, english: true, subjectArea: 'english', offset: 7 },
+  { id: 'eng-ext-2', name: 'English Extension 2', units: 1, english: true, subjectArea: 'english', offset: 8 },
+  { id: 'math-standard-2', name: 'Mathematics Standard 2', units: 2, english: false, subjectArea: 'mathematics', offset: -3 },
+  { id: 'math-advanced', name: 'Mathematics Advanced', units: 2, english: false, subjectArea: 'mathematics', offset: 3 },
+  { id: 'math-ext-1', name: 'Mathematics Extension 1', units: 1, english: false, subjectArea: 'mathematics', offset: 8 },
+  { id: 'math-ext-2', name: 'Mathematics Extension 2', units: 2, english: false, subjectArea: 'mathematics', offset: 12 },
+  { id: 'biology', name: 'Biology', units: 2, english: false, subjectArea: 'biology', offset: 0 },
+  { id: 'chemistry', name: 'Chemistry', units: 2, english: false, subjectArea: 'chemistry', offset: 5 },
+  { id: 'physics', name: 'Physics', units: 2, english: false, subjectArea: 'physics', offset: 5 },
+  { id: 'economics', name: 'Economics', units: 2, english: false, subjectArea: 'economics', offset: 5 },
+  { id: 'business', name: 'Business Studies', units: 2, english: false, subjectArea: 'business-studies', offset: -2 },
+  { id: 'legal', name: 'Legal Studies', units: 2, english: false, subjectArea: 'legal-studies', offset: -1 },
+  { id: 'modern-history', name: 'Modern History', units: 2, english: false, subjectArea: 'history', offset: 0 },
+  { id: 'ancient-history', name: 'Ancient History', units: 2, english: false, subjectArea: 'history', offset: -1 },
+  { id: 'geography', name: 'Geography', units: 2, english: false, subjectArea: 'geography', offset: 0 },
+  { id: 'health-movement-science', name: 'Health and Movement Science', units: 2, english: false, subjectArea: 'health-and-movement-science', offset: -4 },
+  { id: 'society-culture', name: 'Society and Culture', units: 2, english: false, subjectArea: 'society-and-culture', offset: -3 },
+  { id: 'visual-arts', name: 'Visual Arts', units: 2, english: false, subjectArea: 'visual-arts', offset: -2 },
+  { id: 'music-1', name: 'Music 1', units: 2, english: false, subjectArea: 'music', offset: -2 },
+  { id: 'software-engineering', name: 'Software Engineering', units: 2, english: false, subjectArea: 'software-engineering', offset: 1 },
+  { id: 'investigating-science', name: 'Investigating Science', units: 2, english: false, subjectArea: 'investigating-science', offset: -4 }
 ].map(course => ({ ...course, scalingCurve: curve(course.offset, course.units) }));
+
+export const modelVersion = 'Academy One planning model 2026.09';
+
+function validateCourseCombination(inputs) {
+  const ids = new Set(inputs.map(input => input.id));
+  const baseEnglish = ['eng-standard', 'eng-advanced', 'eng-eald'].filter(id => ids.has(id));
+  if (baseEnglish.length > 1) throw new Error('Choose only one 2-unit English course.');
+  if (ids.has('eng-ext-1') && !ids.has('eng-advanced')) {
+    throw new Error('English Extension 1 requires English Advanced.');
+  }
+  if (ids.has('eng-ext-2') && (!ids.has('eng-advanced') || !ids.has('eng-ext-1'))) {
+    throw new Error('English Extension 2 requires English Advanced and Extension 1.');
+  }
+
+  if (ids.has('math-standard-2') && (ids.has('math-advanced') || ids.has('math-ext-1') || ids.has('math-ext-2'))) {
+    throw new Error('Mathematics Standard 2 cannot be combined with Advanced or Extension courses.');
+  }
+  if (ids.has('math-ext-1') && !ids.has('math-ext-2') && !ids.has('math-advanced')) {
+    throw new Error('Mathematics Extension 1 requires Mathematics Advanced.');
+  }
+  if (ids.has('math-ext-2') && !ids.has('math-ext-1')) {
+    throw new Error('Mathematics Extension 2 requires Mathematics Extension 1.');
+  }
+  if (ids.has('math-ext-2') && ids.has('math-advanced')) {
+    throw new Error('For an Extension 2 pattern, enter Mathematics Extension 1 and Extension 2 without Mathematics Advanced.');
+  }
+}
 
 export const aggregateCurve = [
   { x: 0, y: 0 },
@@ -69,7 +96,13 @@ export function linearInterpolate(points, x) {
 }
 
 export function calculateAtar(inputs) {
-  const unitScores = inputs.flatMap(input => {
+  validateCourseCombination(inputs);
+  const hasMathExtension2 = inputs.some(input => input.id === 'math-ext-2');
+  const normalisedInputs = inputs.map(input => {
+    const units = hasMathExtension2 && input.id === 'math-ext-1' ? 2 : input.units;
+    return { ...input, units, scalingCurve: curve(input.offset, units) };
+  });
+  const unitScores = normalisedInputs.flatMap(input => {
     if (!Number.isFinite(input.mark) || input.mark < 0 || input.mark > 100) {
       throw new Error('Each HSC mark must be between 0–100.');
     }
@@ -85,6 +118,12 @@ export function calculateAtar(inputs) {
   const englishUnits = unitScores.filter(unit => unit.english).sort((a, b) => b.scaledPerUnit - a.scaledPerUnit);
   if (englishUnits.length < 2) throw new Error('Add at least 2 units of English.');
   if (unitScores.length < 10) throw new Error('Add at least 10 units.');
+  if (new Set(normalisedInputs.map(input => input.subjectArea)).size < 4) {
+    throw new Error('ATAR eligibility requires courses from at least 4 subject areas.');
+  }
+  if (normalisedInputs.filter(input => input.units >= 2).length < 3) {
+    throw new Error('ATAR eligibility requires at least 3 courses of 2 units or more.');
+  }
 
   const mandatoryEnglish = englishUnits.slice(0, 2);
   const selectedEnglish = new Set(mandatoryEnglish);
@@ -119,9 +158,12 @@ function initCalculator() {
   const form = document.querySelector('#atar-form');
   let rowId = 0;
 
-  const optionMarkup = courses.map(course =>
-    `<option value="${course.id}">${course.name} · ${course.units} unit${course.units === 1 ? '' : 's'}</option>`
-  ).join('');
+  const optionMarkup = courses.map(course => {
+    const units = course.id === 'math-ext-1'
+      ? '1 unit (2 with Extension 2)'
+      : `${course.units} unit${course.units === 1 ? '' : 's'}`;
+    return `<option value="${course.id}">${course.name} · ${units}</option>`;
+  }).join('');
 
   function updateResult() {
     const seen = new Set();
