@@ -280,6 +280,7 @@
   #contact .ao-contact-row { display: flex; align-items: center; gap: 10px; }
   @media (max-width: 600px) { #contact a.ao-contact-row[href^="mailto:"] { font-size: 14px; gap: 8px; } }
   .ao-contact-icon { display: block; flex: 0 0 22px; width: 22px; height: 22px; }
+  .ao-wechat-qr { display: block; width: min(100%, 210px); height: auto; margin-top: 16px; border-radius: 6px; }
   /* Alternating homepage backgrounds, with the existing content width. */
   #offer, #results, #why, #pricing, #tutors, #contact { padding-bottom: 64px !important; }
   #results, #pricing, #contact { max-width: none !important; padding-left: max(24px,calc((100% - 1132px)/2)) !important; padding-right: max(24px,calc((100% - 1132px)/2)) !important; }
@@ -593,6 +594,7 @@
             <div>
               <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36"><span style="display:{{ zi }}">微信</span><span style="display:{{ ei }}">WeChat</span></p>
               <p class="ao-contact-row" style="margin:0;font-size:20px;font-weight:600"><img class="ao-contact-icon" src="/assets/icons/wechat.svg" alt="" width="22" height="22">academyonechatswood</p>
+              <img class="ao-wechat-qr" src="/assets/wechat-qr.jpg" alt="Academy One WeChat QR code" width="730" height="730">
             </div>
             <div>
               <p style="margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D99B36">Lydia Xu · <span style="display:{{ zi }}">课务</span><span style="display:{{ ei }}">Operations</span></p>
