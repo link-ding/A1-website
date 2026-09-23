@@ -119,7 +119,7 @@
       </div>
       <aside class="model-note">
         <strong>About this estimate</strong>
-        Academy One planning model 2026.09. It applies current NSW eligibility and unit-selection rules, then uses Academy One modelled scaling curves. It is not affiliated with UAC and cannot predict an official ATAR.
+        Academy One simulation 2026.09. This is a rough planning estimate using modelled scaling, not UAC data. Actual scaling and your final ATAR may differ. This tool is not affiliated with UAC.
       </aside>
     </section>
 
@@ -127,7 +127,7 @@
       <form class="input-panel" id="atar-form">
         <div class="panel-heading">
           <h2>Courses and expected marks</h2>
-          <p>At least 10 units · marks from 0–100</p>
+          <p>At least 10 units · Extension marks may be out of 50</p>
         </div>
         <div class="course-labels" aria-hidden="true"><span>Course</span><span>HSC mark</span><span></span></div>
         <div id="course-rows"></div>
@@ -139,10 +139,10 @@
 
       <aside class="result-panel" id="result-panel" aria-live="polite">
         <div class="result-inner">
-          <p class="result-kicker">Estimated ATAR</p>
+          <p class="result-kicker">Simulated ATAR estimate</p>
           <p class="atar-value" id="atar-value">—</p>
           <p class="result-state" id="result-state">Updates as you edit your courses</p>
-          <div class="aggregate"><span>Estimated aggregate</span><strong id="aggregate-value">— / 500</strong></div>
+          <div class="aggregate"><span>Simulated aggregate</span><strong id="aggregate-value">— / 500</strong></div>
           <p class="counted-title">Courses in your best 10 units</p>
           <ul class="counted-list" id="counted-list"></ul>
         </div>

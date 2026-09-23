@@ -29,8 +29,8 @@ export const courses = [
   { id: 'economics', name: 'Economics', units: 2, english: false, subjectArea: 'economics', offset: 5 },
   { id: 'business', name: 'Business Studies', units: 2, english: false, subjectArea: 'business-studies', offset: -2 },
   { id: 'legal', name: 'Legal Studies', units: 2, english: false, subjectArea: 'legal-studies', offset: -1 },
-  { id: 'modern-history', name: 'Modern History', units: 2, english: false, subjectArea: 'history', offset: 0 },
-  { id: 'ancient-history', name: 'Ancient History', units: 2, english: false, subjectArea: 'history', offset: -1 },
+  { id: 'modern-history', name: 'Modern History', units: 2, english: false, subjectArea: 'modern-history', offset: 0 },
+  { id: 'ancient-history', name: 'Ancient History', units: 2, english: false, subjectArea: 'ancient-history', offset: -1 },
   { id: 'geography', name: 'Geography', units: 2, english: false, subjectArea: 'geography', offset: 0 },
   { id: 'health-movement-science', name: 'Health and Movement Science', units: 2, english: false, subjectArea: 'health-and-movement-science', offset: -4 },
   { id: 'society-culture', name: 'Society and Culture', units: 2, english: false, subjectArea: 'society-and-culture', offset: -3 },
@@ -40,7 +40,13 @@ export const courses = [
   { id: 'investigating-science', name: 'Investigating Science', units: 2, english: false, subjectArea: 'investigating-science', offset: -4 }
 ].map(course => ({ ...course, scalingCurve: curve(course.offset, course.units) }));
 
-export const modelVersion = 'Academy One planning model 2026.09';
+export const modelVersion = 'Academy One simulation 2026.09';
+
+function markMaximum(courseId, hasMathExtension2) {
+  if (courseId === 'eng-ext-1' || courseId === 'eng-ext-2') return 50;
+  if (courseId === 'math-ext-1' && !hasMathExtension2) return 50;
+  return 100;
+}
 
 function validateCourseCombination(inputs) {
   const ids = new Set(inputs.map(input => input.id));
@@ -103,10 +109,11 @@ export function calculateAtar(inputs) {
     return { ...input, units, scalingCurve: curve(input.offset, units) };
   });
   const unitScores = normalisedInputs.flatMap(input => {
-    if (!Number.isFinite(input.mark) || input.mark < 0 || input.mark > 100) {
-      throw new Error('Each HSC mark must be between 0–100.');
+    const maximum = markMaximum(input.id, hasMathExtension2);
+    if (!Number.isFinite(input.mark) || input.mark < 0 || input.mark > maximum) {
+      throw new Error(`${input.name} HSC mark must be between 0–${maximum}.`);
     }
-    const scaledCourseMark = linearInterpolate(input.scalingCurve, clamp(input.mark, 0, 100));
+    const scaledCourseMark = linearInterpolate(input.scalingCurve, input.mark * 100 / maximum);
     const scaledPerUnit = scaledCourseMark / input.units;
     return Array.from({ length: input.units }, () => ({
       courseId: input.id,
@@ -133,7 +140,7 @@ export function calculateAtar(inputs) {
     .slice(0, 8);
   const selected = [...mandatoryEnglish, ...remaining];
   const aggregate = selected.reduce((sum, unit) => sum + unit.scaledPerUnit, 0);
-  const atar = clamp(linearInterpolate(aggregateCurve, aggregate), 0, 99.95);
+  const atar = Math.round(clamp(linearInterpolate(aggregateCurve, aggregate), 0, 99.95) * 20) / 20;
   const counted = [...new Set(selected.map(unit => unit.courseId))];
   return { atar, aggregate, counted, selected };
 }
@@ -165,7 +172,25 @@ function initCalculator() {
     return `<option value="${course.id}">${course.name} · ${units}</option>`;
   }).join('');
 
+  function syncMarkFields() {
+    const hasMathExtension2 = [...rows.querySelectorAll('select')].some(select => select.value === 'math-ext-2');
+    rows.querySelectorAll('.course-row').forEach(row => {
+      const course = courses.find(item => item.id === row.querySelector('select').value);
+      const input = row.querySelector('input');
+      const maximum = markMaximum(course.id, hasMathExtension2);
+      const previousMaximum = Number(input.max);
+      if (course.id === 'math-ext-1' && previousMaximum !== maximum && input.value.trim() !== '') {
+        input.value = String(Number(input.value) * maximum / previousMaximum);
+      }
+      input.max = maximum;
+      input.placeholder = `0–${maximum}`;
+      input.title = `${course.name} HSC mark out of ${maximum}`;
+      input.setAttribute('aria-label', `${course.name} HSC mark (0–${maximum})`);
+    });
+  }
+
   function updateResult() {
+    syncMarkFields();
     const seen = new Set();
     const inputs = [];
     let duplicate = false;
@@ -188,7 +213,7 @@ function initCalculator() {
       const result = calculateAtar(inputs);
       resultValue.textContent = result.atar.toFixed(2);
       aggregateValue.textContent = `${result.aggregate.toFixed(1)} / 500`;
-      resultState.textContent = 'Updated using your best 10 units';
+      resultState.textContent = 'Simulation using your best 10 units';
       resultState.dataset.state = 'ready';
       countedList.innerHTML = inputs.map(input => {
         const counted = result.counted.includes(input.id);
@@ -219,9 +244,9 @@ function initCalculator() {
     select.innerHTML = optionMarkup;
     select.value = courseId;
     input.value = mark;
-    input.setAttribute('aria-label', `${courses.find(course => course.id === courseId)?.name || 'Course'} HSC mark`);
+    input.max = markMaximum(courseId, [...rows.querySelectorAll('select')].some(item => item.value === 'math-ext-2'));
     select.addEventListener('change', () => {
-      input.setAttribute('aria-label', `${courses.find(course => course.id === select.value).name} HSC mark`);
+      input.value = '';
       updateResult();
     });
     input.addEventListener('input', updateResult);
@@ -233,7 +258,10 @@ function initCalculator() {
   }
 
   defaults.forEach(([course, mark]) => addRow(course, mark));
-  addButton.addEventListener('click', () => addRow());
+  addButton.addEventListener('click', () => {
+    addRow();
+    updateResult();
+  });
   form.addEventListener('submit', event => {
     event.preventDefault();
     updateResult();
