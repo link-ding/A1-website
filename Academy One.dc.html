@@ -855,8 +855,13 @@ class Component extends DCLogic {
       const start = performance.now();
       const tick = (now) => {
         const elapsed = Math.min((now - start) / 1600, 1);
-        this.setState({ statsProgress: 1 - Math.pow(1 - elapsed, 3) });
+        const progress = 1 - Math.pow(1 - elapsed, 3);
+        document.querySelectorAll('.ao-stats [data-countup]').forEach(element => {
+          const value = Number(element.dataset.countup) * progress;
+          element.textContent = element.dataset.decimals ? value.toFixed(Number(element.dataset.decimals)) : Math.round(value);
+        });
         if (elapsed < 1) this.statsFrame = requestAnimationFrame(tick);
+        else this.setState({ statsProgress: 1 });
       };
       this.statsFrame = requestAnimationFrame(tick);
     }, { threshold: 0.25 });
