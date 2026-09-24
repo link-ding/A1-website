@@ -575,7 +575,7 @@
           <button onClick="{{ filterEnglish }}" aria-pressed="{{ englishSelected }}">{{ englishLabel }}</button>
           <button onClick="{{ filterMaths }}" aria-pressed="{{ mathsSelected }}">{{ mathsLabel }}</button>
         </div>
-        <a href="mailto:operations@academyone.com.au?subject=Tutor%20matching">{{ matchLabel }}</a>
+        <a href="/contact/">{{ matchLabel }}</a>
       </div>
       <div>
         <div id="ao-tutor-rail" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
@@ -594,7 +594,7 @@
       <p style="margin:6px 0 0;font-size:13px;color:#6B615C">{{ railHint }}</p>
       <div style="margin-top:20px;padding:28px 30px;background:#F3EBE1;border-radius:12px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
         <p style="margin:0;max-width:38em;font-size:16px;line-height:1.7;color:#4A423E"><span style="display:{{ zb }}">不确定该找哪位导师？告诉我们年级、科目和目前成绩，我们推荐最合适的两位。</span><span style="display:{{ eb }}">Not sure who's the right fit? Tell us the year, subject and current marks and we'll recommend two.</span></p>
-        <a href="mailto:operations@academyone.com.au?subject=Tutor%20enquiry" style="padding:14px 24px;font-size:15px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">咨询导师匹配</span><span style="display:{{ ei }}">Enquire about a tutor</span></a>
+        <a href="/contact/" style="padding:14px 24px;font-size:15px;font-weight:600;color:#FBF8F3;background:#9C2A2B;border-radius:8px;text-decoration:none" style-hover="background:#7C1F20;color:#FBF8F3;text-decoration:none"><span style="display:{{ zi }}">咨询导师匹配</span><span style="display:{{ ei }}">Enquire about a tutor</span></a>
       </div>
     </section>
 
@@ -1108,7 +1108,7 @@ class Component extends DCLogic {
     })).map((t, i) => ({
       ...t,
       open: () => this.setState({ active: i }),
-      mailto: 'mailto:operations@academyone.com.au?subject=' + encodeURIComponent('Tutor enquiry - ' + t.name)
+      mailto: '/contact/'
     }));
     const filtered = list.filter(t => this.state.subject === 'all' || t.subjectGroup === this.state.subject);
     const humanitiesPreview = list.filter(t => t.subjectGroup === 'humanities').slice(0, 1);
