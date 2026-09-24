@@ -434,8 +434,8 @@
           <p style="margin:10px 0 0;font-size:14px;line-height:1.5;color:#5C534E"><span style="display:{{ zb }}">2025 年 Advanced 数学学生成绩中位数（Band 6）</span><span style="display:{{ eb }}">median mark for Maths Advanced students, 2025 (Band 6)</span></p>
         </div>
         <div style="background:#FFFCF7;padding:26px 24px">
-          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700;color:#9C2A2B"><span style="display:{{ zi }}">Top <span data-countup="10">{{ statTop }}</span></span><span style="display:{{ ei }}">Top <span data-countup="10">{{ statTop }}</span></span></p>
-          <p style="margin:10px 0 0;font-size:14px;line-height:1.5;color:#5C534E"><span style="display:{{ zb }}">部分学生进入英文 Ext 1 / Ext 2 全州前十</span><span style="display:{{ eb }}">state ranking in English Ext 1 / Ext 2 for some students</span></p>
+          <p style="margin:0;font-family:'Libre Baskerville',Georgia,serif;font-size:40px;line-height:1;font-weight:700;color:#9C2A2B"><span data-countup="92">{{ statEnglish }}</span></p>
+          <p style="margin:10px 0 0;font-size:14px;line-height:1.5;color:#5C534E"><span style="display:{{ zb }}">英文 Advanced 学生分数中位数（Band 6）</span><span style="display:{{ eb }}">Median mark for English Advanced students (Band 6)</span></p>
         </div>
       </div>
     </section>
@@ -1142,7 +1142,7 @@ class Component extends DCLogic {
       statAtar: (99.85 * progress).toFixed(2),
       statMedian: Math.round(98 * progress),
       statMaths: Math.round(91 * progress),
-      statTop: Math.round(10 * progress),
+      statEnglish: Math.round(92 * progress),
       zi: zh ? 'inline' : 'none',
       ei: zh ? 'none' : 'inline',
       zb: zh ? 'block' : 'none',
