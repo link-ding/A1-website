@@ -83,33 +83,6 @@
       }
     },
     {
-      "id": "christina",
-      "group": "english",
-      "hidden": false,
-      "en": {
-        "name": "Christina Kong",
-        "role": "Academic Tutor",
-        "tag": "English",
-        "qual": "ATAR 99.50 · B.Comm / LLB · USYD",
-        "subjectShort": "English 7–12 · Adv · Ext 1 & 2 · Debating",
-        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 & 2",
-        "hook": "ATAR 99.50, also coaches junior debating; every lesson ends with a clear next step.",
-        "bio": "Barker College graduate, ATAR 99.50, studying Commerce and Law at the University of Sydney. Two years of private English tutoring, including debating for junior students. Personalised lessons with clear next steps after every session.",
-        "result": "Students improve essay structure and written expression, which shows in school assessments; debating students gain clarity and persuasiveness."
-      },
-      "zh": {
-        "name": "Christina Kong",
-        "role": "学科导师",
-        "tag": "英文",
-        "qual": "ATAR 99.50 · B.Comm / LLB · USYD",
-        "subjectShort": "英文 7–12 · Adv · Ext 1 & 2 · 辩论",
-        "subject": "English 7–10 · HSC Advanced & Standard · Ext 1 & 2",
-        "hook": "ATAR 99.50，兼教初中辩论，课后一定给明确的下一步。",
-        "bio": "Barker College 毕业，ATAR 99.50，悉尼大学商学与法学在读。两年英文一对一教学经验，并指导初中辩论。课程完全个人化，每次课后明确下一步。",
-        "result": "学生议论文结构与书面表达明显进步，校内评估随之提升；辩论学生在表达清晰度与说服力上进步明显。"
-      }
-    },
-    {
       "id": "gloria",
       "group": "english",
       "hidden": false,
@@ -245,33 +218,6 @@
       }
     },
     {
-      "id": "fiona",
-      "group": "english",
-      "hidden": false,
-      "en": {
-        "name": "Fiona",
-        "role": "Academic Tutor",
-        "tag": "English",
-        "qual": "ATAR 97.20 · B.Comm / B.Eng · UNSW",
-        "subjectShort": "English 7–10 · Adv · Ext 1",
-        "subject": "English 7–10 · EAL/D · Standard · Advanced · Ext 1",
-        "hook": "Fully personalised lessons with clear next steps after every session.",
-        "bio": "North Sydney Girls graduate, ATAR 97.20, studying Commerce and Engineering at UNSW. Builds personalised lessons with ongoing feedback and clear next steps after every session.",
-        "result": "Students improve essay structure, analysis and written expression, which shows up in school assessments and exams."
-      },
-      "zh": {
-        "name": "Fiona",
-        "role": "学科导师",
-        "tag": "英文",
-        "qual": "ATAR 97.20 · B.Comm / B.Eng · UNSW",
-        "subjectShort": "英文 7–10 · Adv · Ext 1",
-        "subject": "English 7–10 · EAL/D · Standard · Advanced · Ext 1",
-        "hook": "课程完全个人化，每次课后都给明确的下一步。",
-        "bio": "North Sydney Girls 毕业，ATAR 97.20，UNSW 商学与工程在读。课程完全个人化，持续跟进反馈，每次课后都给出明确的下一步。",
-        "result": "学生议论文结构、文本分析与书面表达明显进步，校内评估与考试成绩随之提升。"
-      }
-    },
-    {
       "id": "chantry",
       "group": "maths",
       "hidden": false,
@@ -377,60 +323,6 @@
         "hook": "Ext 2 校排第 1、物理校排第 1，讲义与测验全部按大纲定制。",
         "bio": "Ryde Secondary College 毕业，ATAR 98.55：数学 Ext 2 校排第 1、Ext 1 第 2、物理第 1、化学第 4，年级 201 人中排名第 4，并获 Academic Excellence Award。UNSW 精算与商学在读。两年一对一教学经验，按大纲为每位学生定制讲义、测验与作业。",
         "result": "一位 Extension 2 学生校排由 19 名升至 5 名；另一位测验成绩由 65% 提升到 83%；多数 Advanced 学生校内评估达 90%。"
-      }
-    },
-    {
-      "id": "daniel",
-      "group": "maths",
-      "hidden": false,
-      "en": {
-        "name": "Daniel Li",
-        "role": "Academic Mathematics Tutor",
-        "tag": "Mathematics",
-        "qual": "ATAR 98.30 · B.Eng (EE) / CompSci · UNSW",
-        "subjectShort": "Maths 10–12 · Adv · Ext 1 & 2",
-        "subject": "Maths 10–12: Advanced · Ext 1 · Ext 2",
-        "hook": "E4 in Ext 1 and Ext 2; Band 6 in Physics and Chemistry; breaks hard ideas into clear steps.",
-        "bio": "Ryde Secondary College graduate, ATAR 98.30, with E4 results in Mathematics Extension 1 and Extension 2, plus Band 6 results in Physics and Chemistry. Electrical Engineering and Computer Science at UNSW. Two years of one-to-one tutoring: complex ideas in clear steps, plus exam strategy and study routines.",
-        "result": "Students usually show steady improvement after one term; a Year 10 student at Knox achieved full marks in a school exam after three weeks of targeted preparation."
-      },
-      "zh": {
-        "name": "Daniel Li",
-        "role": "学科数学导师",
-        "tag": "数学",
-        "qual": "ATAR 98.30 · 电气工程 / 计算机 · UNSW",
-        "subjectShort": "数学 10–12 · Adv · Ext 1 & 2",
-        "subject": "Maths 10–12: Advanced · Ext 1 · Ext 2",
-        "hook": "数学 Ext 1 / Ext 2 取得 E4，物理、化学取得 Band 6；把难点拆成清晰步骤。",
-        "bio": "Ryde Secondary College 毕业，ATAR 98.30，数学 Extension 1、Extension 2 取得 E4，物理、化学取得 Band 6。UNSW 电气工程与计算机科学在读。两年一对一教学经验，把复杂概念拆成清晰步骤，并教考试策略与学习习惯。",
-        "result": "学生通常在一学期后成绩稳步提升；一位 Knox 十年级学生经三周针对性训练后校内考试取得满分。"
-      }
-    },
-    {
-      "id": "ethan",
-      "group": "maths",
-      "hidden": false,
-      "en": {
-        "name": "Ethan Lin",
-        "role": "Academic Mathematics Tutor",
-        "tag": "Mathematics",
-        "qual": "ATAR 95.05 · B.Eng (EE) · UNSW",
-        "subjectShort": "Maths 7–10 · HSC Adv · Ext 1 & 2",
-        "subject": "Maths 7–10 · HSC Advanced · Ext 1 · Ext 2",
-        "hook": "Unpacks marking criteria against school assessments and drills timed responses.",
-        "bio": "The Scots College graduate, ATAR 95.05, with Band 6 in Mathematics Advanced and E4 results in Extension 1 and Extension 2. Electrical Engineering at UNSW. Two years of one-to-one tutoring with personalised notes and weekly practice, unpacking marking criteria and drilling timed responses.",
-        "result": "A Year 9 group at Pymble Ladies' College improved from an average grade of C to the top 5 of the cohort after one term."
-      },
-      "zh": {
-        "name": "Ethan Lin",
-        "role": "学科数学导师",
-        "tag": "数学",
-        "qual": "ATAR 95.05 · 电气工程 · UNSW",
-        "subjectShort": "数学 7–10 · HSC Adv · Ext 1 & 2",
-        "subject": "Maths 7–10 · HSC Advanced · Ext 1 · Ext 2",
-        "hook": "按校内评估拆解评分标准，训练限时作答策略。",
-        "bio": "The Scots College 毕业，ATAR 95.05，数学 Advanced 取得 Band 6，Extension 1、Extension 2 取得 E4。UNSW 电气工程在读。两年一对一教学经验，按学校评估进度定制讲义与每周练习，并通过拆解评分标准与限时训练备考。",
-        "result": "Pymble Ladies’ College 一个九年级小组经一学期辅导后，由平均 C 提升到年级前 5。"
       }
     },
     {

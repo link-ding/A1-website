@@ -41,7 +41,7 @@ test('creates and verifies a signed session cookie', () => {
 
 test('validates bilingual tutors and prices', () => {
   const valid = validateContent(defaultContent);
-  assert.equal(valid.tutors.length, 17);
+  assert.equal(valid.tutors.length, 13);
   assert.equal(valid.groupClasses.english, 75);
   assert.throws(() => validateContent({ ...defaultContent, groupClasses: { english: -1, mathematics: 85 } }), /greater than 0/);
   const missingChineseName = structuredClone(defaultContent);
