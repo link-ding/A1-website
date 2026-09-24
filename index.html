@@ -695,23 +695,28 @@
     <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">课程表 · Term 4 2026（Week 1–9）</span><span style="display:{{ ei }}">Timetable · Term 4 2026 (Weeks 1–9)</span></p>
     <h1 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(30px,4vw,48px);line-height:1.15;font-weight:700"><span style="display:{{ zb }}">2026 年 Term 4 课程表</span><span style="display:{{ eb }}">Term 4 2026 class timetable</span></h1>
     <p style="margin:0 0 36px;max-width:44em;font-size:16px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">2026 年 Term 4 共 9 周。英文与数学小班仅按完整 9 周课程包报名，整学期费用为 $620。</span><span style="display:{{ eb }}">Term 4 2026 runs for 9 weeks. English and Mathematics small-group classes are sold as a complete 9-week package for $620 per term.</span></p>
-    <div class="ao-table-scroll ao-desktop-rates" tabindex="0" role="region" aria-label="Class timetable" style="border:1px solid #E3DAD0;border-radius:12px;overflow-x:auto;background:#FFFCF7">
-      <div style="min-width:680px;display:grid;grid-template-columns:1.1fr 1.4fr 1fr 0.9fr;gap:1px;background:#E3DAD0">
-        <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">时间</span><span style="display:{{ ei }}">When</span></div>
-        <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">科目</span><span style="display:{{ ei }}">Class</span></div>
-        <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">年级</span><span style="display:{{ ei }}">Year</span></div>
-        <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">导师</span><span style="display:{{ ei }}">Tutor</span></div>
-        <sc-for list="{{ classes }}" as="c" hint-placeholder-count="8">
-          <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;font-weight:600">{{ c.when }}</div>
-          <div style="background:#FFFCF7;padding:16px 18px;font-size:15px">{{ c.subject }}</div>
-          <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#5C534E">{{ c.year }}</div>
-          <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#5C534E">{{ c.tutor }}</div>
-        </sc-for>
-      </div>
-    </div>
-    <div class="ao-mobile-rates ao-schedule">
-      <sc-for list="{{ classes }}" as="c"><article><h3>{{ c.subject }}</h3><p>{{ c.when }}</p><p>{{ c.year }} · {{ c.tutor }}</p></article></sc-for>
-    </div>
+    <sc-for list="{{ timetableSections }}" as="section" hint-placeholder-count="2">
+      <section style="margin:0 0 36px">
+        <h2 style="margin:0 0 14px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:24px;line-height:1.3;font-weight:700">{{ section.title }}</h2>
+        <div class="ao-table-scroll ao-desktop-rates" tabindex="0" role="region" aria-label="{{ section.ariaLabel }}" style="border:1px solid #E3DAD0;border-radius:12px;overflow-x:auto;background:#FFFCF7">
+          <div style="min-width:680px;display:grid;grid-template-columns:1.1fr 1.4fr 1fr 0.9fr;gap:1px;background:#E3DAD0">
+            <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">时间</span><span style="display:{{ ei }}">When</span></div>
+            <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">课程</span><span style="display:{{ ei }}">Class</span></div>
+            <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">年级</span><span style="display:{{ ei }}">Year</span></div>
+            <div style="background:#F3EBE1;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6B615C"><span style="display:{{ zi }}">导师</span><span style="display:{{ ei }}">Tutor</span></div>
+            <sc-for list="{{ section.classes }}" as="c" hint-placeholder-count="4">
+              <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;font-weight:600">{{ c.when }}</div>
+              <div style="background:#FFFCF7;padding:16px 18px;font-size:15px">{{ c.subject }}</div>
+              <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#5C534E">{{ c.year }}</div>
+              <div style="background:#FFFCF7;padding:16px 18px;font-size:15px;color:#5C534E">{{ c.tutor }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div class="ao-mobile-rates ao-schedule">
+          <sc-for list="{{ section.classes }}" as="c"><article><h3>{{ c.subject }}</h3><p>{{ c.when }}</p><p>{{ c.year }} · {{ c.tutor }}</p></article></sc-for>
+        </div>
+      </section>
+    </sc-for>
     <p style="margin:16px 0 0;font-size:13px;color:#6B615C"><span style="display:{{ zb }}">* 公共假期停课，课程周期顺延一周。</span><span style="display:{{ eb }}">* Classes pause on public holidays and the cycle extends by one week.</span></p>
     <div style="margin:36px 0 0;padding:28px;background:#F3EBE1;border-radius:12px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
       <p style="margin:0;max-width:34em;font-size:16px;line-height:1.65;color:#4A423E"><span style="display:{{ zb }}">想要的时段不在表上？告诉我们孩子的年级与科目，我们会安排新班或一对一时段。</span><span style="display:{{ eb }}">Can't see the slot you need? Tell us the year and subject and we'll look at opening a class or a one-on-one slot.</span></p>
@@ -1176,7 +1181,10 @@ class Component extends DCLogic {
       labelResults: zh ? '学生成绩' : 'Student results',
       labelEnquire: zh ? '咨询这位导师' : 'Enquire about this tutor',
       labelRegister: zh ? '填写报名表' : 'Register',
-      classes: zh ? classesZh : classesEn,
+      timetableSections: [
+        { title: zh ? '英文小班课程表' : 'English timetable', ariaLabel: 'English class timetable', classes: (zh ? classesZh : classesEn).filter(c => c.subject.startsWith('English')) },
+        { title: zh ? '数学小班课程表' : 'Mathematics timetable', ariaLabel: 'Mathematics class timetable', classes: (zh ? classesZh : classesEn).filter(c => c.subject.startsWith('Maths')) }
+      ],
       policy: zh ? policyZh : policyEn,
       roles: zh ? rolesZh : rolesEn
     };
