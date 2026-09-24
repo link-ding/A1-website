@@ -727,15 +727,23 @@
 
   <sc-if value="{{ isCredit }}">
   <main id="credit" style="max-width:820px;margin:0 auto;padding:64px 24px 0">
-    <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">最后更新 2026 年 9 月</span><span style="display:{{ ei }}">Last updated September 2026</span></p>
-    <h1 style="margin:0 0 16px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(30px,4vw,48px);line-height:1.15;font-weight:700"><span style="display:{{ zb }}">课时政策</span><span style="display:{{ eb }}">Credit policy</span></h1>
-    <p style="margin:0 0 40px;font-size:17px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">课时如何计算、请假怎么处理、什么情况下可以退费。</span><span style="display:{{ eb }}">How credits work, what happens when a lesson is missed, and when fees can be refunded.</span></p>
+    <p style="margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">自 2026 年 Term 4 起生效</span><span style="display:{{ ei }}">Effective from Term 4, 2026</span></p>
+    <h1 style="margin:0 0 16px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:clamp(30px,4vw,48px);line-height:1.15;font-weight:700"><span style="display:{{ zb }}">出勤、请假、补课及 Credit 政策</span><span style="display:{{ eb }}">Attendance, cancellation &amp; credit policy</span></h1>
+    <p style="margin:0 0 28px;font-size:17px;line-height:1.7;color:#5C534E"><span style="display:{{ zb }}">为确保课程安排、班级人数及教师时间保持稳定，报名及缴费前请仔细阅读以下条款。</span><span style="display:{{ eb }}">Class places and tutoring times are reserved for each student. Please read these terms before enrolling or making payment.</span></p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;margin:0 0 32px">
+      <article style="padding:22px 24px;background:#F3EBE1;border-radius:12px"><p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">小班课程</span><span style="display:{{ ei }}">Group lessons</span></p><p style="margin:0;font-size:15px;line-height:1.65;color:#4A423E"><span style="display:{{ zb }}">按整学期课程套餐收费。因学生个人原因缺席，不提供 Credit、退款、补课或顺延。</span><span style="display:{{ eb }}">Sold as a full-term package. Student absences do not generate credits, refunds, make-up lessons or carry-over.</span></p></article>
+      <article style="padding:22px 24px;background:#F3EBE1;border-radius:12px"><p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9C2A2B"><span style="display:{{ zi }}">一对一课程</span><span style="display:{{ ei }}">Private lessons</span></p><p style="margin:0;font-size:15px;line-height:1.65;color:#4A423E"><span style="display:{{ zb }}">每位学生每学期最多 1 次经批准的 Credit；须至少提前 24 小时通知，并在同一学期内使用。</span><span style="display:{{ eb }}">One approved credit per student per term with at least 24 hours’ notice. The credit must be used in the same term.</span></p></article>
+    </div>
     <div style="display:flex;flex-direction:column;gap:2px;background:#E3DAD0;border:1px solid #E3DAD0;border-radius:12px;overflow:hidden">
-      <sc-for list="{{ policy }}" as="p" hint-placeholder-count="7">
+      <sc-for list="{{ policy }}" as="p" hint-placeholder-count="4">
         <section style="background:#FFFCF7;padding:30px 32px">
           <p style="margin:0 0 10px;font-family:'Libre Baskerville',Georgia,serif;font-size:14px;font-weight:700;color:#D99B36">{{ p.n }}</p>
           <h2 style="margin:0 0 12px;font-family:'Libre Baskerville','Noto Serif SC',Georgia,serif;font-size:21px;font-weight:700">{{ p.title }}</h2>
-          <p style="margin:0;font-size:16px;line-height:1.75;color:#4A423E;text-wrap:pretty">{{ p.body }}</p>
+          <p style="margin:0;font-size:16px;line-height:1.75;color:#4A423E;text-wrap:pretty">{{ p.intro }}</p>
+          <sc-for list="{{ p.items }}" as="item">
+            <h3 style="margin:22px 0 8px;font-size:16px;line-height:1.45;color:#2A2120">{{ item.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.75;color:#4A423E;text-wrap:pretty">{{ item.body }}</p>
+          </sc-for>
         </section>
       </sc-for>
     </div>
@@ -1042,24 +1050,32 @@ class Component extends DCLogic {
       tutor: c.tutor
     }));
     const policyZh = [
-      { n: '01', title: '课时如何计算', body: '一个课时 = 一节已排定的课。小班课与一对一课程均以整期（School Term Block）为单位预订，一对一课程每周最少 1.5 小时。报名确认后课时进入学生账户。' },
-      { n: '02', title: '提前请假（至少 24 小时）', body: '上课开始前至少 24 小时通知，课时保留。一对一可另约时间；小班课可在同一整期内插班同科目其他班次补课，视座位情况而定。' },
-      { n: '03', title: '临时请假（不足 24 小时）', body: '不足 24 小时取消或缺席，课时按已上处理。导师会把当次讲义与作业发给学生，以便学生自行跟上进度。' },
-      { n: '04', title: '补课安排', body: '补课需在同一整期（School Term Block）内完成，逾期不结转。补课不可折算现金，也不可转让给其他学生。' },
-      { n: '05', title: '课时有效期', body: '课时仅在报名当期（School Term Block）内有效，不结转至下一期。如需跨期安排，请提前与课务联系。' },
-      { n: '06', title: '退课与退费', body: '一期开课前 7 天以上申请退课，全额退还未使用课时。开课后申请，已上课时按该学期适用时薪扣除后退还余额，并可能收取行政费（具体金额以正式条款为准）。' },
-      { n: '07', title: '停课与公共假期', body: '公共假期不排课，整期顺延一周。因导师原因取消的课程，一律另行补课或全额返还课时。' },
-      { n: '08', title: '转班与转科', body: '同一整期内可申请一次免费转班或转科，视座位情况而定。请通过邮件或微信提出申请。' }
+      { n: '01', title: '小班课程 Group Lessons', intro: '自 2026 年 Term 4 起，所有小班课程均以整学期课程套餐（Term Package）形式报名及收费，不再按学生实际出席的单次课数计算费用。报名后，该班级名额将在整个学期内为学生保留。', items: [
+        { title: '学生个人缺席', body: '如学生因个人原因无法参加小班课程，相关缺席课程不提供退款、Credit、补课、转课或顺延至下一学期。包括生病或医疗预约，学校活动、考试、体育比赛或训练，家庭活动，澳洲境内或海外旅行、学校提前放假，以及其他个人时间安排。缺席课时或相关费用不能转给其他学生、兄弟姐妹、其他班级或未来学期。学生可在合理情况下申请当周课堂资料、作业或学习内容，但不会另行安排补课。' },
+        { title: 'Academy One 取消课程', body: '如课程因 Academy One 原因无法正常进行，并且无法安排合理的替代课程，我们将根据实际情况提供补课、Credit、退款或其他适当的处理方式。' }
+      ] },
+      { n: '02', title: '一对一课程 Private Lessons', intro: '一对一课程的上课时间及教师均为学生个人预留。对于学生偶尔需要调整时间的情况，我们提供有限度的 Credit 及改课安排。', items: [
+        { title: '提前至少 24 小时请假', body: '如在原定上课时间前至少 24 小时通知 Academy One，该节课程可以申请改课或获得一个课时 Credit。每位学生每个学期最多获得 1 次经批准的一对一课程 Credit；Credit 必须在同一学期内使用；补课时间取决于老师及课表空位；Credit 不能顺延、兑换现金或退款，也不能转让给其他学生或兄弟姐妹。使用当学期唯一一次 Credit 后，之后由学生发起的取消不再获得额外 Credit，即使提前超过 24 小时通知。获得 Credit 不保证原任课老师或原上课时间可用于补课。' },
+        { title: '少于 24 小时请假', body: '如距离课程开始不足 24 小时才通知取消，该节课程将按正常课程收费，不提供 Credit、退款或补课。当天临时取消或无故缺席（No-show）同样适用。' },
+        { title: '特殊或紧急情况', body: '真正的突发疾病、家庭紧急情况或其他无法合理预见的特殊情况，可由 Academy One 管理团队根据具体情况酌情处理。批准并非自动获得，并须遵守适用的消费者法律。' },
+        { title: 'Academy One 或老师取消课程', body: '如因 Academy One 或任课老师原因导致课程无法进行，我们将尽可能安排代课老师、其他合适时间，或在无法合理安排补课时提供相应 Credit 或退款。此类取消不计入学生每学期 1 次 Credit 的限额。' }
+      ] },
+      { n: '03', title: 'Credit 有效期', intro: '所有获批的一对一课程 Credit 均须在产生 Credit 的同一个学期结束前使用完毕。未使用的 Credit 不会顺延至下一学期，不能抵扣未来学费、兑换现金或退款，也不能在学生之间转让。家长及学生须在学期结束前联系 Academy One 安排符合条件的补课，具体时间取决于教师及课表空位。', items: [] },
+      { n: '04', title: '政策确认', intro: '家长或学生完成 Academy One 课程报名及／或缴费后，即代表已阅读、理解并接受以上政策。本政策不会排除、限制或修改任何根据 Australian Consumer Law（澳大利亚消费者法）依法不能被排除的消费者权利或补救措施。', items: [] }
     ];
     const policyEn = [
-      { n: '01', title: 'How credits work', body: 'One credit = one scheduled lesson. Both group classes and one-to-one lessons are booked by the school term block, with a minimum of 1.5 hours per week for one-to-one tuition. Credits are added to the student account once enrolment is confirmed.' },
-      { n: '02', title: 'Notice given (at least 24 hours)', body: 'With at least 24 hours’ notice the credit is retained. One-on-one lessons can be rescheduled; group students may sit in on another class in the same subject within the term block, subject to availability.' },
-      { n: '03', title: 'Late notice (less than 24 hours)', body: 'Cancellations with less than 24 hours’ notice, and no-shows, are treated as taken. The tutor sends through the lesson notes and homework so the student can keep pace.' },
-      { n: '04', title: 'Make-up lessons', body: 'Make-ups must be taken within the same term block and do not carry over. They cannot be exchanged for cash or transferred to another student.' },
-      { n: '05', title: 'Credit expiry', body: 'Credits apply to the enrolled term block only and do not roll into the next. Contact operations in advance if lessons need to span terms.' },
-      { n: '06', title: 'Withdrawal and refunds', body: 'Withdraw more than 7 days before a term starts and unused fees are refunded in full. After it starts, lessons taken are deducted at the applicable rate for that term and the balance refunded, less an administration fee (amount per the final terms).' },
-      { n: '07', title: 'Closures and public holidays', body: 'No classes run on public holidays; the cycle extends accordingly. Any lesson cancelled by us is rescheduled or credited in full.' },
-      { n: '08', title: 'Changing class or subject', body: 'One free class or subject change per cycle, subject to availability. Request it by email or WeChat.' }
+      { n: '01', title: 'Group lessons', intro: 'From Term 4, 2026, all Academy One group lessons are sold as a full-term package rather than as individual lessons. Once enrolled, the student’s place is reserved for the entire term, and fees are not calculated according to the number of lessons attended.', items: [
+        { title: 'Student absences', body: 'A group lesson missed for personal reasons is not eligible for a refund, credit, transfer, make-up lesson or carry-over. This includes illness or medical appointments; school activities, examinations or sporting commitments; family commitments; holidays, domestic or overseas travel, or early school holidays; and other personal scheduling conflicts. Fees or missed lessons cannot be transferred to another student, sibling, class or future term. Students may request relevant class materials, homework or lesson resources where appropriate, but a separate make-up lesson is not provided.' },
+        { title: 'Academy One cancellations', body: 'If Academy One cancels a scheduled group lesson and an appropriate replacement lesson cannot be provided, Academy One will arrange an appropriate make-up, credit, refund or other remedy as applicable.' }
+      ] },
+      { n: '02', title: 'Private lessons', intro: 'Private lesson times and tutors are reserved for an individual student. Academy One provides limited flexibility for occasional student-initiated cancellations.', items: [
+        { title: 'Cancellation with at least 24 hours’ notice', body: 'The student may request to reschedule or receive a lesson credit when Academy One receives at least 24 hours’ notice. Each student may receive a maximum of one approved private lesson credit per school term. It must be used within the same term and is subject to tutor and timetable availability. It cannot be carried forward, exchanged for cash, refunded or transferred to another student or sibling. After the one credit is used, further student-initiated cancellations do not qualify for another credit, even with more than 24 hours’ notice. A credit does not guarantee the usual tutor or lesson time.' },
+        { title: 'Cancellation with less than 24 hours’ notice', body: 'The lesson will be charged in full and no credit, refund or make-up lesson will be provided. This includes same-day cancellations and non-attendance without notice.' },
+        { title: 'Exceptional circumstances', body: 'Genuine emergencies and exceptional circumstances may be considered by Academy One management on a case-by-case basis. Approval is not automatic and remains subject to applicable consumer law.' },
+        { title: 'Academy One or tutor cancellations', body: 'If Academy One or the assigned tutor cannot provide a scheduled private lesson, we will endeavour to arrange a replacement tutor, an alternative time, or an appropriate credit or refund where a replacement cannot reasonably be arranged. Academy One-initiated cancellations do not count towards the student’s one-credit allowance.' }
+      ] },
+      { n: '03', title: 'Expiry of credits', intro: 'All approved private lesson credits expire at the end of the term in which they are issued. Unused credits do not carry over, cannot be deducted from a future invoice, converted into a refund or cash balance, or transferred between students. Families are responsible for arranging eligible replacement lessons before the end of the term, subject to tutor and timetable availability.', items: [] },
+      { n: '04', title: 'Acceptance of this policy', intro: 'By enrolling in and/or making payment for an Academy One course or lesson, parents, guardians and students acknowledge that they have read and accepted this policy. It does not exclude, restrict or modify any rights or remedies that cannot lawfully be excluded under the Australian Consumer Law.', items: [] }
     ];
     const rolesZh = [
       { title: '数学导师（Year 6–12）', meta: '兼职 · Chatswood', body: '小班与一对一教学，覆盖 7–10 年级或 HSC Advanced / Extension。需能独立备课。', cta: '投递简历 →' },
