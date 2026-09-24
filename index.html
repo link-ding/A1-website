@@ -34,6 +34,11 @@
   h1, h2, h3 { text-wrap: balance; }
   main p { line-height: 1.7; }
   section[id], main[id] { scroll-margin-top: 112px; }
+  .ao-trial-banner { background: #3B201F; color: #FFFAF3; }
+  .ao-trial-banner-inner { width: min(1180px,calc(100% - 48px)); min-height: 48px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 24px; }
+  .ao-trial-banner p { margin: 0; font-size: 13px; line-height: 1.45; }
+  .ao-trial-banner a { flex: 0 0 auto; padding: 7px 12px; border: 1px solid rgba(255,255,255,0.5); border-radius: 5px; color: #FFFAF3; font-size: 13px; font-weight: 700; text-decoration: none; }
+  .ao-trial-banner a:hover { border-color: #fff; background: #fff; color: #3B201F; text-decoration: none; }
   .ao-header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .ao-header-actions a, .ao-header-actions button { margin-left: 0 !important; white-space: nowrap; }
   .ao-header nav a { white-space: nowrap; }
@@ -58,6 +63,9 @@
     section[id], main[id] { scroll-margin-top: 140px; }
   }
   @media (max-width: 600px) {
+    .ao-trial-banner-inner { width: calc(100% - 24px); min-height: 0; padding: 10px 0; align-items: flex-start; gap: 12px; }
+    .ao-trial-banner p, .ao-trial-banner a { font-size: 11px; }
+    .ao-trial-banner a { text-align: center; }
     .ao-header-inner { padding: 12px 20px 4px !important; }
     .ao-brand { gap: 8px !important; }
     .ao-brand img { height: 34px !important; }
@@ -351,6 +359,12 @@
 
 <div style="font-family:'Figtree','Noto Sans SC',system-ui,sans-serif;color:#221E1F;background:#FBF8F3;min-height:100vh;-webkit-font-smoothing:antialiased">
 
+  <aside class="ao-trial-banner" aria-label="Trial lesson information">
+    <div class="ao-trial-banner-inner">
+      <p><span style="display:{{ zb }}">私人课试课按一次性 1.5 小时单节费用收取；小班试课为 $75 / 1.5 小时。</span><span style="display:{{ eb }}">Private trials are one-off 1.5-hour lessons at the applicable private rate. Group trials are $75 for 1.5 hours.</span></p>
+      <a href="/contact/#trial-lesson"><span style="display:{{ zi }}">预约试课</span><span style="display:{{ ei }}">Book your trial lesson</span></a>
+    </div>
+  </aside>
   <header class="ao-header" style="position:sticky;top:0;z-index:50;background:rgba(251,248,243,0.94);backdrop-filter:blur(10px);borderBottom:1px solid #E3DAD0">
     <div class="ao-header-inner" style="max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:28px">
       <a class="ao-brand" href="/" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none">

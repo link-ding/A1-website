@@ -22,6 +22,11 @@
     button, input, select { font:inherit; }
     button, select { cursor:pointer; }
     :focus-visible { outline:3px solid var(--red); outline-offset:3px; }
+    .trial-banner { background:#3b201f; color:#fffaf3; }
+    .trial-banner-inner { width:min(1180px,calc(100% - 40px)); min-height:48px; margin:auto; display:flex; align-items:center; justify-content:center; gap:24px; }
+    .trial-banner p { margin:0; font-size:13px; line-height:1.45; }
+    .trial-banner a { flex:0 0 auto; padding:7px 12px; border:1px solid rgba(255,255,255,.5); border-radius:5px; color:#fffaf3; font-size:13px; font-weight:700; text-decoration:none; }
+    .trial-banner a:hover { border-color:#fff; background:#fff; color:#3b201f; }
     .utility-header { border-bottom:1px solid var(--line); background:rgba(251,248,243,.92); backdrop-filter:blur(12px); }
     .utility-header-inner { width:min(1180px,calc(100% - 40px)); min-height:88px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:24px; }
     .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
@@ -82,6 +87,9 @@
       .method { grid-template-columns:1fr; }
     }
     @media (max-width:560px) {
+      .trial-banner-inner { width:calc(100% - 24px); min-height:0; padding:10px 0; align-items:flex-start; gap:12px; }
+      .trial-banner p, .trial-banner a { font-size:11px; }
+      .trial-banner a { text-align:center; }
       .utility-header-inner, .intro, .workspace, .method { width:min(100% - 28px,1180px); }
       .utility-header-inner { min-height:72px; }
       .brand img { width:39px; }
@@ -100,6 +108,12 @@
   </style>
 </head>
 <body>
+  <aside class="trial-banner" aria-label="Trial lesson information">
+    <div class="trial-banner-inner">
+      <p>Private trials are one-off 1.5-hour lessons at the applicable private rate. Group trials are $75 for 1.5 hours.</p>
+      <a href="/contact/#trial-lesson">Book your trial lesson</a>
+    </div>
+  </aside>
   <header class="utility-header">
     <div class="utility-header-inner">
       <a class="brand" href="/" aria-label="Academy One home">
