@@ -105,7 +105,24 @@ function careersHtml(){
   return standaloneHtml({slug:'careers',title:'Tutor Careers at Academy One',meta:'Apply for part-time English and Mathematics tutoring roles at Academy One in Chatswood.',h1:'Help students understand, practise and progress.',lede:'Academy One recruits part-time English and Mathematics tutors for after-school and weekend teaching in Chatswood and online.',body:`<section class="section-wide contact-grid"><article><h2>English tutors</h2><p>Teach school English with clear explanations, useful feedback and course-appropriate guidance.</p></article><article><h2>Mathematics tutors</h2><p>Teach methods from first principles and help students apply them accurately under assessment conditions.</p></article><article><h2>How to apply</h2><p>Email your CV, subjects, year levels, availability and preferred format. All roles require a current NSW Working With Children Check.</p><a class="button" href="mailto:operations@academyone.com.au?subject=Tutor%20application">Email an application</a></article></section>`});
 }
 
-for(const p of pages){const dir=path.join(root,p.slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),pageHtml(p));}
+function withContactPageCta(html){
+  return html.replace(/href="mailto:operations@academyone\.com\.au\?subject=[^"]+">Contact Academy One<\/a>/,'href="/contact/">Contact Academy One</a>');
+}
+
+function withSubjectTutors(html,page){
+  const subject=page.slug.match(/^tutoring\/(maths|english|physics|chemistry|biology)$/)?.[1];
+  if(!subject)return html;
+  const patterns={maths:/math/i,english:/english/i,physics:/physics/i,chemistry:/chemistry/i,biology:/biology/i};
+  const tutors=managedContent.tutors.filter(tutor=>!tutor.hidden&&patterns[subject].test(tutor.en.subject)).slice(0,3);
+  const profiles=tutors.length?tutors.map(tutor=>{
+    const profile=tutor.en;
+    return `<article class="level"><p class="eyebrow">${esc(profile.role)}</p><h3>${esc(profile.name)}</h3><p><strong>${esc(profile.qual)}</strong><br>${esc(profile.hook)}</p><a class="text-link" href="/tutors/#${esc(tutor.id)}">View full profile →</a></article>`;
+  }).join(''):`<article class="level"><h3>Find the right tutor</h3><p>Tell us the student’s year, course and current goals. We’ll confirm the most suitable available tutor.</p><a class="text-link" href="/tutors/">Browse all tutor profiles →</a></article>`;
+  const section=`<section class="section reveal" id="our-tutors"><div class="section-grid"><div><p class="eyebrow">Our tutors</p><h2>Meet tutors who teach this subject.</h2><p class="section-intro">Course fit, lesson format and current availability are confirmed when you enquire.</p></div><div class="levels">${profiles}</div></div></section>`;
+  return html.replace('<section class="section reveal"><div class="section-grid"><div><p class="eyebrow">Common questions</p>',`${section}<section class="section reveal"><div class="section-grid"><div><p class="eyebrow">Common questions</p>`);
+}
+
+for(const p of pages){const dir=path.join(root,p.slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),withSubjectTutors(withContactPageCta(pageHtml(p)),p));}
 
 const standalonePages=[['tutors',tutorDirectoryHtml()],['pricing',pricingHtml()],['contact',contactHtml()],['careers',careersHtml()]];
 for(const [slug,html] of standalonePages){const dir=path.join(root,slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),html);}
