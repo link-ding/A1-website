@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "resources/how-is-atar-calculated",
+    "type": "ATAR 指南",
+    "title": "新州 ATAR 如何计算？",
+    "meta": "了解新州 ATAR 的计算方式，包括 HSC 成绩、科目 scaling、ATAR aggregate、最佳 10 units 以及英语必计规则。",
+    "h1": "新州 ATAR 是如何计算的？",
+    "lede": "用清晰易懂的方式说明 HSC 成绩、科目 scaling、最佳 10 units，以及 aggregate 如何转换成 ATAR 排名。",
+    "introTitle": "ATAR 是排名，不是平均分",
+    "intro": [
+      "Australian Tertiary Admission Rank（ATAR）代表学生在同龄人中的相对位置，并不是 HSC 各科成绩的平均数。HSC 某科取得 90 分，也不代表 ATAR 就会是 90。",
+      "在新州，UAC 会先对符合条件的课程成绩进行 scaling，再组成 ATAR aggregate。计算必须包含至少 2 units 的英语，并从其余符合条件的课程中选取表现最好的 units，总计 10 units。最后，aggregate 会被转换成 ATAR。"
+    ],
+    "levels": [
+      ["1. HSC 成绩", "NESA 公布的 HSC 成绩由校内评估与 HSC 考试表现共同构成。"],
+      ["2. Scaling", "UAC 会对不同课程的成绩进行调整，使不同课程群体的表现能够在统一基础上比较。"],
+      ["3. 最佳 10 units", "Aggregate 包括 2 units 英语，以及其余得分最高的 8 units。"],
+      ["4. 排名", "Aggregate 最终会转换为相对同龄群体的百分位排名，范围从低于 30 到 99.95。"]
+    ],
+    "topics": [
+      ["成绩", "从符合 ATAR 资格的 HSC 课程成绩开始。"],
+      ["调整", "通过 scaling 比较不同课程的表现。"],
+      ["选取", "按照 UAC 规则计算最佳 10 units。"],
+      ["排名", "将 aggregate 放到同龄群体中确定相对位置。"]
+    ],
+    "faq": [
+      ["英语一定会计入 ATAR 吗？", "是的。新州 ATAR 计算必须包含至少 2 units 的英语，即使英语不是学生 scaling 后得分最高的课程。"],
+      ["ATAR 是 HSC 成绩的平均数吗？", "不是。UAC 使用 scaling 后的成绩组成 aggregate，再把 aggregate 转换成排名。"],
+      ["可以准确计算未来的 ATAR 吗？", "不可以。Scaling 以及 aggregate 与 ATAR 的对应关系会随每届学生变化。计算器只能用于规划和估算，不是官方预测。"]
+    ],
+    "related": [
+      ["/zh/resources/atar-calculator/", "使用 ATAR 估算工具"],
+      ["/zh/resources/hsc-scaling/", "了解 HSC Scaling"],
+      ["/hsc-tutoring/", "HSC 辅导"]
+    ],
+    "sources": [
+      ["UAC：ATAR 如何计算", "https://uac.edu.au/future-applicants/atar/how-your-atar-is-calculated"],
+      ["UAC：ATAR 资格要求", "https://uac.edu.au/future-applicants/atar/atar-eligibility"]
+    ]
+  },
+  {
+    "slug": "resources/hsc-scaling",
+    "type": "ATAR 指南",
+    "title": "HSC Scaling 详解",
+    "meta": "了解新州 HSC scaling：UAC 为什么调整不同课程的成绩、scaling 代表什么，以及它如何影响 ATAR aggregate。",
+    "h1": "看懂 HSC Scaling，不再被传言误导。",
+    "lede": "Scaling 用于比较不同课程中的表现，它不会永久把某个科目标记为“好”或“差”，也不应该成为选科的唯一依据。",
+    "introTitle": "Scaling 要解决什么问题",
+    "intro": [
+      "学生会选择不同的 HSC 课程组合，因此不能把各科原始成绩直接相加，假设所有课程的学生群体和成绩分布都相同。UAC 的 scaling 过程为计算 ATAR aggregate 建立可比较的基础。",
+      "Scaling 会参考该课程学生群体在其他课程中的整体表现，并且每年重新计算。因此，简单的 scaling 表格和关于科目的传言很容易造成误导。选择适合自己的课程并取得优秀成绩，通常比追逐所谓“高 scaling 科目”更重要。"
+    ],
+    "levels": [
+      ["原始成绩不会直接相加", "HSC 各科成绩并不是简单合计后就得到 ATAR。"],
+      ["Scaling 每年都会变化", "每届学生群体和成绩不同，scaling 结果也可能改变。"],
+      ["科目内的相对表现很重要", "即使某科常被称为低 scaling，优秀成绩仍然可以为 ATAR 作出良好贡献。"],
+      ["课程适合度仍然重要", "选科应同时考虑兴趣、大学先修要求以及取得高分的可能性。"]
+    ],
+    "topics": [
+      ["比较", "Scaling 把不同课程成绩放到可比较的基础上。"],
+      ["合计", "Scaling 后的成绩用于组成最佳 10 units 的 aggregate。"],
+      ["排名", "Aggregate 用于确定学生的 ATAR 相对位置。"],
+      ["选择", "选科应平衡能力、目标、兴趣和先修要求。"]
+    ],
+    "faq": [
+      ["难度高的科目一定会 scale up 吗？", "不一定。Scaling 依据课程学生群体的整体表现，而不是对课程难度作固定判断。"],
+      ["因为某科 scaling 较低就应该放弃吗？", "不能只根据 scaling 决定。还应考虑学生表现、兴趣、大学先修要求、学习负担和学校建议。"],
+      ["网上的 scaling 计算器准确吗？", "不能做到完全准确。未来的 scaling 无法提前确定，公开计算器通常使用历史数据或模型进行估算。"]
+    ],
+    "related": [
+      ["/zh/resources/how-is-atar-calculated/", "ATAR 如何计算"],
+      ["/zh/resources/atar-calculator/", "ATAR 估算工具"],
+      ["/zh/resources/hsc-study-tips/", "HSC 学习建议"]
+    ],
+    "sources": [
+      ["UAC：ATAR 如何计算", "https://uac.edu.au/future-applicants/atar/how-your-atar-is-calculated"],
+      ["UAC：ATAR 常见问题", "https://uac.edu.au/future-applicants/faqs-and-forms/atar"]
+    ]
+  },
+  {
+    "slug": "resources/hsc-study-tips",
+    "type": "HSC 指南",
+    "title": "真正有帮助的 HSC 学习方法",
+    "meta": "实用的 HSC 学习建议，涵盖学习规划、主动回忆、历年试题、反馈运用和 Year 12 考试准备。",
+    "h1": "建立一套能够长期坚持的 HSC 学习方法。",
+    "lede": "用可执行的系统安排优先事项、运用反馈并准备综合考试，避免每一周都陷入临时赶工。",
+    "introTitle": "稳定进步需要反馈循环",
+    "intro": [
+      "学习计划只有在能改变下一步行动时才真正有用。有效的 HSC 学习可以形成简单循环：先回忆已有知识，完成有意义的练习，检查结果，再决定哪些内容需要重新学习。",
+      "不同科目需要不同方法。数学和物理需要完成题目；英语需要规划、写作和修改；生物与化学则需要结合知识回忆和实际应用。共同原则是主动练习，并得到清晰可见的反馈。"
+    ],
+    "levels": [
+      ["以成果规划学习", "明确本次学习结束时能够完成哪些题目、模块或回答，而不只是记录坐在书桌前的时间。"],
+      ["先回忆，再重读", "先测试自己真正记住了什么，再针对实际知识缺口复习。"],
+      ["有目的地使用考试题", "先按主题练习，再混合不同主题，并逐步加入时间限制。"],
+      ["建立错题记录", "记录错误原因，以及下一次避免同类错误的具体方法。"]
+    ],
+    "topics": [
+      ["每周", "围绕学校作业和考试日期，选择少量真正重要的优先事项。"],
+      ["每天", "从明确的学习成果开始，减少开始学习前的阻力。"],
+      ["收到反馈后", "把老师或导师的评语转换成下一次练习的检查清单。"],
+      ["考试前", "模拟考试条件、复盘错误，并保证充足睡眠。"]
+    ],
+    "faq": [
+      ["HSC 学生每天应该学习多少小时？", "没有适合所有人的固定数字。学习量取决于科目、目标、当前基础和学校安排。稳定而专注的学习通常比看起来很长但无法持续的学习时间更有效。"],
+      ["什么时候应该开始做历年试卷？", "可以较早开始按主题练习。完整试卷在学生学完足够内容、并能够根据结果调整学习时更有价值。"],
+      ["错题记录应该写什么？", "记录题型、错误内容、发生原因，以及下次应该采用的具体规则或行动。下一组练习前再复习这些记录。"]
+    ],
+    "related": [
+      ["/hsc-tutoring/", "HSC 辅导"],
+      ["/zh/resources/hsc-scaling/", "HSC Scaling"],
+      ["/zh/resources/atar-calculator/", "ATAR 估算工具"]
+    ],
+    "sources": [
+      ["NSW Curriculum", "https://curriculum.nsw.edu.au/"]
+    ]
+  },
+  {
+    "slug": "resources/selective-oc-guides",
+    "type": "考试指南",
+    "title": "精英中学与 OC 备考指南",
+    "meta": "面向新州家庭的精英中学与 OC 备考指南，涵盖考试结构、学习规划、推理能力和练习策略。",
+    "h1": "更从容地准备精英中学与 OC 考试。",
+    "lede": "了解考试考查内容、建立有意义的能力基线，并在不让大量试卷取代真正学习的前提下进行准备。",
+    "introTitle": "先关注分数背后的能力",
+    "intro": [
+      "精英中学和 Opportunity Class 考试都会考查阅读、数学推理和思维能力，精英中学选拔还包括写作。熟悉考试形式很重要，但最有效的准备仍然是提升考试真正要评估的基础能力。",
+      "先评估学生在不同领域的起点，再区分知识缺口、时间管理问题和答题决策错误。读错题目条件的学生，与缺乏数感或词汇的学生，需要不同的教学方式。"
+    ],
+    "levels": [
+      ["了解最新考试要求", "查看适用年份的新州官方信息和报名流程。"],
+      ["建立能力基线", "使用有代表性的任务找出优势和反复出现的错误类型。"],
+      ["巩固基础", "在追求速度之前，先加强读写、数学和推理能力。"],
+      ["练习答题决策", "准确率稳定后，再加入时间分配、跳题和检查策略。"]
+    ],
+    "topics": [
+      ["阅读", "训练推断、证据查找、词汇和高效理解。"],
+      ["数学", "发展灵活的数感和多步骤推理能力。"],
+      ["思维能力", "练习逻辑、规律识别以及对不同答案的判断。"],
+      ["写作", "在时间限制下进行有目的的规划，并准确表达。"]
+    ],
+    "faq": [
+      ["精英中学考试和 OC 考试一样吗？", "两者在若干推理领域有所重叠，但面向不同年级、属于不同的选拔流程。应始终查看新州最新官方信息。"],
+      ["学生应该完成多少套模拟试卷？", "数量应足以发现问题和熟悉考试，但不能让试卷取代教学。高质量的复盘比完成试卷的数量更重要。"],
+      ["如果模拟成绩波动很大怎么办？", "一定程度的波动很正常。应观察多次练习中不同能力领域和错误类型的规律，而不是只根据一次分数作判断。"]
+    ],
+    "related": [
+      ["/selective-school-tutoring/", "精英中学备考辅导"],
+      ["/oc-preparation/", "OC 备考"],
+      ["/tutoring/maths/", "数学辅导"]
+    ],
+    "sources": [
+      ["新州教育部：精英中学与 Opportunity Classes", "https://education.nsw.gov.au/public-schools/selective-high-schools-and-opportunity-classes"]
+    ]
+  }
+]

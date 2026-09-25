@@ -1,5 +1,7 @@
-document.querySelector('[data-language="zh"]')?.addEventListener('click',()=>{
-  try{localStorage.setItem('academy-one-language','zh');}catch{}
+const pageLanguage=document.documentElement.lang.startsWith('zh')?'zh':'en';
+try{localStorage.setItem('academy-one-language',pageLanguage);}catch{}
+document.querySelector('[data-language]')?.addEventListener('click',event=>{
+  try{localStorage.setItem('academy-one-language',event.currentTarget.dataset.language);}catch{}
 });
 const observer='IntersectionObserver'in window?new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}})},{threshold:.12}):null;
 document.querySelectorAll('.reveal').forEach(el=>observer?observer.observe(el):el.classList.add('is-visible'));

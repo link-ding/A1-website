@@ -154,7 +154,42 @@ const defaults = [
   ['biology', 83]
 ];
 
+const chineseCourseNames = {
+  'eng-standard':'英语标准 English Standard','eng-advanced':'英语高级 English Advanced','eng-eald':'英语 EAL/D','eng-ext-1':'英语 Extension 1','eng-ext-2':'英语 Extension 2',
+  'math-standard-2':'数学标准 Mathematics Standard 2','math-advanced':'数学高级 Mathematics Advanced','math-ext-1':'数学 Extension 1','math-ext-2':'数学 Extension 2',
+  biology:'生物 Biology',chemistry:'化学 Chemistry',physics:'物理 Physics',economics:'经济学 Economics',business:'商业研究 Business Studies',legal:'法律研究 Legal Studies',
+  'modern-history':'现代史 Modern History','ancient-history':'古代史 Ancient History',geography:'地理 Geography','health-movement-science':'健康与运动科学 Health and Movement Science',
+  'society-culture':'社会与文化 Society and Culture','visual-arts':'视觉艺术 Visual Arts','music-1':'音乐 Music 1','software-engineering':'软件工程 Software Engineering','investigating-science':'科学探究 Investigating Science'
+};
+
+const chineseErrors = new Map([
+  ['Choose only one 2-unit English course.','只能选择一门 2-unit 英语课程。'],
+  ['English Extension 1 requires English Advanced.','English Extension 1 必须与 English Advanced 一起选择。'],
+  ['English Extension 2 requires English Advanced and Extension 1.','English Extension 2 必须与 English Advanced 和 Extension 1 一起选择。'],
+  ['Mathematics Standard 2 cannot be combined with Advanced or Extension courses.','Mathematics Standard 2 不能与 Advanced 或 Extension 课程同时选择。'],
+  ['Mathematics Extension 1 requires Mathematics Advanced.','Mathematics Extension 1 必须与 Mathematics Advanced 一起选择。'],
+  ['Mathematics Extension 2 requires Mathematics Extension 1.','Mathematics Extension 2 必须与 Mathematics Extension 1 一起选择。'],
+  ['For an Extension 2 pattern, enter Mathematics Extension 1 and Extension 2 without Mathematics Advanced.','选择 Extension 2 组合时，请输入 Mathematics Extension 1 和 Extension 2，不要再添加 Mathematics Advanced。'],
+  ['Add at least 2 units of English.','请添加至少 2 units 英语。'],
+  ['Add at least 10 units.','请添加至少 10 units。'],
+  ['ATAR eligibility requires courses from at least 4 subject areas.','ATAR 资格要求课程至少涵盖 4 个学科领域。'],
+  ['ATAR eligibility requires at least 3 courses of 2 units or more.','ATAR 资格要求至少有 3 门课程为 2 units 或以上。'],
+  ['Each course can only be added once.','每门课程只能添加一次。']
+]);
+
+function localizeCalculatorError(message,isChinese){
+  if(!isChinese)return message;
+  if(chineseErrors.has(message))return chineseErrors.get(message);
+  const match=message.match(/^(.+) HSC mark must be between (.+)\.$/);
+  if(!match)return message;
+  const course=courses.find(item=>item.name===match[1]);
+  return `${course?chineseCourseNames[course.id]:match[1]} 的 HSC 成绩必须在 ${match[2]} 之间。`;
+}
+
 function initCalculator() {
+  const isChinese=document.documentElement.lang.startsWith('zh');
+  try{localStorage.setItem('academy-one-language',isChinese?'zh':'en');}catch{}
+  const courseName=course=>isChinese?chineseCourseNames[course.id]:course.name;
   const rows = document.querySelector('#course-rows');
   const template = document.querySelector('#course-row-template');
   const resultValue = document.querySelector('#atar-value');
@@ -167,9 +202,9 @@ function initCalculator() {
 
   const optionMarkup = courses.map(course => {
     const units = course.id === 'math-ext-1'
-      ? '1 unit (2 with Extension 2)'
+      ? (isChinese?'1 unit（与 Extension 2 搭配时为 2 units）':'1 unit (2 with Extension 2)')
       : `${course.units} unit${course.units === 1 ? '' : 's'}`;
-    return `<option value="${course.id}">${course.name} · ${units}</option>`;
+    return `<option value="${course.id}">${courseName(course)} · ${units}</option>`;
   }).join('');
 
   function syncMarkFields() {
@@ -184,8 +219,8 @@ function initCalculator() {
       }
       input.max = maximum;
       input.placeholder = `0–${maximum}`;
-      input.title = `${course.name} HSC mark out of ${maximum}`;
-      input.setAttribute('aria-label', `${course.name} HSC mark (0–${maximum})`);
+      input.title = isChinese?`${courseName(course)} HSC 成绩（满分 ${maximum}）`:`${course.name} HSC mark out of ${maximum}`;
+      input.setAttribute('aria-label',isChinese?`${courseName(course)} HSC 成绩（0–${maximum}）`:`${course.name} HSC mark (0–${maximum})`);
     });
   }
 
@@ -213,11 +248,11 @@ function initCalculator() {
       const result = calculateAtar(inputs);
       resultValue.textContent = result.atar.toFixed(2);
       aggregateValue.textContent = `${result.aggregate.toFixed(1)} / 500`;
-      resultState.textContent = 'Simulation using your best 10 units';
+      resultState.textContent = isChinese?'使用最佳 10 units 的模拟结果':'Simulation using your best 10 units';
       resultState.dataset.state = 'ready';
       countedList.innerHTML = inputs.map(input => {
         const counted = result.counted.includes(input.id);
-        return `<li class="${counted ? 'is-counted' : ''}"><span>${input.name}</span><strong>${counted ? 'Counted' : 'Not counted'}</strong></li>`;
+        return `<li class="${counted ? 'is-counted' : ''}"><span>${courseName(input)}</span><strong>${counted ? (isChinese?'已计入':'Counted') : (isChinese?'未计入':'Not counted')}</strong></li>`;
       }).join('');
     } catch (error) {
       setError(error.message);
@@ -227,7 +262,7 @@ function initCalculator() {
   function setError(message) {
     resultValue.textContent = '—';
     aggregateValue.textContent = '— / 500';
-    resultState.textContent = message;
+    resultState.textContent = localizeCalculatorError(message,isChinese);
     resultState.dataset.state = 'error';
     countedList.innerHTML = '';
   }
@@ -240,7 +275,7 @@ function initCalculator() {
     const remove = row.querySelector('button');
     const labelId = `course-${rowId += 1}`;
     select.id = labelId;
-    select.setAttribute('aria-label', 'Course');
+    select.setAttribute('aria-label',isChinese?'课程':'Course');
     select.innerHTML = optionMarkup;
     select.value = courseId;
     input.value = mark;

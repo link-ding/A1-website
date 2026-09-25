@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en-AU">
+<html lang="zh-Hans-AU">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Estimate your NSW ATAR by entering your HSC courses and expected marks. See which courses contribute to your best 10 units.">
-  <title>NSW ATAR Calculator — Academy One</title>
-  <link rel="canonical" href="https://academyone.com.au/resources/atar-calculator/">
+  <meta name="description" content="输入预计 HSC 成绩，估算新州 ATAR，并了解哪些课程会计入最佳 10 units。">
+  <title>新州 ATAR 估算工具 — Academy One</title>
+  <link rel="canonical" href="https://academyone.com.au/zh/resources/atar-calculator/">
   <link rel="alternate" hreflang="en-AU" href="https://academyone.com.au/resources/atar-calculator/">
   <link rel="alternate" hreflang="zh-Hans-AU" href="https://academyone.com.au/zh/resources/atar-calculator/">
   <link rel="alternate" hreflang="x-default" href="https://academyone.com.au/resources/atar-calculator/">
-  <meta property="og:title" content="NSW ATAR Calculator — Academy One">
+  <meta property="og:locale" content="zh_AU"><meta property="og:locale:alternate" content="en_AU"><meta property="og:title" content="新州 ATAR 估算工具 — Academy One">
   <meta property="og:description" content="Estimate your NSW ATAR and see which courses contribute to your best 10 units.">
-  <meta property="og:url" content="https://academyone.com.au/resources/atar-calculator/">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Academy One NSW ATAR Calculator","applicationCategory":"EducationalApplication","operatingSystem":"Web","url":"https://academyone.com.au/resources/atar-calculator/","description":"A planning calculator that estimates a NSW ATAR from expected HSC marks using Academy One's model.","author":{"@type":"EducationalOrganization","name":"Academy One Private Tuition","url":"https://academyone.com.au/"}}</script>
+  <meta property="og:url" content="https://academyone.com.au/zh/resources/atar-calculator/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Academy One 新州 ATAR 估算工具","applicationCategory":"EducationalApplication","operatingSystem":"Web","url":"https://academyone.com.au/zh/resources/atar-calculator/","description":"使用 Academy One 模型，根据预计 HSC 成绩进行学习规划的 ATAR 估算工具。","author":{"@type":"EducationalOrganization","name":"Academy One Private Tuition","url":"https://academyone.com.au/"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Figtree:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
@@ -114,10 +114,10 @@
   </style>
 </head>
 <body>
-  <aside class="trial-banner" aria-label="Trial lesson information">
+  <aside class="trial-banner" aria-label="试课信息">
     <div class="trial-banner-inner">
-      <p>Private trials are one-off 1.5-hour lessons at the applicable private rate. Group trials are $75 for 1.5 hours.</p>
-      <a href="/contact/#trial-lesson">Book your trial lesson</a>
+      <p>一对一试课按单次 1.5 小时课程收费；小班试课每 1.5 小时 $75。</p>
+      <a href="/contact/#trial-lesson">预约试课</a>
     </div>
   </aside>
   <header class="utility-header">
@@ -126,55 +126,55 @@
         <img src="/assets/academy-one-crest.png" alt="">
         <span><strong>Academy One</strong><small>Private Tuition</small></span>
       </a>
-      <div class="utility-actions"><a class="language-link" href="/zh/resources/atar-calculator/" lang="zh-Hans">中文</a><a class="back" href="/resources/how-is-atar-calculated/"><span aria-hidden="true">←</span><span>How ATAR is calculated</span></a></div>
+      <div class="utility-actions"><a class="language-link" href="/resources/atar-calculator/" lang="en-AU">English</a><a class="back" href="/zh/resources/how-is-atar-calculated/"><span aria-hidden="true">←</span><span>ATAR 如何计算</span></a></div>
     </div>
   </header>
 
   <main>
     <section class="intro">
       <div>
-        <p class="eyebrow">NSW HSC · Study planning tool</p>
-        <h1>Where could your marks take you?</h1>
-        <p class="intro-copy">Add your courses and expected HSC marks. The calculator includes at least 2 units of English, then selects your best 10 units to produce a planning estimate.</p>
+        <p class="eyebrow">NSW HSC · 学习规划工具</p>
+        <h1>你的成绩可能对应怎样的 ATAR？</h1>
+        <p class="intro-copy">添加课程和预计 HSC 成绩。估算工具会先计入至少 2 units 英语，再选出最佳 10 units，提供用于规划的 ATAR 估算。</p>
       </div>
       <aside class="model-note">
-        <strong>About this estimate</strong>
-        Academy One simulation 2026.09. This is a rough planning estimate using modelled scaling, not UAC data. Actual scaling and your final ATAR may differ. This tool is not affiliated with UAC.
+        <strong>关于本次估算</strong>
+        Academy One simulation 2026.09。本工具使用模型化 scaling 提供粗略规划估算，并非采用 UAC 官方数据。实际 scaling 和最终 ATAR 可能不同；本工具与 UAC 无关联。
       </aside>
     </section>
 
     <section class="workspace" aria-label="ATAR calculator">
       <form class="input-panel" id="atar-form">
         <div class="panel-heading">
-          <h2>Courses and expected marks</h2>
-          <p>At least 10 units · Extension marks may be out of 50</p>
+          <h2>课程与预计成绩</h2>
+          <p>至少 10 units · Extension 成绩可能以 50 分为满分</p>
         </div>
-        <div class="course-labels" aria-hidden="true"><span>Course</span><span>HSC mark</span><span></span></div>
+        <div class="course-labels" aria-hidden="true"><span>课程</span><span>HSC 成绩</span><span></span></div>
         <div id="course-rows"></div>
         <div class="form-actions">
-          <button class="add-course" id="add-course" type="button">＋ Add a course</button>
-          <button class="calculate" type="submit">Update estimate</button>
+          <button class="add-course" id="add-course" type="button">＋ 添加课程</button>
+          <button class="calculate" type="submit">更新估算</button>
         </div>
       </form>
 
       <aside class="result-panel" id="result-panel" aria-live="polite">
         <div class="result-inner">
-          <p class="result-kicker">Simulated ATAR estimate</p>
+          <p class="result-kicker">ATAR 模拟估算</p>
           <p class="atar-value" id="atar-value">—</p>
-          <p class="result-state" id="result-state">Updates as you edit your courses</p>
-          <div class="aggregate"><span>Simulated aggregate</span><strong id="aggregate-value">— / 500</strong></div>
-          <p class="counted-title">Courses in your best 10 units</p>
+          <p class="result-state" id="result-state">修改课程后会自动更新</p>
+          <div class="aggregate"><span>模拟 Aggregate</span><strong id="aggregate-value">— / 500</strong></div>
+          <p class="counted-title">计入最佳 10 units 的课程</p>
           <ul class="counted-list" id="counted-list"></ul>
         </div>
       </aside>
     </section>
 
     <section class="method">
-      <h2>How the estimate works</h2>
+      <h2>估算方法</h2>
       <div class="steps">
-        <div class="step"><span>01</span><h3>Validate the course pattern</h3><p>The tool checks English and Mathematics Extension prerequisites and the core NSW ATAR eligibility rules.</p></div>
-        <div class="step"><span>02</span><h3>Select the best 10 units</h3><p>At least 2 units of English are included first, followed by the highest remaining contributions.</p></div>
-        <div class="step"><span>03</span><h3>Estimate your ATAR</h3><p>The aggregate is mapped to a planning estimate. Actual scaling changes from year to year.</p></div>
+        <div class="step"><span>01</span><h3>检查课程组合</h3><p>工具会检查英语与 Mathematics Extension 的先修关系，以及新州 ATAR 的基本资格规则。</p></div>
+        <div class="step"><span>02</span><h3>选取最佳 10 units</h3><p>首先计入至少 2 units 英语，再选取其余贡献最高的 units。</p></div>
+        <div class="step"><span>03</span><h3>估算 ATAR</h3><p>系统将 aggregate 映射为规划估算；实际 scaling 每年都会变化。</p></div>
       </div>
     </section>
   </main>
@@ -183,11 +183,11 @@
     <div class="course-row">
       <select></select>
       <input type="number" min="0" max="100" step="1" inputmode="decimal">
-      <button class="remove-course" type="button" aria-label="Remove course">×</button>
+      <button class="remove-course" type="button" aria-label="删除课程">×</button>
     </div>
   </template>
 
-  <footer>© 2026 Academy One Private Tuition · For study planning only · <a href="https://uac.edu.au/future-applicants/atar/how-your-atar-is-calculated" target="_blank" rel="noopener">UAC calculation rules</a> · <a href="/resources/hsc-scaling/">HSC scaling explained</a> · <a href="/hsc-tutoring/">HSC tutoring</a></footer>
+  <footer>© 2026 Academy One Private Tuition · 仅供学习规划 · <a href="https://uac.edu.au/future-applicants/atar/how-your-atar-is-calculated" target="_blank" rel="noopener">UAC 计算规则</a> · <a href="/zh/resources/hsc-scaling/">HSC Scaling 详解</a> · <a href="/hsc-tutoring/">HSC 辅导</a></footer>
   <script type="module" src="/atar-calculator.js"></script>
 </body>
 </html>
