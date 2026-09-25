@@ -6,6 +6,7 @@ const managedContent=JSON.parse(await readFile(path.join(root,'data/default-cont
 const register='https://academyoneprivatetuition.teachworks.com/form/academy-one-private-tutoring-student-registration-form';
 const address='Suite 403, 815 Pacific Highway, Chatswood NSW 2067';
 const commonProof=[['98','Median ATAR among a senior tutor\'s students'],['2017','Tutoring students since'],['Chatswood','In-person and online tuition']];
+const firstName=name=>String(name||'').replace(/^Dr\s+/i,'').trim().split(/\s+/)[0];
 const subjectLevels={
   maths:[['Primary Maths','Build number sense, fluency and confidence before gaps become habits.'],['High School Maths','Strengthen algebra, geometry, problem solving and school assessment technique.'],['Mathematics Advanced','Connect concepts, method and exam execution across the Stage 6 course.'],['Extension 1 & 2','Develop the depth, speed and proof skills needed for demanding HSC questions.']],
   english:[['Years 7–10 English','Build analytical reading, paragraph control and confident written expression.'],['English Standard','Write purposeful responses that address the question and marking criteria.'],['English Advanced','Develop sharper analysis, adaptable arguments and controlled exam writing.'],['Extension 1 & 2','Refine independent ideas, sustained composition and sophisticated textual analysis.']],
@@ -86,7 +87,8 @@ function tutorDirectoryHtml(){
   const tutors=managedContent.tutors.filter(tutor=>!tutor.hidden);
   const cards=tutors.map(tutor=>{
     const p=tutor.en;
-    return `<article class="profile-card" id="${esc(tutor.id)}"><p class="eyebrow">${esc(p.role)} · ${esc(p.tag||tutor.group)}</p><h2>${esc(p.name)}</h2><p class="profile-subject"><strong>Teaches:</strong> ${esc(p.subject)}</p><p>${esc(p.hook)}</p><details><summary>View full profile</summary><h3>Qualifications and experience</h3><p>${esc(p.qual)}</p><p>${esc(p.bio)}</p><h3>Selected teaching information</h3><p>${esc(p.result)}</p><p><strong>Format and current availability:</strong> confirm with Academy One when enquiring.</p></details><a class="text-link" href="/contact/">Ask about ${esc(p.name)} →</a></article>`;
+    const displayName=firstName(p.name);
+    return `<article class="profile-card" id="${esc(tutor.id)}"><p class="eyebrow">${esc(p.role)} · ${esc(p.tag||tutor.group)}</p><h2>${esc(displayName)}</h2><p class="profile-subject"><strong>Teaches:</strong> ${esc(p.subject)}</p><p>${esc(p.hook)}</p><details><summary>View full profile</summary><h3>Qualifications and experience</h3><p>${esc(p.qual)}</p><p>${esc(p.bio)}</p><h3>Selected teaching information</h3><p>${esc(p.result)}</p><p><strong>Format and current availability:</strong> confirm with Academy One when enquiring.</p></details><a class="text-link" href="/contact/">Ask about ${esc(displayName)} →</a></article>`;
   }).join('');
   return standaloneHtml({slug:'tutors',title:'Tutors in Chatswood and Online',meta:'Meet Academy One English, Mathematics and Science tutors. Review subjects, qualifications and teaching experience before enquiring.',h1:'Meet the Academy One tutors.',lede:'Browse the verified public profile information currently available. Course fit, format and availability are confirmed when you enquire.',body:`<section class="directory section-wide">${cards}</section>`});
 }
@@ -116,7 +118,7 @@ function withSubjectTutors(html,page){
   const tutors=managedContent.tutors.filter(tutor=>!tutor.hidden&&patterns[subject].test(tutor.en.subject)).slice(0,3);
   const profiles=tutors.length?tutors.map(tutor=>{
     const profile=tutor.en;
-    return `<article class="level"><p class="eyebrow">${esc(profile.role)}</p><h3>${esc(profile.name)}</h3><p><strong>${esc(profile.qual)}</strong><br>${esc(profile.hook)}</p><a class="text-link" href="/tutors/#${esc(tutor.id)}">View full profile →</a></article>`;
+    return `<article class="level"><p class="eyebrow">${esc(profile.role)}</p><h3>${esc(firstName(profile.name))}</h3><p><strong>${esc(profile.qual)}</strong><br>${esc(profile.hook)}</p><a class="text-link" href="/tutors/#${esc(tutor.id)}">View full profile →</a></article>`;
   }).join(''):`<article class="level"><h3>Find the right tutor</h3><p>Tell us the student’s year, course and current goals. We’ll confirm the most suitable available tutor.</p><a class="text-link" href="/tutors/">Browse all tutor profiles →</a></article>`;
   const section=`<section class="section reveal" id="our-tutors"><div class="section-grid"><div><p class="eyebrow">Our tutors</p><h2>Meet tutors who teach this subject.</h2><p class="section-intro">Course fit, lesson format and current availability are confirmed when you enquire.</p></div><div class="levels">${profiles}</div></div></section>`;
   return html.replace('<section class="section reveal"><div class="section-grid"><div><p class="eyebrow">Common questions</p>',`${section}<section class="section reveal"><div class="section-grid"><div><p class="eyebrow">Common questions</p>`);

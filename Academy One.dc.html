@@ -851,6 +851,11 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;zh&quot;,&quot;en&quot;],&quot;default&quot;:&quot;zh&quot;,&quot;tsType&quot;:&quot;'zh' | 'en'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showRates&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
   state = { showAllTutors: false, subject: 'all', lang: this.initialLanguage(), page: 'home', active: null, statsProgress: 1, managedContent: null };
+
+  firstName(name) {
+    return String(name || '').replace(/^Dr\s+/i, '').trim().split(/\s+/)[0];
+  }
+
   componentDidMount() {
     document.documentElement.lang = this.lang === 'zh' ? 'zh-CN' : 'en';
     this.onKey = (e) => { if (e.key === 'Escape') this.setState({ active: null }); };
@@ -1115,7 +1120,8 @@ class Component extends DCLogic {
       : tutorsEn.map((en, i) => ({ id: en.name, group: i < 10 ? 'english' : 'maths', hidden: false, en, zh: tutorsZh[i] }));
     const list = managedTutors.filter(tutor => !tutor.hidden).map((tutor, i) => ({
       ...(zh ? tutor.zh : tutor.en),
-      nameSize: tutor.en.name.length >= 18 ? 'ao-tutor-name-long' : tutor.en.name.length >= 14 ? 'ao-tutor-name-medium' : '',
+      name: this.firstName(tutor.en.name),
+      nameSize: '',
       subjectGroup: tutor.group,
       roleTags: (zh ? tutor.zh.role : tutor.en.role).split(' / ').filter(Boolean).map((label, index) => {
         const role = tutor.en.role.split(' / ')[index];
@@ -1135,6 +1141,7 @@ class Component extends DCLogic {
       ? [...list.filter(t => t.subjectGroup === 'english').slice(0, 2), ...list.filter(t => t.subjectGroup === 'maths').slice(0, humanitiesPreview.length ? 1 : 2), ...humanitiesPreview]
       : filtered.slice(0, 4);
     const active = this.state.active === null ? null : list[this.state.active];
+    const displayClasses = (zh ? classesZh : classesEn).map(c => ({ ...c, tutor: this.firstName(c.tutor) }));
     const progress = this.state.statsProgress;
     return {
       statAtar: (99.85 * progress).toFixed(2),
@@ -1196,8 +1203,8 @@ class Component extends DCLogic {
       labelEnquire: zh ? '咨询这位导师' : 'Enquire about this tutor',
       labelRegister: zh ? '填写报名表' : 'Register',
       timetableSections: [
-        { title: zh ? '英文小班课程表' : 'English timetable', ariaLabel: 'English class timetable', classes: (zh ? classesZh : classesEn).filter(c => c.subject.startsWith('English')) },
-        { title: zh ? '数学小班课程表' : 'Mathematics timetable', ariaLabel: 'Mathematics class timetable', classes: (zh ? classesZh : classesEn).filter(c => c.subject.startsWith('Maths')) }
+        { title: zh ? '英文小班课程表' : 'English timetable', ariaLabel: 'English class timetable', classes: displayClasses.filter(c => c.subject.startsWith('English')) },
+        { title: zh ? '数学小班课程表' : 'Mathematics timetable', ariaLabel: 'Mathematics class timetable', classes: displayClasses.filter(c => c.subject.startsWith('Maths')) }
       ],
       policy: zh ? policyZh : policyEn,
       roles: zh ? rolesZh : rolesEn
