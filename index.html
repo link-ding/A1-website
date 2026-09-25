@@ -850,7 +850,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;zh&quot;,&quot;en&quot;],&quot;default&quot;:&quot;zh&quot;,&quot;tsType&quot;:&quot;'zh' | 'en'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showRates&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
-  state = { showAllTutors: false, subject: 'all', lang: this.initialLanguage(), page: 'home', active: null, statsProgress: 0, managedContent: null };
+  state = { showAllTutors: false, subject: 'all', lang: this.initialLanguage(), page: 'home', active: null, statsProgress: 1, managedContent: null };
   componentDidMount() {
     document.documentElement.lang = this.lang === 'zh' ? 'zh-CN' : 'en';
     this.onKey = (e) => { if (e.key === 'Escape') this.setState({ active: null }); };
@@ -874,28 +874,26 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this.onRoute);
     window.addEventListener('popstate', this.onRoute);
     this.onRoute();
-    this.statsObserver = new IntersectionObserver((entries) => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
-      this.statsObserver.disconnect();
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        this.setState({ statsProgress: 1 });
-        return;
-      }
-      const start = performance.now();
-      const tick = (now) => {
-        const elapsed = Math.min((now - start) / 1600, 1);
-        const progress = 1 - Math.pow(1 - elapsed, 3);
-        document.querySelectorAll('.ao-stats [data-countup]').forEach(element => {
-          const value = Number(element.dataset.countup) * progress;
-          element.textContent = element.dataset.decimals ? value.toFixed(Number(element.dataset.decimals)) : Math.round(value);
-        });
-        if (elapsed < 1) this.statsFrame = requestAnimationFrame(tick);
-        else this.setState({ statsProgress: 1 });
-      };
-      this.statsFrame = requestAnimationFrame(tick);
-    }, { threshold: 0.25 });
     const stats = document.querySelector('.ao-stats');
-    if (stats) this.statsObserver.observe(stats);
+    if (stats && 'IntersectionObserver' in window) {
+      this.statsObserver = new IntersectionObserver((entries) => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        this.statsObserver.disconnect();
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const start = performance.now();
+        const tick = (now) => {
+          const elapsed = Math.min((now - start) / 1600, 1);
+          const progress = 1 - Math.pow(1 - elapsed, 3);
+          document.querySelectorAll('.ao-stats [data-countup]').forEach(element => {
+            const value = Number(element.dataset.countup) * progress;
+            element.textContent = element.dataset.decimals ? value.toFixed(Number(element.dataset.decimals)) : Math.round(value);
+          });
+          if (elapsed < 1) this.statsFrame = requestAnimationFrame(tick);
+        };
+        this.statsFrame = requestAnimationFrame(tick);
+      }, { threshold: 0.25 });
+      this.statsObserver.observe(stats);
+    }
     fetch('/api/content', { cache: 'no-store' })
       .then(response => response.ok ? response.json() : Promise.reject())
       .then(managedContent => this.setState({ managedContent }))
@@ -905,7 +903,7 @@ class Component extends DCLogic {
     this.revealObserver?.disconnect();
     this.navObserver?.disconnect();
     this.motionAnimations?.forEach(animation => animation.cancel());
-    this.statsObserver.disconnect();
+    this.statsObserver?.disconnect();
     cancelAnimationFrame(this.statsFrame);
     window.removeEventListener('keydown', this.onKey);
     window.removeEventListener('hashchange', this.onRoute);
