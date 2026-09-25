@@ -5,6 +5,7 @@ import test from 'node:test';
 const root=new URL('../',import.meta.url);
 const articleSlugs=['how-is-atar-calculated','hsc-scaling','hsc-study-tips','selective-oc-guides'];
 const allSlugs=['atar-calculator',...articleSlugs];
+const chineseSiteSlugs=['pricing','tutors','hsc-tutoring'];
 
 test('resource pages expose reciprocal English and Chinese SEO alternates',async()=>{
   for(const slug of articleSlugs){
@@ -50,9 +51,34 @@ test('ATAR calculator has an independently indexable Chinese version',async()=>{
   assert.match(chinese,/href="\/resources\/atar-calculator\/" lang="en-AU">English<\/a>/);
 });
 
+test('pricing, tutors and HSC tutoring have reciprocal Chinese versions',async()=>{
+  const expectedCopy={pricing:'清晰了解 2027 年辅导费用',tutors:'认识 Academy One 导师团队','hsc-tutoring':'围绕课程、学生与下一次考试设计的 HSC 辅导'};
+  for(const slug of chineseSiteSlugs){
+    const englishUrl=`https://academyone.com.au/${slug}/`;
+    const chineseUrl=`https://academyone.com.au/zh/${slug}/`;
+    const english=await readFile(new URL(`${slug}/index.html`,root),'utf8');
+    const chinese=await readFile(new URL(`zh/${slug}/index.html`,root),'utf8');
+    assert.match(english,new RegExp(`hreflang="zh-Hans-AU" href="${chineseUrl}"`));
+    assert.match(english,new RegExp(`class="language-switch" href="/zh/${slug}/"`));
+    assert.match(chinese,new RegExp(`<link rel="canonical" href="${chineseUrl}">`));
+    assert.match(chinese,new RegExp(`hreflang="en-AU" href="${englishUrl}"`));
+    assert.match(chinese,new RegExp(expectedCopy[slug]));
+  }
+});
+
+test('Chinese navigation keeps pricing, tutors and HSC links in Chinese routes',async()=>{
+  const article=await readFile(new URL('zh/resources/how-is-atar-calculated/index.html',root),'utf8');
+  assert.match(article,/href="\/zh\/pricing\/">学费<\/a>/);
+  assert.match(article,/href="\/zh\/tutors\/">师资<\/a>/);
+  assert.match(article,/href="\/zh\/hsc-tutoring\/">HSC 辅导<\/a>/);
+});
+
 test('sitemap includes every Chinese resource URL',async()=>{
   const sitemap=await readFile(new URL('sitemap.xml',root),'utf8');
   for(const slug of allSlugs){
     assert.match(sitemap,new RegExp(`<loc>https://academyone.com.au/zh/resources/${slug}/</loc>`));
+  }
+  for(const slug of chineseSiteSlugs){
+    assert.match(sitemap,new RegExp(`<loc>https://academyone.com.au/zh/${slug}/</loc>`));
   }
 });

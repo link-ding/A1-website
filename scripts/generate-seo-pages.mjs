@@ -51,13 +51,14 @@ const pages=[
 ];
 
 function esc(value){return String(value).replace(/[&<>\"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));}
-function withResourceAlternates(html,p){
-  if(!p.slug.startsWith('resources/'))return html;
-  const english=`https://academyone.com.au/${p.slug}/`;
-  const chinese=`https://academyone.com.au/zh/${p.slug}/`;
+const localizedPageSlugs=new Set(['hsc-tutoring','pricing','tutors']);
+function withLocalizedAlternates(html,slug){
+  if(!slug.startsWith('resources/')&&!localizedPageSlugs.has(slug))return html;
+  const english=`https://academyone.com.au/${slug}/`;
+  const chinese=`https://academyone.com.au/zh/${slug}/`;
   return html
     .replace(`<link rel="canonical" href="${english}">`,`<link rel="canonical" href="${english}"><link rel="alternate" hreflang="en-AU" href="${english}"><link rel="alternate" hreflang="zh-Hans-AU" href="${chinese}"><link rel="alternate" hreflang="x-default" href="${english}">`)
-    .replace('<a class="language-switch" href="/" data-language="zh" lang="zh-Hans">中文</a>',`<a class="language-switch" href="/zh/${p.slug}/" data-language="zh" lang="zh-Hans">中文</a>`);
+    .replace('<a class="language-switch" href="/" data-language="zh" lang="zh-Hans">中文</a>',`<a class="language-switch" href="/zh/${slug}/" data-language="zh" lang="zh-Hans">中文</a>`);
 }
 function nav(){return `<aside class="trial-banner" aria-label="Trial lesson information"><div class="trial-banner-inner"><p>Private trials are one-off 1.5-hour lessons at the applicable private rate. Group trials are $75 for 1.5 hours.</p><a href="/contact/#trial-lesson">Book your trial lesson</a></div></aside><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Academy One home"><img src="/assets/academy-one-crest.png" alt=""><span><strong>Academy One</strong><small>Private Tuition</small></span></a><nav class="primary-nav" id="primary-navigation" aria-label="Main navigation"><a href="/courses">Courses</a><a href="/pricing/">Pricing</a><a href="/tutors/">Tutors</a><a href="/timetable">Timetable</a><a href="/careers/">Careers</a><a href="/contact/">Contact</a><details class="nav-resources"><summary>Resources</summary><div class="nav-resources-menu"><a href="/resources/atar-calculator/">ATAR Calculator</a><a href="/resources/how-is-atar-calculated/">How ATAR Is Calculated</a><a href="/resources/hsc-scaling/">HSC Scaling Explained</a><a href="/resources/hsc-study-tips/">HSC Study Tips</a><a href="/resources/selective-oc-guides/">Selective / OC Guides</a></div></details></nav><div class="header-actions"><a class="language-switch" href="/" data-language="zh" lang="zh-Hans">中文</a><a class="header-cta" href="${register}" target="_blank" rel="noopener">Register</a></div></div></header>`}
 function footer(){return `<footer class="site-footer"><div class="footer-inner"><div class="footer-grid"><div><img class="footer-logo" src="/assets/academy-one-logo.png" alt="Academy One Private Tuition"><p>Suite 403, 815 Pacific Highway<br>Chatswood NSW 2067</p></div><div><h3>Courses</h3><a href="/tutoring/maths/">Maths tutoring</a><a href="/tutoring/english/">English tutoring</a><a href="/hsc-tutoring/">HSC tutoring</a><a href="/timetable">Small group timetable</a><a href="/pricing/">Pricing</a></div><div><h3>Centre</h3><a href="/credit">Credit policy</a><a href="/resources/atar-calculator/">ATAR calculator</a><a href="/resources/how-is-atar-calculated/">How ATAR is calculated</a><a href="/careers/">Careers</a><a href="/contact/">Contact</a><a href="https://www.google.com/search?q=Academy+One+Private+Tuition+Chatswood" target="_blank" rel="noopener">Google Reviews</a></div><div><h3>Contact</h3><a href="tel:+61486017931">0486 017 931</a><p>WeChat: academyonechatswood</p><a href="mailto:operations@academyone.com.au">operations@academyone.com.au</a><a href="mailto:admin@academyone.com.au">admin@academyone.com.au</a></div></div><div class="copyright">© 2026 Academy One Private Tuition · Chatswood NSW</div></div></footer>`}
@@ -132,13 +133,13 @@ function withSubjectTutors(html,page){
   return html.replace('<section class="section reveal"><div class="section-grid"><div><p class="eyebrow">Common questions</p>',`${section}<section class="section reveal"><div class="section-grid"><div><p class="eyebrow">Common questions</p>`);
 }
 
-for(const p of pages){const dir=path.join(root,p.slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),withResourceAlternates(withSubjectTutors(withContactPageCta(pageHtml(p)),p),p));}
+for(const p of pages){const dir=path.join(root,p.slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),withLocalizedAlternates(withSubjectTutors(withContactPageCta(pageHtml(p)),p),p.slug));}
 
 const standalonePages=[['tutors',tutorDirectoryHtml()],['pricing',pricingHtml()],['contact',contactHtml()],['careers',careersHtml()]];
-for(const [slug,html] of standalonePages){const dir=path.join(root,slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),html);}
+for(const [slug,html] of standalonePages){const dir=path.join(root,slug);await mkdir(dir,{recursive:true});await writeFile(path.join(dir,'index.html'),withLocalizedAlternates(html,slug));}
 
-const chineseResources=['resources/atar-calculator',...pages.filter(p=>p.slug.startsWith('resources/')).map(p=>p.slug)].map(slug=>`zh/${slug}`);
-const sitemapUrls=['','resources/atar-calculator',...chineseResources,...standalonePages.map(([slug])=>slug),...pages.map(p=>p.slug)].map(slug=>`  <url><loc>https://academyone.com.au/${slug}${slug?'/':''}</loc></url>`).join('\n');
+const chinesePages=['resources/atar-calculator',...pages.filter(p=>p.slug.startsWith('resources/')||localizedPageSlugs.has(p.slug)).map(p=>p.slug),...standalonePages.map(([slug])=>slug).filter(slug=>localizedPageSlugs.has(slug))].map(slug=>`zh/${slug}`);
+const sitemapUrls=['','resources/atar-calculator',...chinesePages,...standalonePages.map(([slug])=>slug),...pages.map(p=>p.slug)].map(slug=>`  <url><loc>https://academyone.com.au/${slug}${slug?'/':''}</loc></url>`).join('\n');
 await writeFile(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls}\n</urlset>\n`);
 await writeFile(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: https://academyone.com.au/sitemap.xml\n`);
 console.log(`Generated ${pages.length+standalonePages.length} SEO pages.`);

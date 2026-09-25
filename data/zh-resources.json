@@ -31,7 +31,7 @@
     "related": [
       ["/zh/resources/atar-calculator/", "使用 ATAR 估算工具"],
       ["/zh/resources/hsc-scaling/", "了解 HSC Scaling"],
-      ["/hsc-tutoring/", "HSC 辅导"]
+      ["/zh/hsc-tutoring/", "HSC 辅导"]
     ],
     "sources": [
       ["UAC：ATAR 如何计算", "https://uac.edu.au/future-applicants/atar/how-your-atar-is-calculated"],
@@ -107,7 +107,7 @@
       ["错题记录应该写什么？", "记录题型、错误内容、发生原因，以及下次应该采用的具体规则或行动。下一组练习前再复习这些记录。"]
     ],
     "related": [
-      ["/hsc-tutoring/", "HSC 辅导"],
+      ["/zh/hsc-tutoring/", "HSC 辅导"],
       ["/zh/resources/hsc-scaling/", "HSC Scaling"],
       ["/zh/resources/atar-calculator/", "ATAR 估算工具"]
     ],
