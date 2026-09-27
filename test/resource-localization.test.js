@@ -82,6 +82,11 @@ test('English pricing matches the 2027 price-list structure and 1.5-hour rates',
   assert.doesNotMatch(pricing,/<br>hourly rate<\/th>/);
 });
 
+test('pricing tables use one fixed column layout across every subject',async()=>{
+  const css=await readFile(new URL('assets/seo-pages.css',root),'utf8');
+  assert.match(css,/\.price-block table\{[^}]*table-layout:fixed/);
+});
+
 test('Chinese navigation keeps pricing, tutors and HSC links in Chinese routes',async()=>{
   const article=await readFile(new URL('zh/resources/how-is-atar-calculated/index.html',root),'utf8');
   assert.match(article,/href="\/zh\/pricing\/">学费<\/a>/);
