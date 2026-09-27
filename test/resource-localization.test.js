@@ -52,7 +52,7 @@ test('ATAR calculator has an independently indexable Chinese version',async()=>{
 });
 
 test('pricing, tutors and HSC tutoring have reciprocal Chinese versions',async()=>{
-  const expectedCopy={pricing:'清晰了解 2027 年辅导费用',tutors:'认识 Academy One 导师团队','hsc-tutoring':'围绕课程、学生与下一次考试设计的 HSC 辅导'};
+  const expectedCopy={pricing:'2027 年的价目表',tutors:'认识 Academy One 导师团队','hsc-tutoring':'围绕课程、学生与下一次考试设计的 HSC 辅导'};
   for(const slug of chineseSiteSlugs){
     const englishUrl=`https://academyone.com.au/${slug}/`;
     const chineseUrl=`https://academyone.com.au/zh/${slug}/`;
@@ -64,6 +64,22 @@ test('pricing, tutors and HSC tutoring have reciprocal Chinese versions',async()
     assert.match(chinese,new RegExp(`hreflang="en-AU" href="${englishUrl}"`));
     assert.match(chinese,new RegExp(expectedCopy[slug]));
   }
+});
+
+test('Chinese pricing presents one-to-one rates per 1.5 hours without the old intro copy',async()=>{
+  const pricing=await readFile(new URL('zh/pricing/index.html',root),'utf8');
+  assert.match(pricing,/<h1>2027 年的价目表<\/h1>/);
+  assert.equal((pricing.match(/<br>每 1\.5 小时<\/th>/g)||[]).length,6);
+  assert.doesNotMatch(pricing,/整学期一对一课程根据导师类别与学生年级按小时收费/);
+  assert.doesNotMatch(pricing,/<br>每小时<\/th>/);
+});
+
+test('English pricing matches the 2027 price-list structure and 1.5-hour rates',async()=>{
+  const pricing=await readFile(new URL('pricing/index.html',root),'utf8');
+  assert.match(pricing,/<h1>2027 Price List<\/h1>/);
+  assert.equal((pricing.match(/<br>per 1\.5-hour lesson<\/th>/g)||[]).length,6);
+  assert.doesNotMatch(pricing,/Entire-term hourly rates are tiered/);
+  assert.doesNotMatch(pricing,/<br>hourly rate<\/th>/);
 });
 
 test('Chinese navigation keeps pricing, tutors and HSC links in Chinese routes',async()=>{
