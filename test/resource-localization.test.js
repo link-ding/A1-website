@@ -66,20 +66,20 @@ test('pricing, tutors and HSC tutoring have reciprocal Chinese versions',async()
   }
 });
 
-test('Chinese pricing presents one-to-one rates per 1.5 hours without the old intro copy',async()=>{
+test('Chinese pricing presents hourly rates with a 1.5-hour lesson minimum',async()=>{
   const pricing=await readFile(new URL('zh/pricing/index.html',root),'utf8');
   assert.match(pricing,/<h1>2027 年的价目表<\/h1>/);
-  assert.equal((pricing.match(/<br>每 1\.5 小时<\/th>/g)||[]).length,6);
+  assert.equal((pricing.match(/<br>每小时<\/th>/g)||[]).length,6);
+  assert.match(pricing,/所有一对一价格均为每小时价格，每节课最低时长为 1\.5 小时/);
   assert.doesNotMatch(pricing,/整学期一对一课程根据导师类别与学生年级按小时收费/);
-  assert.doesNotMatch(pricing,/<br>每小时<\/th>/);
 });
 
-test('English pricing matches the 2027 price-list structure and 1.5-hour rates',async()=>{
+test('English pricing presents hourly rates with a 1.5-hour lesson minimum',async()=>{
   const pricing=await readFile(new URL('pricing/index.html',root),'utf8');
   assert.match(pricing,/<h1>2027 Price List<\/h1>/);
-  assert.equal((pricing.match(/<br>per 1\.5-hour lesson<\/th>/g)||[]).length,6);
+  assert.equal((pricing.match(/<br>hourly rate<\/th>/g)||[]).length,6);
+  assert.match(pricing,/All one-to-one prices are hourly rates\. Each lesson has a minimum duration of 1\.5 hours/);
   assert.doesNotMatch(pricing,/Entire-term hourly rates are tiered/);
-  assert.doesNotMatch(pricing,/<br>hourly rate<\/th>/);
 });
 
 test('pricing tables use one fixed column layout across every subject',async()=>{
