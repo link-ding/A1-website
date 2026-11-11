@@ -188,7 +188,25 @@ function localizeCalculatorError(message,isChinese){
 
 function initCalculator() {
   const isChinese=document.documentElement.lang.startsWith('zh');
-  try{localStorage.setItem('academy-one-language',isChinese?'zh':'en');}catch{}
+  const pageLanguage=isChinese?'zh':'en';
+  let preferredLanguage;
+  try{preferredLanguage=localStorage.getItem('academy-one-language');}catch{}
+  if(preferredLanguage!=='zh'&&preferredLanguage!=='en'){
+    const systemLanguage=navigator.languages?.[0]||navigator.language||'en';
+    preferredLanguage=/^zh(?:-|$)/i.test(systemLanguage)?'zh':'en';
+  }
+  if(preferredLanguage!==pageLanguage){
+    const alternate=[...document.querySelectorAll('link[rel="alternate"][hreflang]')]
+      .find(link=>link.hreflang.toLowerCase().startsWith(preferredLanguage));
+    if(alternate){
+      const target=new URL(alternate.href,location.href);
+      location.replace(target.pathname+location.search+location.hash);
+      return;
+    }
+  }
+  document.querySelector('.language-link')?.addEventListener('click',event=>{
+    try{localStorage.setItem('academy-one-language',event.currentTarget.lang.startsWith('zh')?'zh':'en');}catch{}
+  });
   const courseName=course=>isChinese?chineseCourseNames[course.id]:course.name;
   const rows = document.querySelector('#course-rows');
   const template = document.querySelector('#course-row-template');

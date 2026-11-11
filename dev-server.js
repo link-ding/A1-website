@@ -69,6 +69,17 @@ http.createServer(async (incoming, outgoing) => {
     });
     outgoing.end(body);
   } catch {
+    if (!url.pathname.startsWith('/api/')) {
+      try {
+        const body = await readFile(path.join(root, '404.html'));
+        outgoing.writeHead(404, {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': 'no-store'
+        });
+        outgoing.end(body);
+        return;
+      } catch { /* Fall back to a plain response if the custom page is unavailable. */ }
+    }
     outgoing.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     outgoing.end('Not found');
   }

@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import { list, put } from '@vercel/blob';
+import { get, list, put } from '@vercel/blob';
 import defaultContentJson from '../data/default-content.json' with { type: 'json' };
 
 const BLOB_PREFIX = 'academy-one/content-';
@@ -19,6 +19,10 @@ const textLimits = {
 };
 
 export const defaultContent = defaultContentJson;
+
+function hasBlobCredentials() {
+  return Boolean(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
+}
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -62,10 +66,17 @@ function languageDetails(input, language) {
   return details;
 }
 
+// Tutors can only be hidden in the admin, never deleted, so a default tutor
+// missing from saved content was added to the defaults after the last save.
+function withNewDefaultTutors(saved) {
+  const savedIds = new Set(saved.map((tutor) => tutor?.id));
+  return [...saved, ...defaultContent.tutors.filter((tutor) => !savedIds.has(tutor.id)).map(clone)];
+}
+
 function validateTutors(input) {
   const removedTutors = Array.isArray(input.removedTutors) ? input.removedTutors : [];
   const source = Array.isArray(input.tutors)
-    ? input.tutors
+    ? withNewDefaultTutors(input.tutors)
     : defaultContent.tutors.map((tutor) => ({
         ...clone(tutor),
         hidden: removedTutors.some(name => tutor.en.name === name || tutor.en.name.startsWith(`${name} `))
@@ -86,7 +97,7 @@ function validateTutors(input) {
 
 function validatePricing(input) {
   const result = {};
-  for (const subject of ['english', 'maths', 'humanitiesScience']) {
+  for (const subject of ['english', 'maths', 'humanitiesScience', 'economicsBusiness']) {
     const rows = input.pricing?.[subject] ?? defaultContent.pricing[subject];
     if (!Array.isArray(rows)) throw new Error(`Missing ${subject} pricing.`);
     if (rows.length > 50) throw new Error(`A maximum of 50 ${subject} price rows is allowed.`);
@@ -132,7 +143,7 @@ async function readLocalContent() {
 }
 
 export async function readContent() {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) return readLocalContent();
+  if (!hasBlobCredentials()) return readLocalContent();
   const blobs = [];
   let cursor;
   do {
@@ -142,22 +153,22 @@ export async function readContent() {
   } while (cursor);
   const latest = blobs.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt))[0];
   if (!latest) return clone(defaultContent);
-  const response = await fetch(`${latest.url}?v=${encodeURIComponent(latest.uploadedAt)}`, { cache: 'no-store' });
-  if (!response.ok) throw new Error('Could not read saved website content.');
-  return validateContent(await response.json());
+  const result = await get(latest.pathname, { access: 'private', useCache: false });
+  if (result?.statusCode !== 200) throw new Error('Could not read saved website content.');
+  return validateContent(await new Response(result.stream).json());
 }
 
 export async function writeContent(input) {
   const content = validateContent(input);
   content.updatedAt = new Date().toISOString();
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    if (process.env.VERCEL) throw new Error('BLOB_READ_WRITE_TOKEN is not configured.');
+  if (!hasBlobCredentials()) {
+    if (process.env.VERCEL) throw new Error('Blob storage is not configured. Connect a Blob store using OIDC (BLOB_STORE_ID) or BLOB_READ_WRITE_TOKEN, then redeploy.');
     await mkdir(path.dirname(localPath), { recursive: true });
     await writeFile(localPath, `${JSON.stringify(content, null, 2)}\n`, 'utf8');
     return content;
   }
   await put(`${BLOB_PREFIX}${Date.now()}.json`, JSON.stringify(content), {
-    access: 'public',
+    access: 'private',
     addRandomSuffix: false,
     contentType: 'application/json',
     cacheControlMaxAge: 60

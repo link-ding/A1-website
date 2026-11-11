@@ -351,6 +351,33 @@
         "bio": "Westbourne College Sydney 毕业生代表（Dux），ATAR 等效 99.75。UNSW 商学（金融）与精算在读。先诊断知识缺口，再用“讲解—挑战—主动回忆—真题训练”的结构推进。",
         "result": "曾在两周结构化辅导后，带学生取得大学科目 90 分（HD）。"
       }
+    },
+    {
+      "id": "ryan",
+      "group": "humanities",
+      "hidden": false,
+      "en": {
+        "name": "Ryan Mach",
+        "role": "Senior Business Studies & Economics Tutor",
+        "tag": "Business Studies · Economics",
+        "qual": "Band 6 in HSC Business Studies & Economics · B Actuarial Studies / B Commerce · UNSW",
+        "subjectShort": "HSC Business Studies · HSC Economics",
+        "subject": "HSC Business Studies · HSC Economics",
+        "hook": "Band 6 in both HSC Business Studies and Economics, with hands-on experience across finance, accounting, tax and investment analysis.",
+        "bio": "Bachelor of Actuarial Studies / Bachelor of Commerce at UNSW, majoring in Finance and Accounting, with a Distinction WAM (81). His industry experience spans financial and project finance modelling at Actif Infrastructure, corporate tax at Grant Thornton and business services accounting at Hall Chadwick, with an incoming equity research summer analyst role at Jefferies. He shows students how the concepts they learn at school apply to real businesses, markets and major investment decisions.",
+        "result": "Previously taught Business Studies, Economics and Mathematics at Academy One as an Academic Tutor and Resource Coordinator, contributing to lesson planning and teaching resources. Students have achieved full marks and results above 90%."
+      },
+      "zh": {
+        "name": "Ryan Mach",
+        "role": "资深商科与经济导师",
+        "tag": "商科 · 经济",
+        "qual": "HSC Business Studies 与 Economics 双 Band 6 · 精算 / 商学双学位 · UNSW",
+        "subjectShort": "HSC Business Studies · HSC Economics",
+        "subject": "HSC Business Studies · HSC Economics",
+        "hook": "HSC Business Studies 与 Economics 双 Band 6，兼具金融、会计、税务与投资分析的实战经验。",
+        "bio": "UNSW 精算与商学双学位，主修金融与会计，WAM 81（Distinction）。曾在 Actif Infrastructure 参与财务与项目融资建模，在 Grant Thornton 从事企业税务，在 Hall Chadwick 负责企业财务报表与管理账目，并已获 Jefferies 股票研究暑期分析师职位。擅长把课堂上的概念与真实的企业、市场和重大投资决策联系起来。",
+        "result": "曾在 Academy One 担任学科导师与教学资源统筹，教授 Business Studies、Economics 与数学，并参与备课与教学资料编写；学生曾取得满分及 90% 以上的成绩。"
+      }
     }
   ],
   "pricing": {
@@ -428,6 +455,17 @@
         "labelZh": "资深导师 Senior Tutor",
         "values": [
           100,
+          110
+        ]
+      }
+    ],
+    "economicsBusiness": [
+      {
+        "id": "senior",
+        "labelEn": "Senior Tutor",
+        "labelZh": "资深导师 Senior Tutor",
+        "values": [
+          null,
           110
         ]
       }

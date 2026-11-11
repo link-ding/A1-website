@@ -164,6 +164,7 @@ function render() {
   renderPriceRows('english');
   renderPriceRows('maths');
   renderPriceRows('humanitiesScience');
+  renderPriceRows('economicsBusiness');
   $('#group-english').value = content.groupClasses.english;
   $('#group-mathematics').value = content.groupClasses.mathematics;
   [$('#group-english'), $('#group-mathematics')].forEach((input) => input.addEventListener('input', () => {
@@ -187,6 +188,7 @@ $('#add-tutor').addEventListener('click', addTutor);
 $('#add-english-rate').addEventListener('click', () => addPriceRow('english'));
 $('#add-maths-rate').addEventListener('click', () => addPriceRow('maths'));
 $('#add-humanities-science-rate').addEventListener('click', () => addPriceRow('humanitiesScience'));
+$('#add-economics-business-rate').addEventListener('click', () => addPriceRow('economicsBusiness'));
 
 $('#login-form').addEventListener('submit', async (event) => {
   event.preventDefault();

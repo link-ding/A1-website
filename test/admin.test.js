@@ -41,7 +41,9 @@ test('creates and verifies a signed session cookie', () => {
 
 test('validates bilingual tutors and prices', () => {
   const valid = validateContent(defaultContent);
-  assert.equal(valid.tutors.length, 13);
+  assert.equal(valid.tutors.length, 14);
+  assert.equal(valid.tutors.at(-1).en.name, 'Ryan Mach');
+  assert.equal(valid.tutors.at(-1).group, 'humanities');
   assert.equal(valid.groupClasses.english, 75);
   assert.throws(() => validateContent({ ...defaultContent, groupClasses: { english: -1, mathematics: 85 } }), /greater than 0/);
   const missingChineseName = structuredClone(defaultContent);
@@ -81,6 +83,29 @@ test('migrates the previous visibility and fixed-price format', () => {
   assert.equal(migrated.tutors.find((tutor) => tutor.en.name === 'Kevin Zhang').hidden, true);
   assert.equal(migrated.pricing.english[0].labelEn, 'Academic Tutor');
   assert.equal(migrated.pricing.humanitiesScience[0].labelEn, 'Junior Tutor');
+  assert.deepEqual(migrated.pricing.economicsBusiness[0].values, [null, 110]);
+});
+
+test('adds tutors introduced after content was last saved without touching saved edits', () => {
+  const saved = structuredClone(defaultContent);
+  saved.tutors = saved.tutors.filter((tutor) => tutor.id !== 'ryan');
+  saved.tutors[0].hidden = true;
+  saved.tutors.push({ id: 'tutor-added-in-admin', group: 'maths', hidden: false, en: { name: 'Admin Tutor' }, zh: { name: '后台导师' } });
+  const valid = validateContent(saved);
+  assert.equal(valid.tutors.length, 15);
+  assert.equal(valid.tutors[0].hidden, true);
+  assert.equal(valid.tutors.at(-2).id, 'tutor-added-in-admin');
+  assert.equal(valid.tutors.at(-1).id, 'ryan');
+  assert.equal(validateContent(valid).tutors.length, 15);
+});
+
+test('adds the Economics & Business Studies table to content saved before it existed', () => {
+  const saved = structuredClone(defaultContent);
+  delete saved.pricing.economicsBusiness;
+  const valid = validateContent(saved);
+  assert.deepEqual(valid.pricing.economicsBusiness, [
+    { id: 'senior', labelEn: 'Senior Tutor', labelZh: '资深导师 Senior Tutor', values: [null, 110] }
+  ]);
 });
 
 test('migrates four-value pricing rows to entire-term rates', () => {
